@@ -1,0 +1,59 @@
+% This file is public domain.
+% This document additionally requires the datetime2-english module
+% to be installed.
+
+% arara: pdflatex
+% arara: pdflatex
+\documentclass[italian]{article}
+\usepackage{babel}
+\usepackage[datesep=/,showzoneminutes=false]{datetime2}
+%\usepackage[colorlinks]{hyperref}
+
+\DTMsetup{showdow}
+
+\DTMsavetimestamp{mydate}{2014-06-03T12:45:02+01:00}
+
+\begin{document}
+\tableofcontents
+
+
+%\section{Default date: \today}
+
+Today: \today. Time: \DTMcurrenttime. Zone: \DTMcurrentzone.
+
+Now: \DTMnow.
+
+TWO DIGITS: \DTMtwodigits{2014}. \DTMtwodigits{2999}.
+\DTMtwodigits{-2}.
+
+\typeout{Date Stamp (Default): \DTMnow}
+
+Saved date: \DTMusedate{mydate}.
+Saved time: \DTMusetime{mydate}.
+
+Saved date-time: \DTMuse{mydate}.
+
+\typeout{Date Stamp (Default): \DTMuse{mydate}}
+
+%\section{Default time: \DTMusetime{mydate}}
+
+\DTMsetstyle{iso}
+
+ISO: \DTMnow.
+\typeout{Date Stamp (ISO): \DTMnow}
+
+Saved date: \DTMuse{mydate}.
+\typeout{Date Stamp (ISO): \DTMuse{mydate}}
+
+\DTMsetstyle{italian}
+%\section{ \DTMusedate{mydate}}
+
+IT: \DTMnow.
+\typeout{Date Stamp (GB): \DTMnow}
+
+ Saved date: \DTMuse{mydate}.
+\typeout{Date Stamp (IT): \DTMuse{mydate}}
+
+
+
+\end{document}
