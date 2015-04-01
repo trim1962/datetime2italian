@@ -109,8 +109,8 @@
   \ifDTMshowdow
 \ifnum##4>-1%
 \DTMifbool{italian}{abbr}%
-{\DTMitalianShortweekdayname{##4}}%
-{\DTMitalianWeekdayname{##4}}%
+{\DTMitalianshortweekdayname{##4}}%
+{\DTMitalianweekdayname{##4}}%
 \space
 \fi
 \fi
@@ -122,7 +122,7 @@
 {}%
 \DTMifbool{italian}{abbr}%
 {\DTMitalianShortmonthname{##2}}%
-{\DTMitalianMonthname{##2}}%
+{\DTMitalianmonthname{##2}}%
 \DTMifbool{italian}{showyear}%
 {%
 \DTMITmonthyearsep\number##1 % space intended
@@ -192,9 +192,9 @@
    \DTMifbool{italian}{showdayofmonth}
    {%
    \DTMitalianordinal{##3}\DTMitaliandaymonthsep
-   \DTMitalianMonthname{##2}%
+   \DTMitalianmonthname{##2}%
    }%
-   {\DTMitalianMonthname{##2}}%
+   {\DTMitalianmonthname{##2}}%
    \DTMifbool{italian}{showyear}%
    {%
    \DTMitalianmonthyearsep
