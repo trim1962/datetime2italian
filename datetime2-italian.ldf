@@ -121,7 +121,7 @@
 }%
 {}%
 \DTMifbool{italian}{abbr}%
-{\DTMitalianShortmonthname{##2}}%
+{\DTMitalianshortmonthname{##2}}%
 {\DTMitalianmonthname{##2}}%
 \DTMifbool{italian}{showyear}%
 {%
@@ -243,6 +243,82 @@
    \ifDTMshowzone
    \DTMITtimezonesep
    \DTMdisplayzone{##8}{##9}%
+   \fi
+   }%
+ }
+ \DTMnewstyle
+ {italian-regional}% label
+ {% date style
+    \renewcommand*\DTMdisplaydate[4]{%
+      \DTMifbool{italian}{showdayofmonth}%
+      {%
+        \number##3 % space intended
+        \DTMITdatesep
+      }%
+      {}%
+      \number##2 % space intended
+      \DTMifbool{italian}{showyear}%
+      {%
+        \DTMITdatesep
+        \number##1 % space intended
+      }%
+      {}%
+    }%
+   \renewcommand*\DTMDisplaydate[4]{%
+   \DTMifbool{italian}{showdayofmonth}
+   {%
+   \DTMitalianordinal{##3}\DTMitaliandaymonthsep
+   \DTMitalianmonthname{##2}%
+   }%
+   {\DTMitalianmonthname{##2}}%
+   \DTMifbool{italian}{showyear}%
+   {%
+   \DTMitalianmonthyearsep
+   \number##1 % space intended
+   }%
+   {}%
+   }%
+   }%
+ {% time style
+    \renewcommand*\DTMdisplaytime[3]{%
+      \number##1
+      \DTMITtimesep\DTMtwodigits{##2}%
+      \ifDTMshowseconds\DTMITtimesep\DTMtwodigits{##3}\fi
+    }%
+ }%
+ {% zone style
+   \DTMresetzones
+   \DTMITzonemaps
+ %  \renewcommand*{\DTMdisplayzone}[2]{%
+ %    \DTMifbool{italian}{mapzone}%
+%	 {\DTMusezonemapordefault{##1}{##2}}%
+ %    {%
+ %      \ifnum##1<0\else+\fi\DTMtwodigits{##1}%
+  %     \ifDTMshowzoneminutes\DTMITtimesep\DTMtwodigits{##2}\fi
+  %   }%
+  % }%
+ }%
+ {% full style
+   \renewcommand*{\DTMdisplay}[9]{%
+    \ifDTMshowdate
+     \DTMdisplaydate{##1}{##2}{##3}{##4}%
+     \DTMITdatetimesep
+    \fi
+    \DTMdisplaytime{##5}{##6}{##7}%
+    \ifDTMshowzone
+     \DTMITtimezonesep
+   %  \DTMdisplayzone{##8}{##9}%
+    \fi
+   }%
+   \renewcommand*{\DTMDisplay}[9]{%
+   \ifDTMshowdate
+   \DTMDisplaydate{##1}{##2}{##3}{##4}%
+   \DTMITdatetimesep
+   \fi
+   \DTMdisplaytime{##5}{##6}{##7}%
+   \ifDTMshowzone
+   \DTMITtimezonesep
+  % \DTMdisplayzone{##8}{##9}%
    \fi
    }%
  }

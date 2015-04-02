@@ -5,9 +5,9 @@
 % arara: pdflatex
 % arara: pdflatex
 \documentclass[italian]{article}
-\usepackage{babel}
+
 \usepackage[datesep=/,showzoneminutes=false]{datetime2}
-%\usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
 
 \DTMsetup{showdow}
 
@@ -16,8 +16,14 @@
 \begin{document}
 \tableofcontents
 
+The use of \verb|\typeout| is to test the expansion in the event
+that the date/time needs to be written to an external file.
+Use
+\texttt{\href{http://www.dickimaw-books.com/latex/novices/html/texdoc.html}{texdoc} datetime2} to read the main user manual for
+the \texttt{datetime2} package and use \texttt{texdoc
+datetime2-english} for the English module documentation.
 
-%\section{Default date: \today}
+\section{Default date: \today}
 
 Today: \today. Time: \DTMcurrenttime. Zone: \DTMcurrentzone.
 
@@ -35,7 +41,7 @@ Saved date-time: \DTMuse{mydate}.
 
 \typeout{Date Stamp (Default): \DTMuse{mydate}}
 
-%\section{Default time: \DTMusetime{mydate}}
+\section{Default time: \DTMusetime{mydate}}
 
 \DTMsetstyle{iso}
 
@@ -46,12 +52,25 @@ Saved date: \DTMuse{mydate}.
 \typeout{Date Stamp (ISO): \DTMuse{mydate}}
 
 \DTMsetstyle{italian}
-%\section{ \DTMusedate{mydate}}
+\section{(Italiano) \DTMusedate{mydate}}
+Today: \today. Time: \DTMcurrenttime. Zone: \DTMcurrentzone.
 
-IT: \DTMnow.
-\typeout{Date Stamp (GB): \DTMnow}
+Now: \DTMnow.
 
- Saved date: \DTMuse{mydate}.
+TWO DIGITS: \DTMtwodigits{2014}. \DTMtwodigits{2999}.
+\DTMtwodigits{-2}.
+
+\typeout{Date Stamp (Default): \DTMnow}
+
+Saved date: \DTMusedate{mydate}.
+Saved time: \DTMusetime{mydate}.
+
+Saved date-time: \DTMuse{mydate}.
+
+Italiano: \DTMnow.
+\typeout{Date Stamp (IT): \DTMnow}
+
+Saved date: \DTMuse{mydate}.
 \typeout{Date Stamp (IT): \DTMuse{mydate}}
 
 

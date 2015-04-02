@@ -1,5 +1,5 @@
 % This file is public domain.
-% This document additionally requires the datetime2-italian module
+% This document additionally requires the datetime2-english module
 % to be installed.
 
 % arara: pdflatex
@@ -64,40 +64,25 @@ yyyymd: \DTMnow. \DTMuse{mydate}.
 Testing time styles.
 
 \DTMsavetime{noon}{12:00:00}
-
 \DTMsavetime{midnight1}{00:00:00}
-
 \DTMsavetime{midnight2}{24:00:00}
-
 \DTMsavetime{8am}{08:00:00}
-
 \DTMsavetime{8pm}{20:00:00}
-
 \DTMsavetime{1203}{12:03:00}
-
 \DTMsavetime{2401}{24:01:00}
-
 \DTMsavetime{0001}{00:01:00}
 
 \DTMsettimestyle{hmmss}
 
 hmmss: \DTMcurrenttime. \DTMusetime{mydate}.
 \DTMusetime{mydate2}.
-
 \DTMusetime{noon}.
-
 \DTMusetime{midnight1}.
-
 \DTMusetime{midnight2}.
-
 \DTMusetime{8am}.
-
 \DTMusetime{8pm}.
-
 \DTMusetime{1203}.
-
 \DTMusetime{2401}.
-
 \DTMusetime{0001}.
 
 \typeout{Time (hmmss): \DTMcurrenttime.
@@ -115,25 +100,15 @@ hmmss: \DTMcurrenttime. \DTMusetime{mydate}.
 
 \DTMsettimestyle{italianampm}
 ampm: \DTMcurrenttime. 
-
 \DTMusetime{mydate}.
-
 \DTMusetime{mydate2}.
-
 \DTMusetime{noon}.
-
 \DTMusetime{midnight1}.
-
 \DTMusetime{midnight2}.
-
 \DTMusetime{8am}.
-
 \DTMusetime{8pm}.
-
 \DTMusetime{1203}.
-
 \DTMusetime{2401}.
-
 \DTMusetime{0001}.
 
 \typeout{Time (ampm): \DTMcurrenttime.
@@ -153,23 +128,14 @@ ampm: \DTMcurrenttime.
 
 (ampm sc) \DTMcurrenttime. 
 \DTMusetime{mydate}.
-
 \DTMusetime{mydate2}.
-
 \DTMusetime{noon}.
-
 \DTMusetime{midnight1}.
-
 \DTMusetime{midnight2}.
-
 \DTMusetime{8am}.
-
 \DTMusetime{8pm}.
-
 \DTMusetime{1203}.
-
 \DTMusetime{2401}.
-
 \DTMusetime{0001}.
 
 \end{document}

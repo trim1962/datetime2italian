@@ -6,7 +6,7 @@
 \documentclass[italian]{article}
 
 \usepackage{babel}
-\usepackage[datesep=/,showzoneminutes=true,useregional]{datetime2}
+\usepackage[datesep=/,showzoneminutes=false,useregional]{datetime2}
 \usepackage[colorlinks]{hyperref}
 
 %\DTMlangsetup{mapzone=false}
@@ -17,39 +17,21 @@
 \DTMsavetimestamp{mydate4}{2014-01-27T12:05:00+09:00}
 \DTMsavetimestamp{mydate5}{2013-11-28T02:05:00+12:00}
 
-% This will clear the BST mapping when the regional styles are set.
-% The en-GB (british) style will then set it to BST.
-\renewcommand*{\DTMresetzones}{\DTMclearmap{01}{00}}
+%\renewcommand*{\DTMresetzones}{\DTMclearmap{01}{00}}
 
 \begin{document}
 \tableofcontents
+  \section{Italiano}
 
-% Define command to test each region
-\newcommand{\testregion}[1]{%
-  \ifcsdef{date#1}{\selectlanguage{#1}}{\DTMsetstyle{#1}}%
+  Oggi: \today.
 
-  \section{#1}
+  Ora: \DTMnow.
 
-  Today: \today.
-
-  Now: \DTMnow.
-
-  \subsection{\DTMUse{mydate}}
-  Saved Date (\texttt{mydate}): \DTMUsedate{mydate}
+  \subsection{\DTMuse{mydate}}
+  Saved Date (\texttt{mydate}): \DTMusedate{mydate}
   Saved time (\texttt{mydate}): \DTMusetime{mydate}.
   \typeout{Date (#1): \DTMusedate{mydate}}
 
-\subsection{\DTMuse{mydate}}
-Saved Date (\texttt{mydate}): \DTMusedate{mydate}
-Saved time (\texttt{mydate}): \DTMusetime{mydate}.
-\typeout{Date (#1): \DTMusedate{mydate}}
-
-
-  \subsection{\DTMUse{mydate2}}
-  Saved Date (\texttt{mydate2}): \DTMUsedate{mydate2}
-  Saved time (\texttt{mydate2}): \DTMusetime{mydate2}.
-  \typeout{Date (#1): \DTMUsedate{mydate2}}
-  
   \subsection{\DTMuse{mydate2}}
   Saved Date (\texttt{mydate2}): \DTMusedate{mydate2}
   Saved time (\texttt{mydate2}): \DTMusetime{mydate2}.
@@ -69,9 +51,6 @@ Saved time (\texttt{mydate}): \DTMusetime{mydate}.
   Saved Date (\texttt{mydate5}): \DTMusedate{mydate5}
   Saved time (\texttt{mydate5}): \DTMusetime{mydate5}.
   \typeout{Date (#1): \DTMusedate{mydate5}}
-}
-
-\testregion{italian}
 
 
 \end{document}
