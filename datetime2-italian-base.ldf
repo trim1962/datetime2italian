@@ -147,29 +147,29 @@ Dicembre%
 \newcommand*{\DTMitalianshortmonthname}[1]{%
   \ifcase#1
   \or
-  Gen.%
+  gen.%
   \or
-  Feb.%
+  feb.%
   \or
-  Mar.%
+  mar.%
   \or
-  Apr.%
+  apr.%
   \or
-  Mag.%
+  mag.%
   \or
-  Giun.%
+  giun.%
   \or
-  Lug.%
+  lug.%
   \or
-  Aug.%
+  aug.%
   \or
-  Set.%
+  set.%
   \or
-  Ott.%
+  ott.%
   \or
-  Nov.%
+  nov.%
   \or
-  Dic.%
+  dic.%
   \fi
 }
 \newcommand*{\DTMitalianweekdayname}[1]{%
