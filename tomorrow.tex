@@ -1,0 +1,54 @@
+\documentclass[italian]{article}
+\usepackage{pgfkeys,pgfcalendar}
+
+\newcount\pgfdatecount
+%\newcommand{\tomorrow}{%
+%\pgfcalendardatetojulian{\year-\month-\day+1}{\pgfdatecount}
+%\pgfcalendarjuliantodate{\the\pgfdatecount}{\myyear}{\mymonth}{\myday}
+%\pgfcalendarmonthname{\mymonth}\space\myday,\space\myyear%
+%}
+\newcount\myct
+\newcount\datecount
+\newcommand{\tomorrow}{%
+	\DTMsavenow{mydate}
+	\DTMsaveddateoffsettojulianday{mydate}{1}{\myct}
+	\DTMsavejulianday{mydate}{\number\myct}
+	\DTMusedate{mydate}
+}
+
+\newcommand{\yesterday}{%
+	\DTMsavenow{mydate}
+	\DTMsaveddateoffsettojulianday{mydate}{-1}{\myct}
+	\DTMsavejulianday{mydate}{\number\myct}
+	\DTMusedate{mydate}
+}
+\newcommand{\myday}[1]{%
+	\DTMsavenow{mydate}
+	\DTMsaveddateoffsettojulianday{mydate}{#1}{\myct}
+	\DTMsavejulianday{mydate}{\number\myct}
+	\DTMusedate{mydate}
+}
+\newcommand{\numofday}{%
+	\DTMsavenow{mydate}
+	\DTMsaveddateoffsettojulianday{mydate}{1}{\myct}
+	\DTMsavejulianday{mydate}{\number\myct}
+	\DTMsavedate{mydate2}{\DTMfetchyear{mydate}-01-01}
+	\DTMsaveddatediff{mydate}{mydate2}{\myct}
+		\number\myct
+}
+\usepackage[calc,useregional]{datetime2}
+\begin{document}
+
+\today~ is today \par
+
+\tomorrow~ is the day after today.
+
+\yesterday~it is day before today
+
+\myday{10}~ in 10 days
+
+\numofday~ number of the day
+
+
+
+\end{document}

@@ -1,8 +1,7 @@
 *.aux
-*.fls
+*.glo
 *.log
+*t.out
 *.pdf
+*.fls
 *.gz
-*.toc
-*.zip
-*.gz(busy)

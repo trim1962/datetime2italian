@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{etoolbox}
+\usepackage[utf8]{inputenc}
+\newcommand{\elenco}[1]{%
+	\ifcase#1
+	\or
+	uno%
+	\or
+	due%
+	\or
+	tre%
+	\or
+	quattro%
+	\or
+	cinque%
+	\or
+	sei%
+ \fi
+}
+\let\origig\elenco%
+\renewcommand{\elenco}[1]
+{%
+\ifboolexpr{ test {\ifnumcomp{#1}{=}{1}}}
+{luca}
+{\origig{#1}}
+}%
+\begin{document}
+	\elenco{1}
+	\elenco{2}
+\end{document}

@@ -20,7 +20,8 @@
 % \iffalse
 % Doc-Source file to use with LaTeX2e
 % Copyright (C) 2015 Nicola Talbot, all rights reserved.
-% 
+%
+% I have added dates in formed short e ampm format
 % \fi
 % \iffalse
 %<*driver>
@@ -37,7 +38,7 @@
             pdftitle={datetime2.sty Italian Module}]{hyperref}
 
 
-\CheckSum{541}
+\CheckSum{414}
 
 \renewcommand*{\usage}[1]{\hyperpage{#1}}
 \renewcommand*{\main}[1]{\hyperpage{#1}}
@@ -60,10 +61,13 @@
 %\MakeShortVerb{"}
 %
 %\title{Italian Module for datetime2 Package}
-%\author{Mantainer Claudio Duchi}
-%\date{4/4/2015 (v1.1)}
+%\author{Nicola L. C. Talbot (inactive)}
+%\date{2015-03-27 (v1.0)}
 %\maketitle
 %
+%This module is currently unmaintained and may be subject to change.
+%If you want to volunteer to take over maintanance, contact me at
+%\url{http://www.dickimaw-books.com/contact.html}
 %
 %\begin{abstract}
 %This is the Italian language module for the \sty{datetime2}
@@ -77,6 +81,7 @@
 % \cs{DTMsetstyle}, but this may be changed by \cs{date}\meta{language}
 % depending on the value of the \opt{useregional} setting.
 %\end{abstract}
+%\opt{showdow} setting.
 %
 %\StopEventually{%
 %\clearpage
@@ -86,68 +91,175 @@
 %\addcontentsline{toc}{section}{\indexname}%
 %\PrintIndex}
 %\section{The Code}
-
 %\iffalse
 %    \begin{macrocode}
-%<*datetime2-italian-base.ldf>
+%<*datetime2-italian-utf8.ldf>
 %    \end{macrocode}
 %\fi
-%\subsection{Italian-base}
-%\changes{1.0}{04/04/2015}{Initial release}
+%\subsection{UTF-8}
+%This file contains the settings that use UTF-8 characters. This
+%file is loaded if XeLaTeX or LuaLaTeX are used. Please make sure
+%your text editor is set to UTF-8 if you want to view this code.
+%\changes{1.0}{2015-03-27}{Initial release}
 % Identify module
 %    \begin{macrocode}
-\ProvidesDateTimeModule{italian-base}[04/04/2015 v1.1]
+\ProvidesDateTimeModule{italian-utf8}[2015/04/10 v1.1]
 %    \end{macrocode}
-%
 %\begin{macro}{\DTMitalianordinal}
 %    \begin{macrocode}
 \newcommand*{\DTMitalianordinal}[1]{%
-  \number#1 % space intended
-  \DTMitalianfmtordsuffix{%
-  	\ifcase#1
-  	\or \DTMitalianst
-  	\or \DTMitaliannd
-  	\or \DTMitalianrd
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianst
-  	\or \DTMitaliannd
-  	\or \DTMitalianrd
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianth
-  	\or \DTMitalianst
-  	\fi
-  }%
+  \number#1
 }%
 %    \end{macrocode}
 %\end{macro}
+%
+%\begin{macro}{\DTMitalianmonthname}
+% Italian month names.
 %    \begin{macrocode}
-\newcommand*{\DTMitalianst}{st}
-\newcommand*{\DTMitaliannd}{nd}
-\newcommand*{\DTMitalianrd}{rd}
-\newcommand*{\DTMitalianth}{th}
-\newcommand*{\DTMitalianfmtordsuffix}[1]{}
+\newcommand*{\DTMitalianmonthname}[1]{%
+  \ifcase#1
+  gennaio%
+  \or
+  febbraio%
+  \or
+  marzo%
+  \or
+  aprile%
+  \or
+  maggio%
+  \or
+  giugno%
+  \or
+  luglio%
+  \or
+  agosto%
+  \or
+  settembre%
+  \or
+  ottobre%
+  \or
+  novembre%
+  \or
+  dicembre%
+  \fi
+}
 %    \end{macrocode}
+%\end{macro}
+%
+%
+
+%
+%\begin{macro}{\DTMitalianweekdayname}
+%These are provided here but not currently used in the date format.
+%    \begin{macrocode}
+\newcommand*{\DTMitalianweekdayname}[1]{%
+  \ifcase#1
+  lunedì%
+  \or
+  martedì%
+  \or
+  mercoledì%
+  \or
+  giovedì%
+  \or
+  venerdì%
+  \or
+  sabato%
+  \or
+  domenica%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%
+%\begin{macro}{\DTMitalianshortmonthname}
+%short mont.
+%    \begin{macrocode}
+\newcommand*{\DTMitalianshortmonthname}[1]{%
+	\ifcase#1
+	gen.%
+	\or
+	feb.%
+	\or
+	mar.%
+	\or
+	apr.%
+	\or
+	mag.%
+	\or
+	giun.%
+	\or
+	lug.%
+	\or
+	aug.%
+	\or
+	set.%
+	\or
+	ott.%
+	\or
+	nov.%
+	\or
+	dic.%
+	\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\DTMitalianshortweekdayname}
+%short week day.
+%    \begin{macrocode}
+\newcommand*{\DTMitalianshortweekdayname}[1]{%
+	\ifcase#1
+	lun.%
+	\or
+	mar.%
+	\or
+	mer.%
+	\or
+	gio.%
+	\or
+	ven.%
+	\or
+	sab.%
+	\or
+	dom.%
+	\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\iffalse
+%    \begin{macrocode}
+%</datetime2-italian-utf8.ldf>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%<*datetime2-italian-ascii.ldf>
+%    \end{macrocode}
+%\fi
+%\subsection{ASCII}
+%This file contains the settings that use \LaTeX\ commands for
+%non-ASCII characters. This should be input if neither XeLaTeX nor
+%LuaLaTeX are used. Even if the user has loaded \sty{inputenc} with
+%"utf8", this file should still be used not the
+%\texttt{datetime2-italian-utf8.ldf} file as the non-ASCII
+%characters are made active in that situation and would need
+%protecting against expansion.
+%\changes{1.0}{2015-03-27}{Initial release}
+% Identify module
+%    \begin{macrocode}
+\ProvidesDateTimeModule{italian-ascii}[2015/04/10 v1.1]
+%    \end{macrocode}
+%
+%If abbreviated dates are supported, short month names should be
+%likewise provided.
+%\begin{macro}{\DTMitalianordinal}
+%    \begin{macrocode}
+\newcommand*{\DTMitalianordinal}[1]{%
+  \number#1
+}%
+%    \end{macrocode}
+%\end{macro}
 %
 %\begin{macro}{\DTMitalianmonthname}
 % Italian month names.
@@ -183,8 +295,33 @@
 %    \end{macrocode}
 %\end{macro}
 %
+%
+%\begin{macro}{\DTMitalianweekdayname}
+%These are provided here but not currently used in the date format.
+%    \begin{macrocode}
+\newcommand*{\DTMitalianweekdayname}[1]{%
+  \ifcase#1
+  luned\protect\`i%
+  \or
+  marted\protect\`i%
+  \or
+  mercoled\protect\`i%
+  \or
+  gioved\protect\`i%
+  \or
+  venerd\protect\`i%
+  \or
+  sabato%
+  \or
+  domenica%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%
 %\begin{macro}{\DTMitalianshortmonthname}
-% short name
+%short mont.
 %    \begin{macrocode}
 \newcommand*{\DTMitalianshortmonthname}[1]{%
 	\ifcase#1
@@ -216,33 +353,8 @@
 }
 %    \end{macrocode}
 %\end{macro}
-%
-%\begin{macro}{\DTMitalianweekdayname}
-%These are provided here but not currently used in the date format.
-%    \begin{macrocode}
-\newcommand*{\DTMitalianweekdayname}[1]{%
-  \ifcase#1
-  luned\protect\'i%%
-  \or
-  marted\protect\'i%%
-  \or
-  mercoled\protect\'i%%
-  \or
-  gioved\protect\'i%%
-  \or
-  venerd\protect\'i%%
-  \or
-  sabato%
-  \or
-  domenica%
-  \fi
-}
-%    \end{macrocode}
-%\end{macro}
-%
-%
 %\begin{macro}{\DTMitalianshortweekdayname}
-%short name
+%short week day.
 %    \begin{macrocode}
 \newcommand*{\DTMitalianshortweekdayname}[1]{%
 	\ifcase#1
@@ -264,96 +376,15 @@
 %    \end{macrocode}
 %\end{macro}
 %
-%
-%
-%    \begin{macrocode}
-\newcommand*\DTMitalianam{am}%
-\newcommand*\DTMitalianpm{pm}%
-\newcommand*\DTMitalianmidnight{mezzanotte}%
-\newcommand*\DTMitaliannoon{mezzogiorno}%
-\newcommand*{\DTMitalianampmfmt}[1]{#1}
-\newcommand*{\DTMitaliantimesep}{\DTMsep{hourmin}}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\DTMnewtimestyle
-{italianampm}% label
-{%
-	\renewcommand*\DTMdisplaytime[3]{%
-		\ifnum##2=0
-		\ifnum##1=12
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitaliannoon}}%
-		{\DTMitaliannoon}%
-		\else
-		\ifnum##1=0
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianmidnight}}%
-		{\DTMitalianmidnight}%
-		\else
-		\ifnum##1=24
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianmidnight}}%
-		{\DTMitalianmidnight}%
-		\else
-		\ifnum##1<12
-		\number##1
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianam}}%
-		{\DTMitalianam}%
-		\else
-		\number\numexpr##1-12\relax
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianpm}}%
-		{\DTMitalianpm}%
-		\fi
-		\fi
-		\fi
-		\fi
-		\else
-		\ifnum##1<13
-		\ifnum##1=0
-		12%
-		\else
-		\number##1
-		\fi
-		\DTMitaliantimesep\DTMtwodigits{##2}%
-		\ifnum##1=12
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianam}}%
-		{\DTMitalianpm}%
-		\else
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianam}}%
-		{\DTMitalianam}%
-		\fi
-		\else
-		\number\numexpr##1-12\relax
-		\DTMitaliantimesep\DTMtwodigits{##2}%
-		\ifnum##1=24
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianpm}}%
-		{\DTMitalianam}%
-		\else
-		\DTMtexorpdfstring
-		{\DTMitalianampmfmt{\DTMitalianpm}}%
-		{\DTMitalianpm}%
-		\fi
-		\fi
-		\fi
-	}%
-}%
-%    \end{macrocode}
-%
 %\iffalse
 %    \begin{macrocode}
-%</datetime2-italian-base.ldf>
+%</datetime2-italian-ascii.ldf>
 %    \end{macrocode}
 %\fi
 %
 %\subsection{Main Italian Module (\texttt{datetime2-italian.ldf})}
-%\changes{1.0}{04/04/2015}{Initial release}
-%
+%\changes{1.0}{2015-03-10}{Initial release}
+%\changes{1.1}{2015-04-10}{updating}
 %\iffalse
 %    \begin{macrocode}
 %<*datetime2-italian.ldf>
@@ -362,14 +393,25 @@
 %
 % Identify Module
 %    \begin{macrocode}
-\ProvidesDateTimeModule{italian}[04/04/2015 v1.0]
+\ProvidesDateTimeModule{italian}[2015/04/10 v1.1]
 %    \end{macrocode}
-%
-%
+% Need to find out if XeTeX or LuaTeX are being used.
 %    \begin{macrocode}
-\renewcommand{\DTMNow}{\DTMnow}
-\renewcommand{\Today}{\today}
-\RequireDateTimeModule{italian-base}
+\RequirePackage{ifxetex,ifluatex}
+%    \end{macrocode}
+% XeTeX and LuaTeX natively support UTF-8, so load
+% \texttt{italian-utf8} if either of those engines are used
+% otherwise load \texttt{italian-ascii}.
+%    \begin{macrocode}
+\ifxetex
+ \RequireDateTimeModule{italian-utf8}
+\else
+ \ifluatex
+   \RequireDateTimeModule{italian-utf8}
+ \else
+   \RequireDateTimeModule{italian-ascii}
+ \fi
+\fi
 %    \end{macrocode}
 %
 % Define the \texttt{italian} style.
@@ -380,67 +422,67 @@
 % "italian-numeric" styles. This doesn't use the package wide
 % separators such as
 % \cs{dtm@datetimesep} in case other date formats are also required.
-%\begin{macro}{\DTMITdaymonthsep}
+%\begin{macro}{\DTMitaliandaymonthsep}
 % The separator between the day and month for the text format.
 %    \begin{macrocode}
-\newcommand*{\DTMITdaymonthsep}{\space}
+\newcommand*{\DTMitaliandaymonthsep}{\space}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\DTMITmonthyearsep}
+%\begin{macro}{\DTMitalianmonthyearsep}
 % The separator between the month and year for the text format.
 %    \begin{macrocode}
-\newcommand*{\DTMITmonthyearsep}{\space}
+\newcommand*{\DTMitalianmonthyearsep}{\space}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\DTMITdatetimesep}
+%\begin{macro}{\DTMitaliandatetimesep}
 % The separator between the date and time blocks in the full format
 % (either text or numeric).
 %    \begin{macrocode}
-\newcommand*{\DTMITdatetimesep}{\space}
+\newcommand*{\DTMitaliandatetimesep}{\space}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\DTMITtimezonesep}
+%\begin{macro}{\DTMitaliantimezonesep}
 % The separator between the time and zone blocks in the full format
 % (either text or numeric).
 %    \begin{macrocode}
-\newcommand*{\DTMITtimezonesep}{\space}
+\newcommand*{\DTMitaliantimezonesep}{\space}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\DTMITdatesep}
+%\begin{macro}{\DTMitaliandatesep}
 % The separator for the numeric date format.
 %    \begin{macrocode}
-\newcommand*{\DTMITdatesep}{/}
+\newcommand*{\DTMitaliandatesep}{/}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\DTMITtimesep}
+%\begin{macro}{\DTMitaliantimesep}
 % The separator for the numeric time format.
 %    \begin{macrocode}
-\newcommand*{\DTMITtimesep}{:}
+\newcommand*{\DTMitaliantimesep}{:}
 %    \end{macrocode}
 %\end{macro}
 %
 %Provide keys that can be used in \cs{DTMlangsetup} to set these
 %separators.
 %    \begin{macrocode}
-\DTMdefkey{italian}{daymonthsep}{\renewcommand*{\DTMITdaymonthsep}{#1}}
-\DTMdefkey{italian}{monthyearsep}{\renewcommand*{\DTMITmonthyearsep}{#1}}
-\DTMdefkey{italian}{datetimesep}{\renewcommand*{\DTMITdatetimesep}{#1}}
-\DTMdefkey{italian}{timezonesep}{\renewcommand*{\DTMITtimezonesep}{#1}}
-\DTMdefkey{italian}{datesep}{\renewcommand*{\DTMITdatesep}{#1}}
-\DTMdefkey{italian}{timesep}{\renewcommand*{\DTMITtimesep}{#1}}
+\DTMdefkey{italian}{daymonthsep}{\renewcommand*{\DTMitaliandaymonthsep}{#1}}
+\DTMdefkey{italian}{monthyearsep}{\renewcommand*{\DTMitalianmonthyearsep}{#1}}
+\DTMdefkey{italian}{datetimesep}{\renewcommand*{\DTMitaliandatetimesep}{#1}}
+\DTMdefkey{italian}{timezonesep}{\renewcommand*{\DTMitaliantimezonesep}{#1}}
+\DTMdefkey{italian}{datesep}{\renewcommand*{\DTMitaliandatesep}{#1}}
+\DTMdefkey{italian}{timesep}{\renewcommand*{\DTMitaliantimesep}{#1}}
 %    \end{macrocode}
-%
-% Define a boolean key to switch between full and abbreviated
-% formats
+
+% Define a boolean key that determines if the shortened form
+% should be used.
 %    \begin{macrocode}
 \DTMdefboolkey{italian}{abbr}[true]{}
 %    \end{macrocode}
-% The default is 
+% The default is to use abbr
 %    \begin{macrocode}
 \DTMsetbool{italian}{abbr}{false}
 %    \end{macrocode}
@@ -452,7 +494,7 @@
 %    \end{macrocode}
 % The default is to use mappings.
 %    \begin{macrocode}
-\DTMsetbool{italian}{mapzone}{false}
+\DTMsetbool{italian}{mapzone}{true}
 %    \end{macrocode}
 %
 % Define a boolean key that determines if the day of month should be
@@ -474,31 +516,28 @@
 %    \begin{macrocode}
 \DTMsetbool{italian}{showyear}{true}
 %    \end{macrocode}
-%\begin{macro}{\DTMITfmtordsuffix}
-% The separator for the numeric time format.
+%
 %    \begin{macrocode}
-\newcommand*{\DTMITfmtordsuffix}[1]{}
-\DTMdefchoicekey{italian}{ord}[\val\nr]{level,raise,omit,sc}{%
-	\ifcase\nr\relax
-	\renewcommand*{\DTMITfmtordsuffix}[1]{##1}%
-	\or
-	\renewcommand*{\DTMITfmtordsuffix}[1]{%
-		\DTMtexorpdfstring{\protect\textsuperscript{##1}}{##1}}%
-	\or
-	\renewcommand*{\DTMITfmtordsuffix}[1]{}%
-	\or
-	\renewcommand*{\DTMITfmtordsuffix}[1]{%
-		\DTMtexorpdfstring{\protect\textsc{##1}}{##1}}%
-	\fi
-}
+\newcommand*\DTMitalianam{am}%
 %    \end{macrocode}
-%\end{macro}
+%    \begin{macrocode}
+\newcommand*\DTMitalianpm{pm}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*\DTMitalianmidnight{mezzanotte}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*\DTMitaliannoon{mezzogiorno}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\DTMitalianampmfmt}[1]{#1}
+%    \end{macrocode}
 % Define the "italian" style. (TODO: implement day of week?)
 %    \begin{macrocode}
 \DTMnewstyle
 {italian}% label
 {% date style
-	\renewcommand*{\DTMitalianfmtordsuffix}{\DTMITfmtordsuffix}%
+%	\renewcommand*{\DTMitalianfmtordsuffix}{\DTMitalianfmtordsuffix}%
 	\renewcommand*\DTMdisplaydate[4]{%
 		\ifDTMshowdow
 		\ifnum##4>-1%
@@ -511,7 +550,7 @@
 		\DTMifbool{italian}{showdayofmonth}%
 		{%
 			\DTMitalianordinal{##3}%
-			\DTMITdaymonthsep
+			\DTMitaliandaymonthsep
 		}%
 		{}%
 		\DTMifbool{italian}{abbr}%
@@ -519,7 +558,7 @@
 		{\DTMitalianmonthname{##2}}%
 		\DTMifbool{italian}{showyear}%
 		{%
-			\DTMITmonthyearsep\number##1 % space intended
+			\DTMitalianmonthyearsep\number##1 % space intended
 		}%
 		{}%
 	}%
@@ -535,7 +574,7 @@
 		\DTMifbool{italian}{showdayofmonth}%
 		{%
 			\DTMitalianordinal{##3}%
-			\DTMITdaymonthsep
+			\DTMitaliandaymonthsep
 		}%
 		{}%
 		\DTMifbool{italian}{abbr}%
@@ -543,24 +582,24 @@
 		{\DTMitalianmonthname{##2}}%
 		\DTMifbool{italian}{showyear}%
 		{%
-			\DTMITmonthyearsep\number##1 % space intended
+			\DTMitalianmonthyearsep\number##1 % space intended
 		}%
 		{}%
 	}%
 }%
 {% time style
-	\renewcommand*\DTMitaliantimesep{\DTMITtimesep}%
-	\DTMsettimestyle{italianampm}%
+	\renewcommand*\DTMitaliantimesep{\DTMitaliantimesep}%
+	\DTMsettimestyle{default}%ampm
 }%
 {% zone style
 	\DTMresetzones
-	\DTMITzonemaps
+	\DTMitalianzonemaps
 	\renewcommand*{\DTMdisplayzone}[2]{%
 		\DTMifbool{italian}{mapzone}%
 		{\DTMusezonemapordefault{##1}{##2}}%
 		{%
 			\ifnum##1<0\else+\fi\DTMtwodigits{##1}%
-			\ifDTMshowzoneminutes\DTMITtimesep\DTMtwodigits{##2}\fi
+			\ifDTMshowzoneminutes\DTMitaliantimesep\DTMtwodigits{##2}\fi
 		}%
 	}%
 }%
@@ -568,22 +607,22 @@
 	\renewcommand*{\DTMdisplay}[9]{%
 		\ifDTMshowdate
 		\DTMdisplaydate{##1}{##2}{##3}{##4}%
-		\DTMITdatetimesep
+		\DTMitaliandatetimesep
 		\fi
 		\DTMdisplaytime{##5}{##6}{##7}%
 		\ifDTMshowzone
-		\DTMITtimezonesep
+		\DTMitaliantimezonesep
 		\DTMdisplayzone{##8}{##9}%
 		\fi
 	}%
 	\renewcommand*{\DTMDisplay}[9]{%
 		\ifDTMshowdate
 		\DTMDisplaydate{##1}{##2}{##3}{##4}%
-		\DTMITdatetimesep
+		\DTMitaliandatetimesep
 		\fi
 		\DTMdisplaytime{##5}{##6}{##7}%
 		\ifDTMshowzone
-		\DTMITtimezonesep
+		\DTMitaliantimezonesep
 		\DTMdisplayzone{##8}{##9}%
 		\fi
 	}%
@@ -593,167 +632,138 @@
 % Define numeric style.
 %    \begin{macrocode}
 \DTMnewstyle
-{italian-numeric}% label
-{% date style
-	\renewcommand*\DTMdisplaydate[4]{%
-		\DTMifbool{italian}{showdayofmonth}%
-		{%
-			\number##3 % space intended
-			\DTMITdatesep
-		}%
-		{}%
-		\number##2 % space intended
-		\DTMifbool{italian}{showyear}%
-		{%
-			\DTMITdatesep
-			\number##1 % space intended
-		}%
-		{}%
-	}%
-	\renewcommand*\DTMDisplaydate[4]{%
-		\DTMifbool{italian}{showdayofmonth}
-		{%
-			\DTMitalianordinal{##3}\DTMitaliandaymonthsep
-			\DTMitalianmonthname{##2}%
-		}%
-		{\DTMitalianmonthname{##2}}%
-		\DTMifbool{italian}{showyear}%
-		{%
-			\DTMitalianmonthyearsep
-			\number##1 % space intended
-		}%
-		{}%
-	}%
-}%
-{% time style
-	\renewcommand*\DTMdisplaytime[3]{%
-		\number##1
-		\DTMITtimesep\DTMtwodigits{##2}%
-		\ifDTMshowseconds\DTMITtimesep\DTMtwodigits{##3}\fi
-	}%
-}%
-{% zone style
-	\DTMresetzones
-	\DTMITzonemaps
-	\renewcommand*{\DTMdisplayzone}[2]{%
-		\DTMifbool{italian}{mapzone}%
-		{\DTMusezonemapordefault{##1}{##2}}%
-		{%
-			\ifnum##1<0\else+\fi\DTMtwodigits{##1}%
-			\ifDTMshowzoneminutes\DTMITtimesep\DTMtwodigits{##2}\fi
-		}%
-	}%
-}%
-{% full style
-	\renewcommand*{\DTMdisplay}[9]{%
-		\ifDTMshowdate
-		\DTMdisplaydate{##1}{##2}{##3}{##4}%
-		\DTMITdatetimesep
-		\fi
-		\DTMdisplaytime{##5}{##6}{##7}%
-		\ifDTMshowzone
-		\DTMITtimezonesep
-		\DTMdisplayzone{##8}{##9}%
-		\fi
-	}%
-	\renewcommand*{\DTMDisplay}[9]{%
-		\ifDTMshowdate
-		\DTMDisplaydate{##1}{##2}{##3}{##4}%
-		\DTMITdatetimesep
-		\fi
-		\DTMdisplaytime{##5}{##6}{##7}%
-		\ifDTMshowzone
-		\DTMITtimezonesep
-		\DTMdisplayzone{##8}{##9}%
-		\fi
-	}%
-}
-%    \end{macrocode}
-% Define italian-regional style.
-%    \begin{macrocode}
- \DTMnewstyle
- {italian-regional}% label
+ {italian-numeric}% label
  {% date style
- 	\renewcommand*\DTMdisplaydate[4]{%
- 		\DTMifbool{italian}{showdayofmonth}%
- 		{%
- 			\number##3 % space intended
- 			\DTMITdatesep
- 		}%
- 		{}%
- 		\number##2 % space intended
- 		\DTMifbool{italian}{showyear}%
- 		{%
- 			\DTMITdatesep
- 			\number##1 % space intended
- 		}%
- 		{}%
- 	}%
- 	\renewcommand*\DTMDisplaydate[4]{%
- 		\DTMifbool{italian}{showdayofmonth}
- 		{%
- 			\DTMitalianordinal{##3}\DTMitaliandaymonthsep
- 			\DTMitalianmonthname{##2}%
- 		}%
- 		{\DTMitalianmonthname{##2}}%
- 		\DTMifbool{italian}{showyear}%
- 		{%
- 			\DTMitalianmonthyearsep
- 			\number##1 % space intended
- 		}%
- 		{}%
- 	}%
+    \renewcommand*\DTMdisplaydate[4]{%
+      \DTMifbool{italian}{showdayofmonth}%
+      {%
+        \number##3 % space intended
+        \DTMitaliandatesep
+      }%
+      {}%
+      \number##2 % space intended
+      \DTMifbool{italian}{showyear}%
+      {%
+        \DTMitaliandatesep
+        \number##1 % space intended
+      }%
+      {}%
+    }%
+    \renewcommand*{\DTMDisplaydate}[4]{\DTMdisplaydate{##1}{##2}{##3}{##4}}%
  }%
  {% time style
- 	\renewcommand*\DTMdisplaytime[3]{%
- 		\number##1
- 		\DTMITtimesep\DTMtwodigits{##2}%
- 		\ifDTMshowseconds\DTMITtimesep\DTMtwodigits{##3}\fi
- 	}%
+    \renewcommand*\DTMdisplaytime[3]{%
+      \number##1
+      \DTMitaliantimesep\DTMtwodigits{##2}%
+      \ifDTMshowseconds\DTMitaliantimesep\DTMtwodigits{##3}\fi
+    }%
  }%
  {% zone style
- 	\DTMresetzones
- 	\DTMITzonemaps
- 	%  \renewcommand*{\DTMdisplayzone}[2]{%
- 		%    \DTMifbool{italian}{mapzone}%
- 		%	 {\DTMusezonemapordefault{##1}{##2}}%
- 		%    {%
- 			%      \ifnum##1<0\else+\fi\DTMtwodigits{##1}%
- 			%     \ifDTMshowzoneminutes\DTMITtimesep\DTMtwodigits{##2}\fi
- 			%   }%
- 		% }%
+   \DTMresetzones
+   \DTMitalianzonemaps
+   \renewcommand*{\DTMdisplayzone}[2]{%
+     \DTMifbool{italian}{mapzone}%
+     {\DTMusezonemapordefault{##1}{##2}}%
+     {%
+       \ifnum##1<0\else+\fi\DTMtwodigits{##1}%
+       \ifDTMshowzoneminutes\DTMitaliantimesep\DTMtwodigits{##2}\fi
+     }%
+   }%
  }%
  {% full style
- 	\renewcommand*{\DTMdisplay}[9]{%
- 		\ifDTMshowdate
- 		\DTMdisplaydate{##1}{##2}{##3}{##4}%
- 		\DTMITdatetimesep
- 		\fi
- 		\DTMdisplaytime{##5}{##6}{##7}%
- 		\ifDTMshowzone
- 		\DTMITtimezonesep
- 		%  \DTMdisplayzone{##8}{##9}%
- 		\fi
- 	}%
- 	\renewcommand*{\DTMDisplay}[9]{%
- 		\ifDTMshowdate
- 		\DTMDisplaydate{##1}{##2}{##3}{##4}%
- 		\DTMITdatetimesep
- 		\fi
- 		\DTMdisplaytime{##5}{##6}{##7}%
- 		\ifDTMshowzone
- 		\DTMITtimezonesep
- 		% \DTMdisplayzone{##8}{##9}%
- 		\fi
- 	}%
+   \renewcommand*{\DTMdisplay}[9]{%
+    \ifDTMshowdate
+     \DTMdisplaydate{##1}{##2}{##3}{##4}%
+     \DTMitaliandatetimesep
+    \fi
+    \DTMdisplaytime{##5}{##6}{##7}%
+    \ifDTMshowzone
+     \DTMitaliantimezonesep
+     \DTMdisplayzone{##8}{##9}%
+    \fi
+   }%
+   \renewcommand*{\DTMDisplay}{\DTMdisplay}%
  }
 %    \end{macrocode}
-%\begin{macro}{\DTMITzonemaps}
+%
+% Define am pm style.
+%    \begin{macrocode}
+ \DTMnewtimestyle
+ {italianampm}% label
+ {%
+ 	\renewcommand*\DTMdisplaytime[3]{%
+ 		\ifnum##2=0
+ 		\ifnum##1=12
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitaliannoon}}%
+ 		{\DTMitaliannoon}%
+ 		\else
+ 		\ifnum##1=0
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianmidnight}}%
+ 		{\DTMitalianmidnight}%
+ 		\else
+ 		\ifnum##1=24
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianmidnight}}%
+ 		{\DTMitalianmidnight}%
+ 		\else
+ 		\ifnum##1<12
+ 		\number##1
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianam}}%
+ 		{\DTMitalianam}%
+ 		\else
+ 		\number\numexpr##1-12\relax
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianpm}}%
+ 		{\DTMitalianpm}%
+ 		\fi
+ 		\fi
+ 		\fi
+ 		\fi
+ 		\else
+ 		\ifnum##1<13
+ 		\ifnum##1=0
+ 		12%
+ 		\else
+ 		\number##1
+ 		\fi
+ 		\DTMitaliantimesep\DTMtwodigits{##2}%
+ 		\ifnum##1=12
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianam}}%
+ 		{\DTMitalianpm}%
+ 		\else
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianam}}%
+ 		{\DTMitalianam}%
+ 		\fi
+ 		\else
+ 		\number\numexpr##1-12\relax
+ 		\DTMitaliantimesep\DTMtwodigits{##2}%
+ 		\ifnum##1=24
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianpm}}%
+ 		{\DTMitalianam}%
+ 		\else
+ 		\DTMtexorpdfstring
+ 		{\DTMitalianampmfmt{\DTMitalianpm}}%
+ 		{\DTMitalianpm}%
+ 		\fi
+ 		\fi
+ 		\fi
+ 	}%
+ }%
+%    \end{macrocode}
+%
+%
+%\begin{macro}{\DTMitalianzonemaps}
 % The time zone mappings are set through this command, which can be
 % redefined if extra mappings are required or mappings need to be
 % removed.
 %    \begin{macrocode}
-\newcommand*{\DTMITzonemaps}{%
+\newcommand*{\DTMitalianzonemaps}{%
   \DTMdefzonemap{01}{00}{CET}%
   \DTMdefzonemap{02}{00}{CEST}%
 }
@@ -764,8 +774,8 @@
 %    \begin{macrocode}
 \DTMifcaseregional
 {}% do nothing
-{\DTMsetstyle{italian}}%
-{\DTMsetstyle{italian-numeric}}%
+{\DTMsetstyle{italian}}
+{\DTMsetstyle{italian-numeric}}
 %    \end{macrocode}
 %
 % Redefine \cs{dateitalian} (or \cs{date}\meta{dialect}) to prevent
@@ -773,26 +783,26 @@
 % \sty{babel} must already have been loaded if it's required.)
 %    \begin{macrocode}
 \ifcsundef{date\CurrentTrackedDialect}
-{% do nothing
-	\ifundef\dateitalian
-	{%
-	}%
-	{%
-		\def\dateitalian{%
-			\DTMifcaseregional
-			{}% do nothing
-			{\DTMsetstyle{italian}}%
-			{\DTMsetstyle{italian-numeric}}%
-		}%
-	}%
+{%
+  \ifundef\dateitalian
+  {% do nothing
+  }%
+  {%
+    \def\dateitalian{%
+      \DTMifcaseregional
+      {}% do nothing
+      {\DTMsetstyle{italian}}%
+      {\DTMsetstyle{italian-numeric}}%
+    }%
+  }%
 }%
 {%
-	\csdef{date\CurrentTrackedDialect}{%
-		\DTMifcaseregional
-		{}% do nothing
-		{\DTMsetstyle{italian}}%
-		{\DTMsetstyle{italian-regional}}%
-	}%
+  \csdef{date\CurrentTrackedDialect}{%
+    \DTMifcaseregional
+    {}% do nothing
+    {\DTMsetstyle{italian}}%
+    {\DTMsetstyle{italian-numeric}}
+  }%
 }%
 %    \end{macrocode}
 %\iffalse

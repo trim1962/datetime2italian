@@ -1,0 +1,21 @@
+\documentclass[italian]{article}
+\usepackage[calc,useregional]{datetime2}
+\usepackage{calc}
+\newcount\myct
+\newcount\datecount
+\newcount\datetoday
+\newcount\diffyears
+\newcount\diffmonths
+\newcount\diffdays
+\newcommand{\myday}[1]{%
+	\DTMsavenow{mydate}
+	\DTMsaveddateoffsettojulianday{mydate}{#1}{\myct}
+	\DTMsavejulianday{mydate}{\number\myct}
+	\DTMusedate{mydate}
+}
+
+\begin{document}
+
+
+
+\end{document}
