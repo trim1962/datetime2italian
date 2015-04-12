@@ -49,29 +49,35 @@
 \def\CurrentTrackedDialect{italian}
 \RequireDateTimeModule{italian}
 \undef\CurrentTrackedDialect
+
 \newcommand*{\DTMoclockstring}{in punto}
-\newcommand*{\DTMOClockstring}{O'Clock}
-\newcommand*{\DTMquarterpaststring}{quindici minuti dopo}
-\newcommand*{\DTMQuarterPaststring}{Quarter Past}
+\newcommand*{\DTMoneminutestring}{un}
+\newcommand*{\DTMoneatnightstring}{una}
+
+\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
+\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l'}
+
 \newcommand*{\DTMminutepaststringONE}{minuto dopo le}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo l'}
 \newcommand*{\DTMminutepaststringTWO}{minuto dopo}
+
 \newcommand*{\DTMminutespaststringONE}{minuti dopo le}
-%\newcommand*{\DTMminutesitalianmidnightpaststring}{minuti dopo}
-%\newcommand*{\DTMminuteitaliannoonspaststring}{minuti dopo}
-\newcommand*{\DTMMinutePaststring}{Minute Past}
-\newcommand*{\DTMMinutesPaststring}{Minutes Past}
-\newcommand*{\DTMhalfpaststring}{trenta minuti dopo le}
-\newcommand*{\DTMHalfPaststring}{Half Past}
-\newcommand*{\DTMquartertostring}{un quarto alle}
-\newcommand*{\DTMQuarterTostring}{Quarter to}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo l'}
+
+
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo le}
+\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l'}
+
+\newcommand*{\DTMquartertostringONE}{un quarto alle}
+\newcommand*{\DTMquartertostringTWO}{un quarto all'}
+
+
 \newcommand*{\DTMminutetostring}{minuto alle}
-\newcommand*{\DTMMinuteTostring}{Minute to}
 \newcommand*{\DTMminutestostring}{minuti alle}
-\newcommand*{\DTMMinutesTostring}{Minutes to}
+
 \newcommand*{\DTMmorningstring}{del mattino}
-\newcommand*{\DTMMorningstring}{in  Morning}
 \newcommand*{\DTMafternoonstring}{del pomeriggio}
-\newcommand*{\DTMAfterNoonstring}{in  Afternoon}
+
 \DTMnewdatestyle{it-fulltext}{%
   \renewcommand*\DTMdisplaydate[4]{%
    \ifDTMshowdow
@@ -83,48 +89,7 @@
    \DTMenfulltextmonthyearsep
    \protect\numberstringnum{##1}%
   }%
-%  \renewcommand*\DTMDisplaydate[4]{%
-%   \ifDTMshowdow
-%     \ifnum##4>-1
-%       \DTMitalianweekdayname{##4}  \left( \space
-%     \else
-%      \protect\Ordinalstringnum{##3}
-%     \fi
-%   \else
-%     \protect\Ordinalstringnum{##3}
-%   \fi
-%  \prep\\DTMitalianmonthname{##2}%
-%   \DTMenfulltextmonthyearsep
-%   \protect\numberstringnum{##1}%
-%  }%
 }
-%\DTMnewdatestyle{en-FullText}{%
-%  \renewcommand*\DTMdisplaydate[4]{%
-%   \ifDTMshowdow
-%     \ifnum##4>-1
-%       \DTMitalianweekdayname{##4} \space
-%     \fi
-%   \fi
-%   \protect\Ordinalstringnum{##3} \DTMitalianmonthname{##2}%
-%   \DTMenfulltextmonthyearsep
-%   \protect\Numberstringnum{##1}%
-%  }%
-%  \renewcommand*\DTMDisplaydate{\DTMdisplaydate}%
-%}
-%\DTMnewdatestyle{en-FULLTEXT}{%
-%  \renewcommand*\DTMdisplaydate[4]{%
-%   \ifDTMshowdow
-%     \ifnum##4>-1
-%       \MakeUppercase{\DTMitalianweekdayname{##4}} THE\space
-%     \fi
-%   \fi
-%   \protect\ORDINALstringnum{##3} OF
-%   \MakeUppercase{\DTMitalianmonthname{##2}%
-%   \DTMenfulltextmonthyearsep}%
-%   \protect\NUMBERstringnum{##1}%
-%  }%
-%  \renewcommand*\DTMDisplaydate{\DTMdisplaydate}%
-%}
 \newcommand*\DTMenfulltextmonthyearsep{,\space}
 \DTMsetdatestyle{it-fulltext}
 \DTMnewtimestyle{it-fulltext}{%
@@ -145,26 +110,26 @@
    }%
    {%
      \ifnum##2=0
-      \ifnum##1=1 una \DTMoclockstring\else \protect\numberstringnum{##1} \DTMoclockstring\fi
+      \ifnum##1=1 \DTMoneatnightstring\space \DTMoclockstring\else \protect\numberstringnum{##1} \DTMoclockstring\fi
      \else
        \ifnum##2<31
          \ifnum##2=15
-           \DTMquarterpaststring\space
+          \ifnum##1=1\DTMquarterpaststringTWO\else\DTMquarterpaststringONE\space\fi
          \else
            \ifnum##2=30
-             \DTMhalfpaststring\space
+             \ifnum##1=1\DTMhalfpaststringTWO\else\DTMhalfpaststringONE\space\fi
            \else
-           \ifnum##2=1 un\space\else \protect\numberstringnum{##2}\space\fi
+           \ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space\fi
              \ifnum##2=1 
              \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} }
-             {\DTMminutepaststringTWO}
              {\DTMminutepaststringONE}
-             \else
+             {\ifnum##1=1\DTMminutepaststringTHREE\else\DTMminutepaststringONE\fi}
+            \else
              \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} }
-             {\DTMminuteitaliannoonspaststring}
              {\DTMminutespaststringONE}
-             \fi
-             \space
+             {\ifnum##1=1\DTMminutespaststringTHREE\else\DTMminutespaststringONE\fi}
+            \fi
+             %\space
            \fi
          \fi
          \ifnum##1>12
@@ -177,14 +142,14 @@
            \ifnum##1=0
              \DTMitalianmidnight
            \else
-           \ifnum##1=1 una\else \ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
+           \ifnum##1=1 \DTMoneatnightstring\else \ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
            \fi
          \fi
        \else
          \ifnum##2=45
-           \DTMquartertostring\space
+           \ifnum##1=0\DTMquartertostringTWO\else\DTMquartertostringONE\space\fi
          \else
-           \ifnum##2=59 un \else \protect\numberstringnum{\numexpr60-##2}\fi
+           \ifnum##2=59 \DTMoneminutestring \else \protect\numberstringnum{\numexpr60-##2}\fi
            \ifnum##2=59  \DTMminutetostring\else\space\DTMminutestostring\fi
            \space
          \fi
@@ -199,10 +164,10 @@
             \fi
            \fi
          \else
-           \ifnum##1=12 una
+           \ifnum##1=12 \DTMoneatnightstring
             %\protect\numberstringnum{1}%
            \else
-            \ifnum##1=0 una\else \protect\numberstringnum{\numexpr##1+1}\fi%
+            \ifnum##1=0 \DTMoneatnightstring\else \protect\numberstringnum{\numexpr##1+1}\fi%
            \fi
          \fi
        \fi
@@ -304,4 +269,4 @@
 }
 \endinput
 %%
-%% End of file `datetime2-en-fulltext.sty'.
+%% End of file `datetime2-it-fulltext.sty'.
