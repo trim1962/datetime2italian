@@ -56,24 +56,30 @@
 
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l'}
+\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
 
-\newcommand*{\DTMminutepaststringONE}{minuto dopo le}
-\newcommand*{\DTMminutepaststringTHREE}{minuto dopo l'}
-\newcommand*{\DTMminutepaststringTWO}{minuto dopo}
+\newcommand*{\DTMminutepaststringONE}{minuto dopo}
+\newcommand*{\DTMminutepaststringTWO}{minuto dopo l'}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
 
-\newcommand*{\DTMminutespaststringONE}{minuti dopo le}
-\newcommand*{\DTMminutespaststringTHREE}{minuti dopo l'}
+\newcommand*{\DTMminutespaststringONE}{minuti dopo}
+\newcommand*{\DTMminutespaststringTWO}{minuti dopo l'}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
 
-
-\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo le}
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
 \newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l'}
+\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
 
-\newcommand*{\DTMquartertostringONE}{un quarto alle}
+\newcommand*{\DTMquartertostringONE}{un quarto a}
 \newcommand*{\DTMquartertostringTWO}{un quarto all'}
+\newcommand*{\DTMquartertostringTHREE}{un quarto alle}
 
+\newcommand*{\DTMminutetostringONE}{minuto a}
+\newcommand*{\DTMminutetostringTWO}{minuto all'}
+\newcommand*{\DTMminutetostringTHREE}{minuto alle}
 
-\newcommand*{\DTMminutetostring}{minuto alle}
-\newcommand*{\DTMminutestostring}{minuti alle}
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMminutestostringTWO}{minuti all'}
 
 \newcommand*{\DTMmorningstring}{del mattino}
 \newcommand*{\DTMafternoonstring}{del pomeriggio}
@@ -110,52 +116,85 @@
    }%
    {%
      \ifnum##2=0
-      \ifnum##1=1 \DTMoneatnightstring\space \DTMoclockstring\else \protect\numberstringnum{##1} \DTMoclockstring\fi
+     \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+     {\DTMoneatnightstring\space\DTMoclockstring}
+     {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMoclockstring\else
+     	\protect\numberstringnum{##1} \DTMoclockstring\fi}
+      %\ifnum##1=1\DTMoneatnightstring\space \DTMoclockstring\else 
+      %\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}
+%      \else
+%      \protect\numberstringnum{##1} \DTMoclockstring\fi
      \else
        \ifnum##2<31
          \ifnum##2=15
-          \ifnum##1=1\DTMquarterpaststringTWO\else\DTMquarterpaststringONE\space\fi
+          \ifnum##1=1\DTMquarterpaststringTWO\else
+          \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+	          {\DTMquarterpaststringONE}
+	          {\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringTHREE\fi}
+         \fi
          \else
            \ifnum##2=30
-             \ifnum##1=1\DTMhalfpaststringTWO\else\DTMhalfpaststringONE\space\fi
-           \else
-           \ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space\fi
-             \ifnum##2=1 
-             \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} }
-             {\DTMminutepaststringONE}
-             {\ifnum##1=1\DTMminutepaststringTHREE\else\DTMminutepaststringONE\fi}
-            \else
-             \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} }
-             {\DTMminutespaststringONE}
-             {\ifnum##1=1\DTMminutespaststringTHREE\else\DTMminutespaststringONE\fi}
-            \fi
-             %\space
+             \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+             {\DTMhalfpaststringTWO}
+             {\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}} or test {\ifnumcomp{##1}{=}{12}}}
+             {\DTMhalfpaststringONE}
+             {\DTMhalfpaststringTHREE~}}
+             \else
+           \ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space
            \fi
-         \fi
+             \ifnum##2=1 
+             \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+             {\DTMminutepaststringONE}%one
+             {\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
+             {\DTMminutepaststringTWO}%two
+             {\DTMminutepaststringTHREE}%three
+             }
+            \else
+             \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}} }
+             {\DTMminutespaststringONE\space}%THREE
+             {\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
+             {\DTMminutespaststringTWO}%TWO
+             {\DTMminutespaststringTHREE~}}%THREE
+            \fi
+           \fi%
+         \fi%
          \ifnum##1>12
            \ifnum##1=24
              \DTMitalianmidnight
            \else
-             \protect\numberstringnum{\numexpr##1-12}%
-            \fi
+             \ifnum##1=13\DTMoneatnightstring\else\protect\numberstringnum{\numexpr##1-12}\fi%
+            \fi%
          \else
            \ifnum##1=0
              \DTMitalianmidnight
            \else
-           \ifnum##1=1 \DTMoneatnightstring\else \ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
+           \ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
            \fi
          \fi
        \else
          \ifnum##2=45
-           \ifnum##1=0\DTMquartertostringTWO\else\DTMquartertostringONE\space\fi
+          \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
+           {\DTMquartertostringTWO}
+           {\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+           {\DTMquartertostringONE}	
+           {\DTMquartertostringTHREE}}
          \else
-           \ifnum##2=59 \DTMoneminutestring \else \protect\numberstringnum{\numexpr60-##2}\fi
-           \ifnum##2=59  \DTMminutetostring\else\space\DTMminutestostring\fi
-           \space
+           \ifnum##2=59 \DTMoneminutestring\space \else \protect\numberstringnum{\numexpr60-##2}\fi
+           \ifnum##2=59 
+           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{12}}or test {\ifnumcomp{##1}{=}{24}}}
+           {\DTMminutetostringTWO}
+           {\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+           {\DTMminutetostringONE}
+           {\DTMminutetostringTHREE}}
+           \else\space
+           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}or test {\ifnumcomp{##1}{=}{12}}}
+           	{\DTMminutestostringTWO}
+           	{\DTMminutestostringTHREE}
+           \fi
          \fi
          \ifnum##1>12
            \ifnum##1=24
-            \protect\numberstringnum{1}%
+           \DTMoneatnightstring%
            \else
             \ifnum##1=23
               \DTMitalianmidnight
@@ -164,10 +203,12 @@
             \fi
            \fi
          \else
-           \ifnum##1=12 \DTMoneatnightstring
-            %\protect\numberstringnum{1}%
+           \ifnum##1=12\DTMoneatnightstring\space\DTMafternoonstring
            \else
-            \ifnum##1=0 \DTMoneatnightstring\else \protect\numberstringnum{\numexpr##1+1}\fi%
+            \ifnum##1=0\DTMoneatnightstring%
+            \else 
+            \ifnum##1=11\DTMitaliannoon\else\protect\numberstringnum{\numexpr##1+1}\fi
+            \fi%
            \fi
          \fi
        \fi
@@ -188,7 +229,7 @@
        \fi
      \else
        \ifnum##1>0
-         \space\DTMmorningstring
+         \ifnum##1=11\else\space\DTMmorningstring\fi
        \else
          \ifnum##2>30
            \space\DTMmorningstring
