@@ -53,7 +53,7 @@
 \ifluatex
 \RequireDateTimeModule{it-fulltext-utf8}
 \else
-\RequireDateTimeModule{it-fulltext-ascii}
+\RequireDateTimeModule{it-fulltext2-ascii}
 \fi
 \fi
 \def\CurrentTrackedDialect{italian}
@@ -94,7 +94,7 @@
 %\newcommand*{\DTMmorningstring}{del mattino}%
 %\newcommand*{\DTMafternoonstring}{del pomeriggio}%
 
-\DTMnewdatestyle{it-fulltext}{%
+\DTMnewdatestyle{it-fulltext-twenty-four}{%
   \renewcommand*\DTMdisplaydate[4]{%
    \ifDTMshowdow
      \ifnum##4>-1
@@ -107,8 +107,8 @@
   }%
 }
 \newcommand*\DTMenfulltextmonthyearsep{,\space}
-\DTMsetdatestyle{it-fulltext}
-\DTMnewtimestyle{it-fulltext}{%
+\DTMsetdatestyle{it-fulltext-twenty-four}
+\DTMnewtimestyle{it-fulltext-twenty-four}{%
   \renewcommand\DTMdisplaytime[3]{%
    \ifboolexpr
    {test {\ifnumequal{##2}{0}} and
@@ -126,10 +126,10 @@
    }%
    {%
      \ifnum##2=0
-     \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
-     {\DTMoneatnightstring\space\DTMoclockstring}
-     {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMoclockstring\else
-     	\protect\numberstringnum{##1} \DTMoclockstring\fi}
+     %\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+     %{\DTMoneatnightstring\space\DTMoclockstring}
+     \ifnum##1>12\protect\numberstringnum{##1}\space\DTMoclockstring\else
+     	\protect\numberstringnum{##1} \DTMoclockstring\fi
       %\ifnum##1=1\DTMoneatnightstring\space \DTMoclockstring\else 
       %\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}
 %      \else
@@ -138,27 +138,28 @@
        \ifnum##2<31
          \ifnum##2=15
           \ifnum##1=1\DTMquarterpaststringTWO\else
-          \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
-	          {\DTMquarterpaststringONE}
-	          {\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringTHREE\fi}
+         % \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+	      %    {\DTMquarterpaststringONE}
+	          \DTMquarterpaststringTHREE\space%
          \fi
          \else
            \ifnum##2=30
-             \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
-             {\DTMhalfpaststringTWO}
-             {\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}} or test {\ifnumcomp{##1}{=}{12}}}
+           \ifnum##1=1\DTMhalfpaststringTWO\else
+%             \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+%             {\DTMhalfpaststringTWO}
+             \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}} or test {\ifnumcomp{##1}{=}{12}}}
              {\DTMhalfpaststringONE}
-             {\DTMhalfpaststringTHREE~}}
+             {\DTMhalfpaststringTHREE~}
+             \fi
              \else
            \ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space
            \fi
-             \ifnum##2=1 
-             \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
-             {\DTMminutepaststringONE}%one
-             {\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
-             {\DTMminutepaststringTWO}%two
-             {\DTMminutepaststringTHREE}%three
-             }
+             \ifnum##2=1\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+             {\DTMminutepaststringONE\space}%one
+%                          {\ifboolexpr{ test {test {\ifnumcomp{##1}{=}{1}}}
+%             {\DTMminutepaststringTWO}%two
+             {\DTMminutepaststringTHREE\space}%three
+            % }
             \else
              \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}} }
              {\DTMminutespaststringONE\space}%THREE
@@ -172,7 +173,7 @@
            \ifnum##1=24
              \DTMitalianmidnight
            \else
-             \ifnum##1=13\DTMoneatnightstring\else\protect\numberstringnum{\numexpr##1-12}\fi%
+             \protect\numberstringnum{##1}%
             \fi%
          \else
            \ifnum##1=0
@@ -183,7 +184,7 @@
          \fi
        \else
          \ifnum##2=45
-          \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
+          \ifboolexpr{test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
            {\DTMquartertostringTWO}
            {\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
            {\DTMquartertostringONE}	
@@ -191,13 +192,13 @@
          \else
            \ifnum##2=59 \DTMoneminutestring\space \else \protect\numberstringnum{\numexpr60-##2}\fi
            \ifnum##2=59 
-           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{12}}or test {\ifnumcomp{##1}{=}{24}}}
+           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
            {\DTMminutetostringTWO}
            {\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
            {\DTMminutetostringONE}
            {\DTMminutetostringTHREE}}
            \else\space
-           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}or test {\ifnumcomp{##1}{=}{12}}}
+           \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
            	{\DTMminutestostringTWO}
            	{\DTMminutestostringTHREE}
            \fi
@@ -209,11 +210,11 @@
             \ifnum##1=23
               \DTMitalianmidnight
             \else
-              \protect\numberstringnum{\numexpr##1-11}%
+              \protect\numberstringnum{##1}%
             \fi
            \fi
          \else
-           \ifnum##1=12\DTMoneatnightstring\space\DTMafternoonstring
+           \ifnum##1=12\protect\numberstringnum{\numexpr##1+1}
            \else
             \ifnum##1=0\DTMoneatnightstring%
             \else 
@@ -223,29 +224,29 @@
          \fi
        \fi
      \fi
-     \ifnum##1>11
-       \ifnum##1=23
-         \ifnum##2<31
-           \space\DTMafternoonstring
-         \fi
-       \else
-         \ifnum##1=24
-           \ifnum##2>30
-            \space\DTMmorningstring
-           \fi
-         \else
-          \ifnum##1=12 \else\space\DTMafternoonstring\fi
-         \fi
-       \fi
-     \else
-       \ifnum##1>0
-         \ifnum##1=11\else\space\DTMmorningstring\fi
-       \else
-         \ifnum##2>30
-           \space\DTMmorningstring
-         \fi
-       \fi
-     \fi
+%     \ifnum##1>11
+%       \ifnum##1=23
+%         \ifnum##2<31
+%           \space\DTMafternoonstring
+%         \fi
+%       \else
+%         \ifnum##1=24
+%           \ifnum##2>30
+%            \space\DTMmorningstring
+%           \fi
+%         \else
+%          \ifnum##1=12 \else\space\DTMafternoonstring\fi
+%         \fi
+%       \fi
+%     \else
+%       \ifnum##1>0
+%         \ifnum##1=11\else\space\DTMmorningstring\fi
+%       \else
+%         \ifnum##2>30
+%           \space\DTMmorningstring
+%         \fi
+%       \fi
+%      \fi
    }%
   }%
 }

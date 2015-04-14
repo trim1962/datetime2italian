@@ -41,103 +41,108 @@
 %%   Right bracket \]     Circumflex    \^     Underscore    \_
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
-\ProvidesDateTimeModule{italian-ascii}[2015/04/10 v1.1]
-\newcommand*{\DTMitalianordinal}[1]{%
-  \number#1
-}%
-\newcommand*{\DTMitalianmonthname}[1]{%
-  \ifcase#1
-  \or
-  gennaio%
-  \or
-  febbraio%
-  \or
-  marzo%
-  \or
-  aprile%
-  \or
-  maggio%
-  \or
-  giugno%
-  \or
-  luglio%
-  \or
-  agosto%
-  \or
-  settembre%
-  \or
-  ottobre%
-  \or
-  novembre%
-  \or
-  dicembre%
-  \fi
-}
-\newcommand*{\DTMitalianweekdayname}[1]{%
-  \ifcase#1
-  luned\protect\`i%
-  \or
-  marted\protect\`i%
-  \or
-  mercoled\protect\`i%
-  \or
-  gioved\protect\`i%
-  \or
-  venerd\protect\`i%
-  \or
-  sabato%
-  \or
-  domenica%
-  \fi
-}
-\newcommand*{\DTMitalianshortmonthname}[1]{%
+\ProvidesDateTimeModule{it-fulltext-ascii}[2015/04/10 v1.1]
+
+\newcommand*{\DTMoclockstring}{in punto}
+\newcommand*{\DTMoneminutestring}{un}
+\newcommand*{\DTMoneatnightstring}{una}
+
+\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
+\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect'}
+\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
+
+\newcommand*{\DTMminutepaststringONE}{minuto dopo}
+\newcommand*{\DTMminutepaststringTWO}{minuto dopo l\protect'}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
+
+\newcommand*{\DTMminutespaststringONE}{minuti dopo}
+\newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect'}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
+
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
+\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect'}
+\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
+
+\newcommand*{\DTMquartertostringONE}{un quarto a}
+\newcommand*{\DTMquartertostringTWO}{un quarto all\protect'}
+\newcommand*{\DTMquartertostringTHREE}{un quarto alle}
+
+\newcommand*{\DTMminutetostringONE}{minuto a}
+\newcommand*{\DTMminutetostringTWO}{minuto all\protect'}
+\newcommand*{\DTMminutetostringTHREE}{minuto alle}
+
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMminutestostringTWO}{minuti all\protect'}
+
+\newcommand*{\DTMmorningstring}{del mattino}
+\newcommand*{\DTMafternoonstring}{del pomeriggio}
+
+
+\newcommand*{\DTMitaliastringnum}[1]{%
 \ifcase#1
 \or
-gen.%
+uno%
 \or
-feb.%
+due%
 \or
-mar.%
+tre%
 \or
-apr.%
+quattro%
 \or
-mag.%
+cinque%
 \or
-giun.%
+sei%
 \or
-lug.%
+sette%
 \or
-aug.%
+otto%
 \or
-set.%
+nove%
 \or
-ott.%
+dieci%
 \or
-nov.%
+undici%
 \or
-dic.%
+dodici%
+\or
+tredici%
+\or
+quattordici%
+\or
+quindici%
+\or
+sedici%
+\or
+diciassette%
+\or
+diciotto%
+\or
+diciannove%
+\or
+venti%
+\or
+ventuno%
+\or
+ventidue%
+\or
+ventitr\protect\'e%
+\or
+ventiquattro%
+\or
+venticinque%
+\or
+ventisei%
+\or
+ventisette%
+\or
+ventotto%
+\or
+ventinove%
+\or
+trenta%
+\or
+trentuno%
 \fi
 }
-\newcommand*{\DTMitalianshortweekdayname}[1]{%
-\ifcase#1
-lun.%
-\or
-mar.%
-\or
-mer.%
-\or
-gio.%
-\or
-ven.%
-\or
-sab.%
-\or
-dom.%
-\fi
-}
-
-
-
 \endinput
 %%
-%% End of file `datetime2-italian-ascii.ldf'.
