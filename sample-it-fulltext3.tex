@@ -1,0 +1,159 @@
+\documentclass[italian]{article}
+\usepackage{ifpdf,ifxetex} 
+\ifpdf
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\else
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{italian}
+\fi 
+\usepackage[showdow,useregional]{datetime2-it-fulltext}
+\begin{document}
+\section{Date}
+
+\begin{description}
+\item[it-fulltext:]
+\DTMsetdatestyle{it-fulltext}
+\today.
+\end{description}
+
+\section{Time}
+\subsection{it-fulltext}
+\DTMsettimestyle{it-fulltext}
+Time: \DTMcurrenttime.
+
+0.00:  \DTMdisplaytime{0}{0}{0}.
+
+0.01:   \DTMdisplaytime{0}{1}{0}. 
+
+0.15:   \DTMdisplaytime{0}{15}{0}. 
+
+0.29:   \DTMdisplaytime{0}{29}{0}. 
+
+0.30:   \DTMdisplaytime{0}{30}{0}.
+
+0.31:   \DTMdisplaytime{0}{31}{0}.
+
+0.44:   \DTMdisplaytime{0}{44}{0}.
+
+0.45:   \DTMdisplaytime{0}{45}{0}.
+
+0.46:   \DTMdisplaytime{0}{46}{0}.
+
+0.59:   \DTMdisplaytime{0}{59}{0}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+1.00:  \DTMdisplaytime{1}{0}{0}.
+
+1.01:   \DTMdisplaytime{1}{1}{0}. 
+
+1.15:   \DTMdisplaytime{1}{15}{0}. 
+
+1.29:   \DTMdisplaytime{1}{29}{0}. 
+
+1.30:   \DTMdisplaytime{1}{30}{0}.
+
+1.31:   \DTMdisplaytime{1}{31}{0}.
+
+1.44:   \DTMdisplaytime{1}{44}{0}.
+
+1.45:   \DTMdisplaytime{1}{45}{0}.
+
+1.46:   \DTMdisplaytime{1}{46}{0}.
+
+1.59:   \DTMdisplaytime{1}{59}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DTMsettimestyle{it-fulltext-twenty-four}
+Time: \DTMcurrenttime.
+
+0.00:  \DTMdisplaytime{0}{0}{0}.
+
+0.01:   \DTMdisplaytime{0}{1}{0}. 
+
+0.15:   \DTMdisplaytime{0}{15}{0}. 
+
+0.29:   \DTMdisplaytime{0}{29}{0}. 
+
+0.30:   \DTMdisplaytime{0}{30}{0}.
+
+0.31:   \DTMdisplaytime{0}{31}{0}.
+
+0.44:   \DTMdisplaytime{0}{44}{0}.
+
+0.45:   \DTMdisplaytime{0}{45}{0}.
+
+0.46:   \DTMdisplaytime{0}{46}{0}.
+
+0.59:   \DTMdisplaytime{0}{59}{0}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+1.00:  \DTMdisplaytime{1}{0}{0}.
+
+1.01:   \DTMdisplaytime{1}{1}{0}. 
+
+1.15:   \DTMdisplaytime{1}{15}{0}. 
+
+1.29:   \DTMdisplaytime{1}{29}{0}. 
+
+1.30:   \DTMdisplaytime{1}{30}{0}.
+
+1.31:   \DTMdisplaytime{1}{31}{0}.
+
+1.44:   \DTMdisplaytime{1}{44}{0}.
+
+1.45:   \DTMdisplaytime{1}{45}{0}.
+
+1.46:   \DTMdisplaytime{1}{46}{0}.
+
+1.59:   \DTMdisplaytime{1}{59}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%\DTMsettimestyle{en-fulltext}
+Time: \DTMcurrenttime.
+
+0.00:  \DTMdisplaytime{0}{0}{0}.
+
+0.01:   \DTMdisplaytime{0}{1}{0}. 
+
+0.15:   \DTMdisplaytime{0}{15}{0}. 
+
+0.29:   \DTMdisplaytime{0}{29}{0}. 
+
+0.30:   \DTMdisplaytime{0}{30}{0}.
+
+0.31:   \DTMdisplaytime{0}{31}{0}.
+
+0.44:   \DTMdisplaytime{0}{44}{0}.
+
+0.45:   \DTMdisplaytime{0}{45}{0}.
+
+0.46:   \DTMdisplaytime{0}{46}{0}.
+
+0.59:   \DTMdisplaytime{0}{59}{0}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+1.00:  \DTMdisplaytime{1}{0}{0}.
+
+1.01:   \DTMdisplaytime{1}{1}{0}. 
+
+1.15:   \DTMdisplaytime{1}{15}{0}. 
+
+1.29:   \DTMdisplaytime{1}{29}{0}. 
+
+1.30:   \DTMdisplaytime{1}{30}{0}.
+
+1.31:   \DTMdisplaytime{1}{31}{0}.
+
+1.44:   \DTMdisplaytime{1}{44}{0}.
+
+1.45:   \DTMdisplaytime{1}{45}{0}.
+
+1.46:   \DTMdisplaytime{1}{46}{0}.
+
+1.59:   \DTMdisplaytime{1}{59}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+

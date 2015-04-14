@@ -126,14 +126,10 @@
    }%
    {%
      \ifnum##2=0
-     %\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
-     %{\DTMoneatnightstring\space\DTMoclockstring}
-     \ifnum##1>12\protect\numberstringnum{##1}\space\DTMoclockstring\else
-     	\protect\numberstringnum{##1} \DTMoclockstring\fi
-      %\ifnum##1=1\DTMoneatnightstring\space \DTMoclockstring\else 
-      %\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}
-%      \else
-%      \protect\numberstringnum{##1} \DTMoclockstring\fi
+    \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+    {\DTMoneatnightstring\space\DTMoclockstring}
+    {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMoclockstring\else
+    	\protect\numberstringnum{##1} \DTMoclockstring\fi}
      \else
        \ifnum##2<31
          \ifnum##2=15
