@@ -284,8 +284,12 @@
 			\else
 			\ifnum##2<31
 			\ifnum##2=15
-			\ifnum##1=1\DTMquarterpaststringTWO\else
-			\DTMquarterpaststringTHREE\space%
+			 \ifnum##1=1\DTMquarterpaststringTWO\else
+			 \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			 {\DTMquarterpaststringONE}
+			 {\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringTHREE\fi}
+			%\ifnum##1=1\DTMquarterpaststringTWO\else
+			%\DTMquarterpaststringTHREE\space%
 			\fi
 			\else
 			\ifnum##2=30
@@ -305,8 +309,8 @@
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}} }
 			{\DTMminutespaststringONE\space}%THREE
 			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
-				{\DTMminutespaststringTWO}
-				{\DTMminutespaststringTHREE~}}
+				{\DTMminutespaststringTWO}%TWO
+				{\DTMminutespaststringTHREE~}}%THREE
 			\fi
 			\fi%
 			\fi%
