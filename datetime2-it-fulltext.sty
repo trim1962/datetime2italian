@@ -60,7 +60,7 @@
 \RequireDateTimeModule{italian}
 \undef\CurrentTrackedDialect
 
-%\newcommand*{\DTMoclockstring}{in punto}%
+%\newcommand*{\DTMitoclockstring}{in punto}%
 %\newcommand*{\DTMoneminutestring}{un}%
 %\newcommand*{\DTMoneatnightstring}{una}%
 %
@@ -91,8 +91,8 @@
 %\newcommand*{\DTMminutestostringTHREE}{minuti alle}%
 %\newcommand*{\DTMminutestostringTWO}{minuti all'}%
 %
-%\newcommand*{\DTMmorningstring}{del mattino}%
-%\newcommand*{\DTMafternoonstring}{del pomeriggio}%
+%\newcommand*{\DTMitmorningstring}{del mattino}%
+%\newcommand*{\DTMitafternoonstring}{del pomeriggio}%
 
 \DTMnewdatestyle{it-fulltext}{%
   \renewcommand*\DTMdisplaydate[4]{%
@@ -106,7 +106,7 @@
    \protect\numberstringnum{##1}%
   }%
 }
-\newcommand*\DTMenfulltextmonthyearsep{,\space}
+\newcommand*\DTMitfulltextmonthyearsep{,\space}
 \DTMsetdatestyle{it-fulltext}
 \DTMnewtimestyle{it-fulltext}{%
   \renewcommand\DTMdisplaytime[3]{%
@@ -127,9 +127,9 @@
    {%
      \ifnum##2=0
      \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
-     {\DTMoneatnightstring\space\DTMoclockstring}
-     {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMoclockstring\else
-     	\protect\numberstringnum{##1} \DTMoclockstring\fi}
+     {\DTMoneatnightstring\space\DTMitoclockstring}
+     {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMitoclockstring\else
+     	\protect\numberstringnum{##1} \DTMitoclockstring\fi}
       \else
        \ifnum##2<31
          \ifnum##2=15
@@ -209,7 +209,7 @@
             \fi
            \fi
          \else
-           \ifnum##1=12\DTMoneatnightstring\space\DTMafternoonstring
+           \ifnum##1=12\DTMoneatnightstring\space\DTMitafternoonstring
            \else
             \ifnum##1=0\DTMoneatnightstring%
             \else 
@@ -222,23 +222,23 @@
      \ifnum##1>11
        \ifnum##1=23
          \ifnum##2<31
-           \space\DTMafternoonstring
+           \space\DTMitafternoonstring
          \fi
        \else
          \ifnum##1=24
            \ifnum##2>30
-            \space\DTMmorningstring
+            \space\DTMitmorningstring
            \fi
          \else
-          \ifnum##1=12 \else\space\DTMafternoonstring\fi
+          \ifnum##1=12 \else\space\DTMitafternoonstring\fi
          \fi
        \fi
      \else
        \ifnum##1>0
-         \ifnum##1=11\else\space\DTMmorningstring\fi
+         \ifnum##1=11\else\space\DTMitmorningstring\fi
        \else
          \ifnum##2>30
-           \space\DTMmorningstring
+           \space\DTMitmorningstring
          \fi
        \fi
      \fi
@@ -278,9 +278,9 @@
 		{%
 			\ifnum##2=0
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
-			{\DTMoneatnightstring\space\DTMoclockstring}
-			{\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMoclockstring\else
-				\protect\numberstringnum{##1} \DTMoclockstring\fi}
+			{\DTMoneatnightstring\space\DTMitoclockstring}
+			{\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMitoclockstring\else
+				\protect\numberstringnum{##1} \DTMitoclockstring\fi}
 			\else
 			\ifnum##2<31
 			\ifnum##2=15

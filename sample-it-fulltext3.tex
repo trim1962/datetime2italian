@@ -1,4 +1,4 @@
-\documentclass[italian]{article}
+\documentclass[italian,english]{article}
 \usepackage{ifpdf,ifxetex} 
 \ifpdf
 \usepackage[T1]{fontenc}
@@ -10,6 +10,7 @@
 \setdefaultlanguage{italian}
 \fi 
 \usepackage[showdow,useregional]{datetime2-it-fulltext}
+\usepackage[showdow,english]{datetime2-en-fulltext}
 \begin{document}
 \part{title}\section{Date}
 
@@ -49,7 +50,7 @@ Time: \DTMcurrenttime.
 
 0.31:   \DTMdisplaytime{0}{31}{0}.
 
-\DTMsettimestyle{it-fulltext-twenty-four}
+\DTMsettimestyle{en-fulltext}
 Time: \DTMcurrenttime.
 
 0.00:  \DTMdisplaytime{0}{0}{0}.
