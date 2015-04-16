@@ -1,0 +1,141 @@
+
+\ProvidesDateTimeModule{italian}[2015/04/10 v1.1]
+\RequirePackage{ifxetex,ifluatex}
+\ifxetex
+ \RequireDateTimeModule{italian-utf8}
+\else
+ \ifluatex
+   \RequireDateTimeModule{italian-utf8}
+ \else
+   \RequireDateTimeModule{italian-ascii}
+ \fi
+\fi
+\newcommand*{\DTMitaliandaymonthsep}{\space}
+\newcommand*{\DTMitalianmonthyearsep}{\space}
+\newcommand*{\DTMitaliandatetimesep}{\space}
+\newcommand*{\DTMitaliantimezonesep}{\space}
+\newcommand*{\DTMitaliandatesep}{/}
+\newcommand*{\DTMitaliantimesep}{:}
+\DTMdefkey{italian}{daymonthsep}{\renewcommand*{\DTMitaliandaymonthsep}{#1}}
+\DTMdefkey{italian}{monthyearsep}{\renewcommand*{\DTMitalianmonthyearsep}{#1}}
+\DTMdefkey{italian}{datetimesep}{\renewcommand*{\DTMitaliandatetimesep}{#1}}
+\DTMdefkey{italian}{timezonesep}{\renewcommand*{\DTMitaliantimezonesep}{#1}}
+\DTMdefkey{italian}{datesep}{\renewcommand*{\DTMitaliandatesep}{#1}}
+\DTMdefkey{italian}{timesep}{\renewcommand*{\DTMitaliantimesep}{#1}}
+
+\DTMdefboolkey{italian}{abbr}[true]{}
+\DTMsetbool{italian}{abbr}{false}
+\DTMdefboolkey{italian}{mapzone}[true]{}
+\DTMsetbool{italian}{mapzone}{true}
+\DTMdefboolkey{italian}{showdayofmonth}[true]{}
+\DTMsetbool{italian}{showdayofmonth}{true}
+\DTMdefboolkey{italian}{showyear}[true]{}
+\DTMsetbool{italian}{showyear}{true}
+\newcommand*\DTMitalianam{am}%
+\newcommand*\DTMitalianpm{pm}%
+\newcommand*\DTMitalianmidnight{mezzanotte}%
+\newcommand*\DTMitaliannoon{mezzogiorno}%
+\newcommand*{\DTMitalianampmfmt}[1]{#1}
+
+ \DTMnewtimestyle
+ {italianventiquattro}% label
+ {%
+ \renewcommand*\DTMdisplaytime[3]{%
+ \ifnum##2=0
+ \ifnum##1=12
+ \DTMtexorpdfstring
+ {\DTMitalianampmfmt{\DTMitaliannoon}}%
+ {\DTMitaliannoon}%
+ \else
+ \ifnum##1=0
+ \DTMtexorpdfstring
+ {\DTMitalianampmfmt{\DTMitalianmidnight}}%
+ {\DTMitalianmidnight}%
+ \else
+ \ifnum##1=24
+ \DTMtexorpdfstring
+ {\DTMitalianampmfmt{\DTMitalianmidnight}}%
+ {\DTMitalianmidnight}%
+ \else
+ \ifnum##1<12
+ \DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}
+ %\number##1  \number##2
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianam}}%
+ %{\DTMitalianam}%
+ \else
+ \DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianpm}}%
+ %{\DTMitalianpm}%
+ \fi
+ \fi
+ \fi
+ \fi
+ \else
+ \ifnum##1<13
+ \ifnum##1=0 
+ \DTMtwodigits{##1}
+ \else
+\DTMtwodigits{##1}\relax
+ \fi
+ \DTMitaliantimesep\DTMtwodigits{##2}%
+ \ifnum##1=12
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianam}}%
+ %{\DTMitalianpm}%
+ \else
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianam}}%
+ %{\DTMitalianam}%
+ \fi
+ \else
+\DTMtwodigits{##1}\relax
+ \DTMitaliantimesep\DTMtwodigits{##2}%
+ \ifnum##1=24
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianpm}}%
+ %{\DTMitalianam}%
+ \else
+ %\DTMtexorpdfstring
+ %{\DTMitalianampmfmt{\DTMitalianpm}}%
+ %{\DTMitalianpm}%
+ \fi
+ \fi
+ \fi
+ }%
+ }%
+\newcommand*{\DTMitalianzonemaps}{%
+  \DTMdefzonemap{01}{00}{CET}%
+  \DTMdefzonemap{02}{00}{CEST}%
+}
+
+\DTMifcaseregional
+{}% do nothing
+{\DTMsetstyle{italian}}
+{\DTMsetstyle{italian-numeric}}
+\ifcsundef{date\CurrentTrackedDialect}
+{%
+  \ifundef\dateitalian
+  {% do nothing
+  }%
+  {%
+    \def\dateitalian{%
+      \DTMifcaseregional
+      {}% do nothing
+      {\DTMsetstyle{italian}}%
+      {\DTMsetstyle{italian-numeric}}%
+    }%
+  }%
+}%
+{%
+  \csdef{date\CurrentTrackedDialect}{%
+    \DTMifcaseregional
+    {}% do nothing
+    {\DTMsetstyle{italian}}%
+    {\DTMsetstyle{italian-numeric}}
+  }%
+}%
+\endinput
+%%
+%% End of file `datetime2-italian.ldf'.

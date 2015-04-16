@@ -1,40 +1,59 @@
+
 \documentclass[italian]{article}
-\usepackage{ifpdf,ifxetex} 
-\ifpdf
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{babel}
-\else
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setdefaultlanguage{italian}
-\fi 
-\usepackage[showdow,useregional]{datetime2-it-fulltext}
+
+\usepackage{datetime2}
+
+%\DTMsetup{showseconds=false,datesep=/,timesep=.}
 
 \begin{document}
-\section{Date}
+\DTMsettimestyle{italianventiquattro}
+\DTMsavetimestamp{mydate}{2015-04-01T08:05:00+01:00}
+\DTMsavetimestamp{mydate2}{2015-04-01T08:13:45+01:00}
 
-\begin{description}
-\item[it-fulltext:]
-\DTMsetdatestyle{it-fulltext}
-\today.
 
-\item[it-fulltext-twenty-four;]
-\DTMsetdatestyle{it-fulltext-twenty-four}
-\today.
 
-%\item[en-FullText:]
-%\DTMsetdatestyle{en-FullText}
-%\today.
+\DTMsavetime{noon}{12:00:00}\par
 
-%\item[en-FULLTEXT:]
-%\DTMsetdatestyle{en-FULLTEXT}
-%\today.
-\end{description}
 
-\section{Time}
-\subsection{it-fulltext}
-\DTMsettimestyle{it-fulltext-twenty-four}
+\DTMsavetime{midnight1}{00:00:00}
+
+\DTMsavetime{midnight2}{24:00:00}
+
+\DTMsavetime{8am}{08:00:00}
+
+\DTMsavetime{8pm}{20:00:00}
+
+\DTMsavetime{1203}{12:03:00}
+
+\DTMsavetime{2401}{24:01:00}
+
+\DTMsavetime{0001}{00:01:00}
+
+
+
+%\renewcommand*{\DTMitalianampmfmt}[1]{\protect\textsc{#1}}
+
+(ampm sc) \DTMcurrenttime. 
+\DTMusetime{mydate}.
+
+\DTMusetime{mydate2}.
+
+\DTMusetime{noon}.
+
+\DTMusetime{midnight1}.
+
+\DTMusetime{midnight2}.
+
+\DTMusetime{8am}.
+
+\DTMusetime{8pm}.
+
+\DTMusetime{1203}.
+
+\DTMusetime{2401}.
+
+\DTMusetime{0001}.
+
 Time: \DTMcurrenttime.
 
 0.00:  \DTMdisplaytime{0}{0}{0}.
@@ -572,4 +591,3 @@ Time: \DTMcurrenttime.
 
 24.59:     \DTMdisplaytime{24}{59}{0}
 \end{document}
-

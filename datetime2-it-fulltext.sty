@@ -45,7 +45,9 @@
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{datetime2}}
 \ProcessOptions
 \RequirePackage{datetime2}
-\RequirePackage{fmtcount}
+\RequirePackage{itnumpar}
+%\RequirePackage{fmtcount}
+%\FCloadlang{italian}
 \RequirePackage{ifxetex,ifluatex}
 \ifxetex
 \RequireDateTimeModule{it-fulltext-utf8}
@@ -101,9 +103,9 @@
        \DTMitalianweekdayname{##4}\space
      \fi
    \fi
-   \protect\numberstringnum{##3} \DTMitalianmonthname{##2}%
+   \protect\printnumeroinparole{##3} \DTMitalianmonthname{##2}%
    \DTMenfulltextmonthyearsep
-   \protect\numberstringnum{##1}%
+   \protect\printnumeroinparole{##1}%
   }%
 }
 \newcommand*\DTMitfulltextmonthyearsep{,\space}
@@ -128,8 +130,8 @@
      \ifnum##2=0
      \ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
      {\DTMoneatnightstring\space\DTMitoclockstring}
-     {\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMitoclockstring\else
-     	\protect\numberstringnum{##1} \DTMitoclockstring\fi}
+     {\ifnum##1>12\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitoclockstring\else
+     	\protect\printnumeroinparole{##1} \DTMitoclockstring\fi}
       \else
        \ifnum##2<31
          \ifnum##2=15
@@ -146,7 +148,7 @@
              {\DTMhalfpaststringONE}
              {\DTMhalfpaststringTHREE~}}
              \else
-           \ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space
+           \ifnum##2=1 \DTMoneminutestring\space\else \protect\printnumeroinparole{##2}\space
            \fi
              \ifnum##2=1 
              \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
@@ -168,13 +170,13 @@
            \ifnum##1=24
              \DTMitalianmidnight
            \else
-             \ifnum##1=13\DTMoneatnightstring\else\protect\numberstringnum{\numexpr##1-12}\fi%
+             \ifnum##1=13\DTMoneatnightstring\else\protect\printnumeroinparole{\numexpr##1-12}\fi%
             \fi%
          \else
            \ifnum##1=0
              \DTMitalianmidnight
            \else
-           \ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
+           \ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12 \DTMitaliannoon\else\protect\printnumeroinparole{##1}\fi\fi%
            \fi
          \fi
        \else
@@ -185,7 +187,7 @@
            {\DTMquartertostringONE}	
            {\DTMquartertostringTHREE}}
          \else
-           \ifnum##2=59 \DTMoneminutestring\space \else \protect\numberstringnum{\numexpr60-##2}\fi
+           \ifnum##2=59 \DTMoneminutestring\space \else \protect\printnumeroinparole{\numexpr60-##2}\fi
            \ifnum##2=59 
            \ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{12}}or test {\ifnumcomp{##1}{=}{24}}}
            {\DTMminutetostringTWO}
@@ -205,7 +207,7 @@
             \ifnum##1=23
               \DTMitalianmidnight
             \else
-              \protect\numberstringnum{\numexpr##1-11}%
+              \protect\printnumeroinparole{\numexpr##1-11}%
             \fi
            \fi
          \else
@@ -213,7 +215,7 @@
            \else
             \ifnum##1=0\DTMoneatnightstring%
             \else 
-            \ifnum##1=11\DTMitaliannoon\else\protect\numberstringnum{\numexpr##1+1}\fi
+            \ifnum##1=11\DTMitaliannoon\else\protect\printnumeroinparole{\numexpr##1+1}\fi
             \fi%
            \fi
          \fi
@@ -252,9 +254,9 @@
 		\DTMitalianweekdayname{##4}\space
 		\fi
 		\fi
-		\protect\numberstringnum{##3} \DTMitalianmonthname{##2}%
+		\protect\printnumeroinparole{##3} \DTMitalianmonthname{##2}%
 		\DTMenfulltextmonthyearsep
-		\protect\numberstringnum{##1}%
+		\protect\printnumeroinparole{##1}%
 	}%
 }
 
@@ -279,8 +281,8 @@
 			\ifnum##2=0
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
 			{\DTMoneatnightstring\space\DTMitoclockstring}
-			{\ifnum##1>12\protect\numberstringnum{\numexpr##1-12}\space\DTMitoclockstring\else
-				\protect\numberstringnum{##1} \DTMitoclockstring\fi}
+			{\ifnum##1>12\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitoclockstring\else
+				\protect\printnumeroinparole{##1} \DTMitoclockstring\fi}
 			\else
 			\ifnum##2<31
 			\ifnum##2=15
@@ -299,7 +301,7 @@
 			{\DTMhalfpaststringTHREE~}
 			\fi
 			\else
-			\ifnum##2=1 \DTMoneminutestring\space\else \protect\numberstringnum{##2}\space
+			\ifnum##2=1 \DTMoneminutestring\space\else \protect\printnumeroinparole{##2}\space
 			\fi
 			\ifnum##2=1\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
 			{\DTMminutepaststringONE\space}
@@ -318,13 +320,13 @@
 			\ifnum##1=24
 			\DTMitalianmidnight
 			\else
-			\protect\numberstringnum{##1}%
+			\protect\printnumeroinparole{##1}%
 			\fi%
 			\else
 			\ifnum##1=0
 			\DTMitalianmidnight
 			\else
-			\ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12 \DTMitaliannoon\else\protect\numberstringnum{##1}\fi\fi%
+			\ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12 \DTMitaliannoon\else\protect\printnumeroinparole{##1}\fi\fi%
 			\fi
 			\fi
 			\else
@@ -335,7 +337,7 @@
 				{\DTMquartertostringONE}	
 				{\DTMquartertostringTHREE}}
 			\else
-			\ifnum##2=59 \DTMoneminutestring\space \else \protect\numberstringnum{\numexpr60-##2}\fi
+			\ifnum##2=59 \DTMoneminutestring\space \else \protect\printnumeroinparole{\numexpr60-##2}\fi
 			\ifnum##2=59 
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
 			{\DTMminutetostringTWO}
@@ -355,15 +357,15 @@
 			\ifnum##1=23
 			\DTMitalianmidnight
 			\else
-			\protect\numberstringnum{##1}%
+			\protect\printnumeroinparole{##1}%
 			\fi
 			\fi
 			\else
-			\ifnum##1=12\protect\numberstringnum{\numexpr##1+1}
+			\ifnum##1=12\protect\printnumeroinparole{\numexpr##1+1}
 			\else
 			\ifnum##1=0\DTMoneatnightstring%
 			\else 
-			\ifnum##1=11\DTMitaliannoon\else\protect\numberstringnum{\numexpr##1+1}\fi
+			\ifnum##1=11\DTMitaliannoon\else\protect\printnumeroinparole{\numexpr##1+1}\fi
 			\fi%
 			\fi
 			\fi
