@@ -41,67 +41,42 @@
  {italianventiquattro}% label
  {%
  \renewcommand*\DTMdisplaytime[3]{%
- \ifnum##2=0
- \ifnum##1=12
- \DTMtexorpdfstring
- {\DTMitalianampmfmt{\DTMitaliannoon}}%
- {\DTMitaliannoon}%
- \else
- \ifnum##1=0
- \DTMtexorpdfstring
- {\DTMitalianampmfmt{\DTMitalianmidnight}}%
- {\DTMitalianmidnight}%
- \else
- \ifnum##1=24
- \DTMtexorpdfstring
- {\DTMitalianampmfmt{\DTMitalianmidnight}}%
- {\DTMitalianmidnight}%
- \else
- \ifnum##1<12
- \DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}
- %\number##1  \number##2
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianam}}%
- %{\DTMitalianam}%
- \else
- \DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianpm}}%
- %{\DTMitalianpm}%
- \fi
- \fi
- \fi
- \fi
- \else
- \ifnum##1<13
- \ifnum##1=0 
- \DTMtwodigits{##1}
- \else
-\DTMtwodigits{##1}\relax
- \fi
- \DTMitaliantimesep\DTMtwodigits{##2}%
- \ifnum##1=12
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianam}}%
- %{\DTMitalianpm}%
- \else
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianam}}%
- %{\DTMitalianam}%
- \fi
- \else
-\DTMtwodigits{##1}\relax
- \DTMitaliantimesep\DTMtwodigits{##2}%
- \ifnum##1=24
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianpm}}%
- %{\DTMitalianam}%
- \else
- %\DTMtexorpdfstring
- %{\DTMitalianampmfmt{\DTMitalianpm}}%
- %{\DTMitalianpm}%
- \fi
- \fi
+\ifnum##2=0
+		 \ifnum##1=12
+			 \DTMtexorpdfstring
+			 {\DTMitalianampmfmt{\DTMitaliannoon}}%
+		 {\DTMitaliannoon}%
+	 \else
+		 \ifnum##1=0
+			 \DTMtexorpdfstring
+			{\DTMitalianampmfmt{\DTMitalianmidnight}}%
+			{\DTMitalianmidnight}%
+		 \else
+			 \ifnum##1=24
+				 \DTMtexorpdfstring
+				 {\DTMitalianampmfmt{\DTMitalianmidnight}}%
+				 {\DTMitalianmidnight}%
+			 \else
+				 \ifnum##1<12
+						\DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}%
+				 \else
+						 \DTMtwodigits{##1}\DTMitaliantimesep\DTMtwodigits{##2}%
+				 \fi
+			 \fi
+		 \fi
+	 \fi
+\else
+	 \ifnum##1<13
+		 \ifnum##1=0 
+			\DTMtwodigits{##1}%
+		 \else
+			\DTMtwodigits{##1}\relax
+		 \fi
+		\DTMitaliantimesep\DTMtwodigits{##2}%
+	 \else
+	 \DTMtwodigits{##1}\relax
+	\DTMitaliantimesep\DTMtwodigits{##2}%
+	\fi
  \fi
  }%
  }%
@@ -110,32 +85,6 @@
   \DTMdefzonemap{02}{00}{CEST}%
 }
 
-\DTMifcaseregional
-{}% do nothing
-{\DTMsetstyle{italian}}
-{\DTMsetstyle{italian-numeric}}
-\ifcsundef{date\CurrentTrackedDialect}
-{%
-  \ifundef\dateitalian
-  {% do nothing
-  }%
-  {%
-    \def\dateitalian{%
-      \DTMifcaseregional
-      {}% do nothing
-      {\DTMsetstyle{italian}}%
-      {\DTMsetstyle{italian-numeric}}%
-    }%
-  }%
-}%
-{%
-  \csdef{date\CurrentTrackedDialect}{%
-    \DTMifcaseregional
-    {}% do nothing
-    {\DTMsetstyle{italian}}%
-    {\DTMsetstyle{italian-numeric}}
-  }%
-}%
 \endinput
 %%
 %% End of file `datetime2-italian.ldf'.
