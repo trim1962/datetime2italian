@@ -9,27 +9,19 @@
 \usepackage{polyglossia}
 \setdefaultlanguage{italian}
 \fi 
-\usepackage[showdow,useregional]{datetime2-it-fulltext2}
+\usepackage[showdow,useregional]{datetime2-it-fulltext}
 
 \begin{document}
 \section{Date}
 
 \begin{description}
-\item[it-fulltext:]
+\item[it-fulltext-twenty-four;]
 \DTMsetdatestyle{it-fulltext-twenty-four}
 \today.
-
-%\item[en-FullText:]
-%\DTMsetdatestyle{en-FullText}
-%\today.
-
-%\item[en-FULLTEXT:]
-%\DTMsetdatestyle{en-FULLTEXT}
-%\today.
 \end{description}
 
 \section{Time}
-\subsection{it-fulltext}
+\subsection{it-fulltext-twenty-four}
 \DTMsettimestyle{it-fulltext-twenty-four}
 Time: \DTMcurrenttime.
 

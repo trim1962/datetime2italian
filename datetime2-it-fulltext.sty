@@ -59,41 +59,6 @@
 \def\CurrentTrackedDialect{italian}
 \RequireDateTimeModule{italian}
 \undef\CurrentTrackedDialect
-
-%\newcommand*{\DTMitoclockstring}{in punto}%
-%\newcommand*{\DTMoneminutestring}{un}%
-%\newcommand*{\DTMoneatnightstring}{una}%
-%
-%\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}%
-%\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l'}%
-%\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}%
-%
-%\newcommand*{\DTMminutepaststringONE}{minuto dopo}%
-%\newcommand*{\DTMminutepaststringTWO}{minuto dopo l'}%
-%\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}%
-%
-%\newcommand*{\DTMminutespaststringONE}{minuti dopo}%
-%\newcommand*{\DTMminutespaststringTWO}{minuti dopo l'}%
-%\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}%
-%
-%\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}%
-%\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l'}%
-%\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}%
-%
-%\newcommand*{\DTMquartertostringONE}{un quarto a}%
-%\newcommand*{\DTMquartertostringTWO}{un quarto all'}%
-%\newcommand*{\DTMquartertostringTHREE}{un quarto alle}%
-%
-%\newcommand*{\DTMminutetostringONE}{minuto a}%
-%\newcommand*{\DTMminutetostringTWO}{minuto all'}%
-%\newcommand*{\DTMminutetostringTHREE}{minuto alle}%
-%
-%\newcommand*{\DTMminutestostringTHREE}{minuti alle}%
-%\newcommand*{\DTMminutestostringTWO}{minuti all'}%
-%
-%\newcommand*{\DTMitmorningstring}{del mattino}%
-%\newcommand*{\DTMitafternoonstring}{del pomeriggio}%
-
 \DTMnewdatestyle{it-fulltext}{%
   \renewcommand*\DTMdisplaydate[4]{%
    \ifDTMshowdow
@@ -288,8 +253,6 @@
 			 \ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
 			 {\DTMquarterpaststringONE}
 			 {\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringTHREE\fi}
-			%\ifnum##1=1\DTMquarterpaststringTWO\else
-			%\DTMquarterpaststringTHREE\space%
 			\fi
 			\else
 			\ifnum##2=30

@@ -57,9 +57,13 @@ mdyy: \DTMnow. \DTMuse{mydate}.
 \typeout{Date-Time (mdyy): \DTMnow. \DTMuse{mydate}.}
 
 \DTMsetstyle{yyyymd}
+italian-twenty-four
 
 yyyymd: \DTMnow. \DTMuse{mydate}.
 \typeout{Date-Time (yyyymd): \DTMnow. \DTMuse{mydate}.}
+
+
+
 
 Testing time styles.
 
@@ -124,8 +128,8 @@ ampm: \DTMcurrenttime.
 \DTMusetime{0001}.
 }
 
-\renewcommand*{\DTMitalianampmfmt}[1]{\protect\textsc{#1}}
-
+%\renewcommand*{\DTMitalianampmfmt}[1]{\protect\textsc{#1}}
+\DTMsettimestyle{italian-twenty-four}
 (ampm sc) \DTMcurrenttime. 
 \DTMusetime{mydate}.
 \DTMusetime{mydate2}.
