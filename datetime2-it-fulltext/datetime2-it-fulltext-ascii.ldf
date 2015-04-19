@@ -4,6 +4,8 @@
 \newcommand*{\DTMoneminutestring}{un}
 \newcommand*{\DTMoneatnightstring}{una}
 
+\newcommand*{\DTMitthefirstoneofthemonth}{primo}
+
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect'}
 \newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
@@ -28,8 +30,10 @@
 \newcommand*{\DTMminutetostringTWO}{minuto all\protect'}
 \newcommand*{\DTMminutetostringTHREE}{minuto alle}
 
-\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMminutestostringONE}{minuti a}
 \newcommand*{\DTMminutestostringTWO}{minuti all\protect'}
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+
 
 \newcommand*{\DTMitmorningstring}{del mattino}
 \newcommand*{\DTMitafternoonstring}{del pomeriggio}

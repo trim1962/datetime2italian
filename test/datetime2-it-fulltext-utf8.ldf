@@ -4,6 +4,8 @@
 \newcommand*{\DTMoneminutestring}{un}
 \newcommand*{\DTMoneatnightstring}{una}
 
+\newcommand*{\DTMitthefirstoneofthemonth}{primo}
+
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l'}
 \newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
@@ -28,77 +30,13 @@
 \newcommand*{\DTMminutetostringTWO}{minuto all'}
 \newcommand*{\DTMminutetostringTHREE}{minuto alle}
 
-\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMminutestostringONE}{minuti a}
 \newcommand*{\DTMminutestostringTWO}{minuti all'}
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
 
 \newcommand*{\DTMmorningstring}{del mattino}
 \newcommand*{\DTMafternoonstring}{del pomeriggio}
-\newcommand*{\DTMitaliastringnum}[1]{%
-\ifcase#1
-\or
-uno%
-\or
-due%
-\or
-tre%
-\or
-quattro%
-\or
-cinque%
-\or
-sei%
-\or
-sette%
-\or
-otto%
-\or
-nove%
-\or
-dieci%
-\or
-undici%
-\or
-dodici%
-\or
-tredici%
-\or
-quattordici%
-\or
-quindici%
-\or
-sedici%
-\or
-diciassette%
-\or
-diciotto%
-\or
-diciannove%
-\or
-venti%
-\or
-ventuno%
-\or
-ventidue%
-\or
-ventitré%
-\or
-ventiquattro%
-\or
-venticinque%
-\or
-ventisei%
-\or
-ventisette%
-\or
-ventotto%
-\or
-ventinove%
-\or
-trenta%
-\or
-trentuno%
-\fi
-}
+
 \endinput
 %%
 
