@@ -74,8 +74,8 @@
 \DTMsetbool{italian}{showdayofmonth}{true}
 \DTMdefboolkey{italian}{showyear}[true]{}
 \DTMsetbool{italian}{showyear}{true}
-\newcommand*\DTMitalianam{am}%
-\newcommand*\DTMitalianpm{pm}%
+\newcommand*\DTMitalianam{a.m.}%
+\newcommand*\DTMitalianpm{p.m.}%
 \newcommand*\DTMitalianmidnight{mezzanotte}%
 \newcommand*\DTMitaliannoon{mezzogiorno}%
 \newcommand*{\DTMitalianampmfmt}[1]{#1}
