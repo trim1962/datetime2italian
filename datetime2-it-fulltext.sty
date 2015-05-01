@@ -173,16 +173,16 @@
   }%
 }
 \DTMnewdatestyle{it-fulltext-twenty-four}{%
-	\renewcommand*\DTMdisplaydate[4]{%
-		\ifDTMshowdow
-		\ifnum##4>-1
-		\DTMitalianweekdayname{##4}\space
-		\fi
-		\fi
-		\protect\printnumeroinparole{##3}\DTMitalianmonthname{##2}%
-		\DTMenfulltextmonthyearsep
-		\protect\printnumeroinparole{##1}%
-	}%
+  \renewcommand*\DTMdisplaydate[4]{%
+  	\ifDTMshowdow
+  	\ifnum##4>-1
+  	\DTMitalianweekdayname{##4}\space
+  	\fi
+  	\fi
+  	\protect\printnumeroinparole{##3}\space\DTMitalianmonthname{##2}%
+  	\DTMitfulltextmonthyearsep%
+  	\protect\printnumeroinparole{##1}%
+  }%
 }
 \DTMsetdatestyle{it-fulltext-twenty-four}
 \DTMnewtimestyle{it-fulltext-twenty-four}{%

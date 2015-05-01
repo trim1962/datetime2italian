@@ -1,6 +1,6 @@
 \ProvidesDateTimeModule{it-fulltext-ascii}[2015/04/10 v1.1]
 
-\newcommand*{\DTMoclockstring}{in punto}
+\newcommand*{\DTMitoclockstring}{in punto}
 \newcommand*{\DTMoneminutestring}{un}
 \newcommand*{\DTMoneatnightstring}{una}
 
@@ -34,9 +34,8 @@
 \newcommand*{\DTMminutestostringTWO}{minuti all'}
 \newcommand*{\DTMminutestostringTHREE}{minuti alle}
 
-\newcommand*{\DTMmorningstring}{del mattino}
-\newcommand*{\DTMafternoonstring}{del pomeriggio}
 
+\newcommand*{\DTMitmorningstring}{del mattino}
+\newcommand*{\DTMitafternoonstring}{del pomeriggio}
 \endinput
 %%
-

@@ -48,6 +48,7 @@
 }%
 \newcommand*{\DTMitalianmonthname}[1]{%
   \ifcase#1
+  \or
   gennaio%
   \or
   febbraio%
