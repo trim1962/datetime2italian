@@ -3,9 +3,13 @@
 \newcommand*{\DTMitsecondstring}{secondo}
 \newcommand*{\DTMitsecondsstring}{secondi}
 \newcommand*{\DTMitsecondsep}{e}
+\newcommand*{\DTMitsecondsepTWO}{a}
 \newcommand*{\DTMitsep}{all'}
+\newcommand*{\DTMitsepTWO}{alle}
 \newcommand*{\DTMitonesecondstring}{un}
-\newcommand*{\DTMitpoststring}{dopo}
+\newcommand*{\DTMitpoststringONE}{dopo}
+\newcommand*{\DTMitpoststringTWO}{dopo l'}
+\newcommand*{\DTMitpoststringTHREE}{dopo le}
 
 
 
@@ -15,6 +19,7 @@
 
 \newcommand*{\DTMitthefirstoneofthemonth}{primo}
 
+\newcommand*{\DTMquarterpaststringZERO}{quindici minuti e}
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect'}
 \newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
@@ -27,11 +32,12 @@
 \newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect'}
 \newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
 
-\newcommand*{\DTMhalfstringZERO}{trenta minuti}
+\newcommand*{\DTMhalfstringZERO}{trenta minuti e}
 \newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
 \newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect'}
 \newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
 
+\newcommand*{\DTMquartertostringZERO}{un quarto e}
 \newcommand*{\DTMquartertostringONE}{un quarto a}
 \newcommand*{\DTMquartertostringTWO}{un quarto all\protect'}
 \newcommand*{\DTMquartertostringTHREE}{un quarto alle}

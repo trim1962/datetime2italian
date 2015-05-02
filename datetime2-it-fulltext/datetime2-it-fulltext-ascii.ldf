@@ -1,10 +1,10 @@
 %%
-%% This is file `datetime2-it-fulltext-utf8.ldf',
+%% This is file `datetime2-it-fulltext-ascii.ldf',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% datetime2-it-fulltext.dtx  (with options: `datetime2-it-fulltext-utf8.ldf,package')
+%% datetime2-it-fulltext.dtx  (with options: `datetime2-it-fulltext-ascii.ldf,package')
 %% 
 %%  datetime2-it-fulltext.dtx
 %%  Copyright 2015 Claudio Duchi
@@ -20,8 +20,13 @@
 %%  This work has the LPPL maintenance status `maintained'.
 %% 
 %%  The Current Maintainer of this work is Claudio Duchi.
+%% claduc at libero dot it
 %% 
-%%  This work consists of the files datetime2-it-fulltext.dtx and datetime2-it-fulltext.ins and the derived files datetime2-it-fulltext.sty, datetime2-it-fulltext-ascii.ldf, datetime2-it-fulltext-utf8.ldf.
+%% 
+%%  This work consists of the files datetime2-it-fulltext.dtx and
+%%  datetime2-it-fulltext.ins and the derived files
+%%  datetime2-it-fulltext.sty, datetime2-it-fulltext-ascii.ldf,
+%%  datetime2-it-fulltext-utf8.ldf.
 %% 
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -38,43 +43,35 @@
 %%   Right bracket \]     Circumflex    \^     Underscore    \_
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
-\ProvidesDateTimeModule{it-fulltext-utf8}[2015/04/24 v1.0]
+\ProvidesDateTimeModule{it-fulltext-ascii}[2015/05/01 v1.0]
 \newcommand*{\DTMitoclockstring}{in punto}
 \newcommand*{\DTMoneminutestring}{un}
 \newcommand*{\DTMoneatnightstring}{una}
-
 \newcommand*{\DTMitthefirstoneofthemonth}{primo}
-
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect'}
 \newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
-
 \newcommand*{\DTMminutepaststringONE}{minuto dopo}
 \newcommand*{\DTMminutepaststringTWO}{minuto dopo l\protect'}
 \newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
-
 \newcommand*{\DTMminutespaststringONE}{minuti dopo}
 \newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect'}
 \newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
-
 \newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
 \newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect'}
 \newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
-
 \newcommand*{\DTMquartertostringONE}{un quarto a}
 \newcommand*{\DTMquartertostringTWO}{un quarto all\protect'}
 \newcommand*{\DTMquartertostringTHREE}{un quarto alle}
-
 \newcommand*{\DTMminutetostringONE}{minuto a}
 \newcommand*{\DTMminutetostringTWO}{minuto all\protect'}
 \newcommand*{\DTMminutetostringTHREE}{minuto alle}
-
 \newcommand*{\DTMminutestostringONE}{minuti a}
 \newcommand*{\DTMminutestostringTWO}{minuti all\protect'}
 \newcommand*{\DTMminutestostringTHREE}{minuti alle}
-
 \newcommand*{\DTMitmorningstring}{del mattino}
 \newcommand*{\DTMitafternoonstring}{del pomeriggio}
+
 \endinput
 %%
-%% End of file `datetime2-it-fulltext-utf8.ldf'.
+%% End of file `datetime2-it-fulltext-ascii.ldf'.
