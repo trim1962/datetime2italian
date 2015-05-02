@@ -328,16 +328,16 @@
 		}%
 		{%
 			\ifnum##2=0\ifboolexpr{ (test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}) and test {\ifnumcomp{##3}{=}{0}}}
-			{\DTMoneatnightstring\space\DTMitoclockstring}%
-			{\ifnum##1>12\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitoclockstring\else
+			{\DTMoneatnightstring\space\DTMitsecondsep\secondi{##3}}%
+			{\ifnum##1>13\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitsecondsep \secondi{##3}\else
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}{\protect\DTMoneatnightstring\space\DTMitsecondsep\secondi{##3}}{\protect\printnumeroinparole{##1}\space\DTMitsecondsep\secondi{##3}}\fi}%
 			\else
 			\ifnum##2<31
 			\ifnum##2=15
 			\ifnum##1=1\DTMquarterpaststringZERO\secondi{##3}\space\DTMitpoststringTWO\else
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
-			{\DTMquarterpaststringONE\space}%
-			{\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringZERO\secondi{##3}\space\DTMitpoststringTHREE\space\fi}%
+			{\DTMquarterpaststringZERO\secondi{##3}\space\DTMitpoststringONE\space}%
+			{\ifnum##1=13\DTMquarterpaststringZERO\secondi{##3}\space\DTMitpoststringTWO\else\DTMquarterpaststringZERO\secondi{##3}\space\DTMitpoststringTHREE\space\fi}%
 			\fi%
 			\else%
 			\ifnum##2=30
@@ -352,7 +352,7 @@
 			\fi
 			\ifnum##2=1
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
-			{\DTMminutepaststringONE\space}%one
+			{\DTMminutetostringZERO\secondi{##3}\space\DTMitpoststringONE\space}%one
 			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
 				{\DTMminutetostringZERO\secondi{##3}\space\DTMitpoststringTWO}%two
 				{\DTMminutetostringZERO\secondi{##3}\space\DTMitpoststringTHREE\space}%three
@@ -369,9 +369,9 @@
 			\fi%
 			\ifnum##1>12
 			\ifnum##1=24
-			\DTMitalianmidnight\secondi{##3}
+			\DTMitalianmidnight
 			\else
-			\ifnum##1=13\DTMoneatnightstring\else\protect\printnumeroinparole{\numexpr##1-12}\fi%
+			\ifnum##1=13\DTMoneatnightstring \else\protect\printnumeroinparole{\numexpr##1-12}\fi%
 			\fi%
 			\else
 			\ifnum##1=0
@@ -383,10 +383,10 @@
 			\else
 			\ifnum##2=45
 			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
-			{\DTMquartertostringTWO}%
+			{\DTMquartertostringZERO\secondi{##3}\space\DTMitsep}%
 			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
 				{\DTMquartertostringZERO\secondi{##3}\space\DTMitsecondsepTWO\space}%
-				{\DTMquartertostringTHREE\space}%
+				{\DTMquartertostringZERO\secondi{##3}\space\DTMitsepTWO\space}%
 			}%
 			\else
 			\ifnum##2=59\DTMoneminutestring\space\else\protect\printnumeroinparole{\numexpr60-##2}\fi
@@ -416,9 +416,9 @@
 			\else
 			\ifnum##1=12\DTMoneatnightstring\space\DTMitafternoonstring%
 			\else
-			\ifnum##1=0\ifnum##2=45\DTMoneatnightstring\space\DTMitsecondsep\secondi{##3} \else\DTMoneatnightstring\fi%
+			\ifnum##1=0\ifnum##2=45\DTMoneatnightstring\else\DTMoneatnightstring\fi%
 			\else%
-			\ifnum##1=11\DTMitaliannoon\else\ifnum##2=45\protect\printnumeroinparole{\numexpr##1+1}\space\DTMitsecondsep\secondi{##3}\else\protect\printnumeroinparole{\numexpr##1+1}\fi\fi
+			\ifnum##1=11\DTMitaliannoon\else\ifnum##2=45\protect\printnumeroinparole{\numexpr##1+1}\else\protect\printnumeroinparole{\numexpr##1+1}\fi\fi
 			\fi%
 			\fi
 			\fi
