@@ -1,6 +1,6 @@
-Italian Language Module for datetime2 Package
+Italian Fulltext Language Module for datetime2 Package
 
-Author: Nicola L. C. Talbot (inactive)
+Author: CLaudio Duchi(active)
 
 Mantainer: CLaudio Duchi
 
@@ -70,7 +70,7 @@ Documentation:
 
 pdflatex datetime2-italian-it-fulltext.dtx
 
-Move datetime2-italian.pdf and README to
+Move datetime2-it-fulltext.pdf and README to
 TEXMF/doc/latex/datetime2-contrib/datetime2-italian-it-fulltext/
 
 This material is subject to the LaTeX Project Public License.
