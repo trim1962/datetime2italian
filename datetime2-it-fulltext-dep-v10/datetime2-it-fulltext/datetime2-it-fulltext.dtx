@@ -1,0 +1,466 @@
+%\iffalse
+% datetime2-it-fulltext.dtx generated using makedtx version 0.94b (c) Nicola Talbot
+% Command line args:
+%   -doc "manual.tex"
+%   -v "1"
+%   -author "Claudio Duchi"
+%   -src "datetime2-it-fulltext\.sty=>datetime2-it-fulltext.sty"
+%   -src "datetime2-it-fulltext-ascii\.ldf=>datetime2-it-fulltext-ascii.ldf"
+%   -src "datetime2-it-fulltext-utf8\.ldf=>datetime2-it-fulltext-utf8.ldf"
+%   -date "2015"
+%   datetime2-it-fulltext
+% Created on 2015/5/1 21:41
+%\fi
+%\iffalse
+%<*package>
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%</package>
+%\fi
+% \iffalse
+% Doc-Source file to use with LaTeX2e
+% Copyright (C) 2015 Claudio Duchi, all rights reserved.
+% \fi
+% \iffalse
+%<*driver>
+\documentclass{ltxdoc}
+\CheckSum{650}
+\begin{document}
+\DocInput{datetime2-it-fulltext.dtx}
+\end{document}
+%</driver>
+%\fi
+%\title{datetime2-it-fulltext}
+%\author{Claudio Duchi email: claduc at libero dot it}
+%\date{2015-05-01 (v1.0)}
+%\maketitle
+%This packet defines two styles for datetime2, it-fulltext and it-fulltext-twenty-four.
+%The first style uses a formed am pm, the second a format 24 hours. 
+%The necessary packets are datetime2, itnumpar, ifxetex and ifluatex.
+%The packet is the translation and adaptation of datetime2-en-fulltext.
+%
+%\StopEventually{}
+%\section{The Code}
+%\iffalse
+%    \begin{macrocode}
+%<*datetime2-it-fulltext.sty>
+%    \end{macrocode}
+%\fi
+%    \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{datetime2-it-fulltext}[2015/05/01 v1.0]
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{datetime2}}
+\ProcessOptions
+\RequirePackage{datetime2}
+\RequirePackage{itnumpar}
+%    \end{macrocode}
+%    \begin{macrocode}
+\RequirePackage{ifxetex,ifluatex}
+\ifxetex
+\RequireDateTimeModule{it-fulltext-utf8}
+\else
+\ifluatex
+\RequireDateTimeModule{it-fulltext-utf8}
+\else
+\RequireDateTimeModule{it-fulltext-ascii}
+\fi
+\fi
+%    \end{macrocode}
+%    \begin{macrocode}
+\def\CurrentTrackedDialect{italian}
+\RequireDateTimeModule{italian}
+\undef\CurrentTrackedDialect
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*\DTMitfulltextmonthyearsep{,\space}
+%    \end{macrocode}
+%    \begin{macrocode}
+\DTMnewdatestyle{it-fulltext}{%
+	\renewcommand*\DTMdisplaydate[4]{%
+		\ifDTMshowdow
+		\ifnum##4>-1
+		\DTMitalianweekdayname{##4}\space%
+		\fi
+		\fi
+		\ifnum##3=1\DTMitthefirstoneofthemonth\space\DTMitalianmonthname{##2}%
+		\DTMitfulltextmonthyearsep\protect\printnumeroinparole{##1}\space%
+		\else\protect\printnumeroinparole{##3}\space\DTMitalianmonthname{##2}%
+		\DTMitfulltextmonthyearsep\protect\printnumeroinparole{##1}\fi%
+	}%
+}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\DTMsetdatestyle{it-fulltext}
+\DTMnewtimestyle{it-fulltext}{%
+	\renewcommand\DTMdisplaytime[3]{%
+		\ifboolexpr
+		{test {\ifnumequal{##2}{0}} and
+			(test {\ifnumequal{##1}{0}}
+			or test {\ifnumequal{##1}{12}}
+			or test {\ifnumequal{##1}{24}}
+			)
+		}%
+		{%
+			\ifnum##1=12\DTMitaliannoon\else\DTMitalianmidnight%
+			\fi
+		}%
+		{%
+			\ifnum##2=0\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+			{\DTMoneatnightstring\space\DTMitoclockstring}%
+			{\ifnum##1>12\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitoclockstring\else\protect\printnumeroinparole{##1}\space\DTMitoclockstring\fi}%
+			\else
+			\ifnum##2<31
+			\ifnum##2=15
+			\ifnum##1=1\DTMquarterpaststringTWO\else
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMquarterpaststringONE\space}%
+			{\ifnum##1=13\DTMquarterpaststringTWO\else\DTMquarterpaststringTHREE\space\fi}%
+			\fi%
+			\else%
+			\ifnum##2=30
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+			{\DTMhalfpaststringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}} or test {\ifnumcomp{##1}{=}{12}}}
+				{\DTMhalfpaststringONE\space}%
+				{\DTMhalfpaststringTHREE\space}%
+			}%
+			\else%
+			\ifnum##2=1\DTMoneminutestring\space\else\protect\printnumeroinparole{##2}\space%
+			\fi
+			\ifnum##2=1
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutepaststringONE\space}%one
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
+				{\DTMminutepaststringTWO}%two
+				{\DTMminutepaststringTHREE\space}%three
+			}%
+			\else
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}} }
+			{\DTMminutespaststringONE\space}%THREE
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{13}} or test {\ifnumcomp{##1}{=}{1}}}
+				{\DTMminutespaststringTWO}%TWO
+				{\DTMminutespaststringTHREE\space}%
+			}%
+			\fi
+			\fi%
+			\fi%
+			\ifnum##1>12
+			\ifnum##1=24
+			\DTMitalianmidnight%
+			\else
+			\ifnum##1=13\DTMoneatnightstring\else\protect\printnumeroinparole{\numexpr##1-12}\fi%
+			\fi%
+			\else
+			\ifnum##1=0
+			\DTMitalianmidnight
+			\else
+			\ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12\DTMitaliannoon\else\protect\printnumeroinparole{##1}\fi\fi%
+			\fi
+			\fi
+			\else
+			\ifnum##2=45
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMquartertostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMquartertostringONE\space}%
+				{\DTMquartertostringTHREE\space}%
+			}%
+			\else
+			\ifnum##2=59\DTMoneminutestring\space\else\protect\printnumeroinparole{\numexpr60-##2}\fi
+			\ifnum##2=59 
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{12}}or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutetostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMminutetostringONE\space}%
+				{\DTMminutetostringTHREE\space}%
+			}%
+			\else\space
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}or test {\ifnumcomp{##1}{=}{12}}}%
+			{\DTMminutestostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMminutestostringONE\space}%
+				{\DTMminutestostringTHREE\space}%	
+			}%
+			\fi
+			\fi
+			\ifnum##1>12
+			\ifnum##1=24
+			\DTMoneatnightstring%
+			\else
+			\ifnum##1=23\DTMitalianmidnight\else\protect\printnumeroinparole{\numexpr##1-11}%
+			\fi
+			\fi
+			\else
+			\ifnum##1=12\DTMoneatnightstring\space\DTMitafternoonstring%
+			\else
+			\ifnum##1=0\DTMoneatnightstring%
+			\else%
+			\ifnum##1=11\DTMitaliannoon\else\protect\printnumeroinparole{\numexpr##1+1}\fi
+			\fi%
+			\fi
+			\fi
+			\fi
+			\fi
+			\ifnum##1>11
+			\ifnum##1=23
+			\ifnum##2<31
+			\space\DTMitafternoonstring%
+			\fi
+			\else
+			\ifnum##1=24
+			\ifnum##2>30
+			\space\DTMitmorningstring%
+			\fi
+			\else
+			\ifnum##1=12\space\else\space\DTMitafternoonstring\fi
+			\fi
+			\fi
+			\else
+			\ifnum##1>0
+			\ifnum##1=11\else\space\DTMitmorningstring\fi
+			\else
+			\ifnum##2>30
+			\space\DTMitmorningstring
+			\fi
+			\fi
+			\fi
+		}%
+	}%
+}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\DTMnewdatestyle{it-fulltext-twenty-four}{%
+	\renewcommand*\DTMdisplaydate[4]{%
+		\ifDTMshowdow
+		\ifnum##4>-1
+		\DTMitalianweekdayname{##4}\space%
+		\fi
+		\fi
+		\ifnum##3=1\DTMitthefirstoneofthemonth\space\DTMitalianmonthname{##2}%
+		\DTMitfulltextmonthyearsep\protect\printnumeroinparole{##1}\space%
+		\else\protect\printnumeroinparole{##3}\space\DTMitalianmonthname{##2}%
+		\DTMitfulltextmonthyearsep\protect\printnumeroinparole{##1}\fi%
+	}%
+}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\DTMsetdatestyle{it-fulltext-twenty-four}
+\DTMnewtimestyle{it-fulltext-twenty-four}{%
+	\renewcommand\DTMdisplaytime[3]{%
+		\ifboolexpr
+		{test {\ifnumequal{##2}{0}} and (test {\ifnumequal{##1}{0}}
+			or test {\ifnumequal{##1}{12}}
+			or test {\ifnumequal{##1}{24}}
+			)
+		}%
+		{%
+			\ifnum##1=12\DTMitaliannoon\else\DTMitalianmidnight
+			\fi
+		}%
+		{%
+			\ifnum##2=0
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{1}} or test {\ifnumcomp{##1}{=}{13}}}
+			{\DTMoneatnightstring\DTMitoclockstring}%
+			{\ifnum##1>12\protect\printnumeroinparole{\numexpr##1-12}\space\DTMitoclockstring\else
+				\protect\printnumeroinparole{##1}\space\DTMitoclockstring\fi}
+			\else
+			\ifnum##2<31
+			\ifnum##2=15
+			\ifnum##1=1\DTMquarterpaststringTWO\else
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMquarterpaststringONE\space}%
+			{\DTMquarterpaststringTHREE\space}%
+			\fi%
+			\else
+			\ifnum##2=30
+			\ifnum##1=1\DTMhalfpaststringTWO%
+			\else%
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}} or test {\ifnumcomp{##1}{=}{12}}}
+			{\DTMhalfpaststringONE\space}%
+			{\DTMhalfpaststringTHREE\space}%
+			\fi
+			\else
+			\ifnum##2=1\DTMoneminutestring\space\else\protect\printnumeroinparole{##2}\space
+			\fi
+			\ifnum##2=1
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutepaststringONE\space}%one
+			{\ifnum##1=1\DTMminutepaststringTWO\else\DTMminutepaststringTHREE\space\fi}%
+			\else
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{12}} or test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutespaststringONE\space}%THREE
+			{\ifnum##1=1\DTMminutespaststringTWO\else\DTMminutespaststringTHREE\space\fi}%
+			\fi%
+			\fi%
+			\fi%
+			\ifnum##1>12
+			\ifnum##1=24\DTMitalianmidnight\else\protect\printnumeroinparole{##1}%
+			\fi%
+			\else
+			\ifnum##1=0
+			\DTMitalianmidnight
+			\else
+			\ifnum##1=1\DTMoneatnightstring\else\ifnum##1=12\DTMitaliannoon\else\protect\printnumeroinparole{##1}\fi\fi%
+			\fi
+			\fi
+			\else
+			\ifnum##2=45%
+			\ifboolexpr{test {\ifnumcomp{##1}{=}{0}}or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMquartertostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMquartertostringONE\space}%	
+				{\DTMquartertostringTHREE\space}%
+			}%
+			\else
+			\ifnum##2=59\DTMoneminutestring\space\else\protect\printnumeroinparole{\numexpr60-##2}\space\fi
+			\ifnum##2=59
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutetostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMminutetostringONE\space}%
+				{\DTMminutetostringTHREE\space}%
+			}%
+			\else
+			\ifboolexpr{ test {\ifnumcomp{##1}{=}{0}} or test {\ifnumcomp{##1}{=}{24}}}
+			{\DTMminutestostringTWO}%
+			{\ifboolexpr{ test {\ifnumcomp{##1}{=}{11}} or test {\ifnumcomp{##1}{=}{23}}}
+				{\DTMminutestostringONE\space}%
+				{\DTMminutestostringTHREE\space}%	
+			}%
+			\fi
+			\fi
+			\ifnum##1>12
+			\ifnum##1=24
+			\DTMoneatnightstring%
+			\else
+			\ifnum##1=23
+			\DTMitalianmidnight
+			\else
+			\protect\printnumeroinparole{##1}%
+			\fi
+			\fi
+			\else
+			\ifnum##1=12\protect\printnumeroinparole{\numexpr##1+1}
+			\else
+			\ifnum##1=0\DTMoneatnightstring%
+			\else
+			\ifnum##1=11\DTMitaliannoon\else\protect\printnumeroinparole{\numexpr##1+1}\fi
+			\fi%
+			\fi
+			\fi
+			\fi
+			\fi
+		}%
+	}%
+}%
+%    \end{macrocode}
+
+
+
+
+%\iffalse
+%    \begin{macrocode}
+%</datetime2-it-fulltext.sty>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%<*datetime2-it-fulltext-ascii.ldf>
+%    \end{macrocode}
+%\fi
+%    \begin{macrocode}
+\ProvidesDateTimeModule{it-fulltext-ascii}[2015/05/01 v1.0]
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\DTMitoclockstring}{in punto}
+\newcommand*{\DTMoneminutestring}{un}
+\newcommand*{\DTMoneatnightstring}{una}
+\newcommand*{\DTMitthefirstoneofthemonth}{primo}
+\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
+\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect'}
+\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
+\newcommand*{\DTMminutepaststringONE}{minuto dopo}
+\newcommand*{\DTMminutepaststringTWO}{minuto dopo l\protect'}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
+\newcommand*{\DTMminutespaststringONE}{minuti dopo}
+\newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect'}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
+\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect'}
+\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
+\newcommand*{\DTMquartertostringONE}{un quarto a}
+\newcommand*{\DTMquartertostringTWO}{un quarto all\protect'}
+\newcommand*{\DTMquartertostringTHREE}{un quarto alle}
+\newcommand*{\DTMminutetostringONE}{minuto a}
+\newcommand*{\DTMminutetostringTWO}{minuto all\protect'}
+\newcommand*{\DTMminutetostringTHREE}{minuto alle}
+\newcommand*{\DTMminutestostringONE}{minuti a}
+\newcommand*{\DTMminutestostringTWO}{minuti all\protect'}
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMitmorningstring}{del mattino}
+\newcommand*{\DTMitafternoonstring}{del pomeriggio}
+%    \end{macrocode}
+
+%\iffalse
+%    \begin{macrocode}
+%</datetime2-it-fulltext-ascii.ldf>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%<*datetime2-it-fulltext-utf8.ldf>
+%    \end{macrocode}
+%\fi
+%    \begin{macrocode}
+\ProvidesDateTimeModule{it-fulltext-utf8}[2015/05/01 v1.0]
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\DTMitoclockstring}{in punto}
+\newcommand*{\DTMoneminutestring}{un}
+\newcommand*{\DTMoneatnightstring}{una}
+\newcommand*{\DTMitthefirstoneofthemonth}{primo}
+\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
+\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l'}
+\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
+\newcommand*{\DTMminutepaststringONE}{minuto dopo}
+\newcommand*{\DTMminutepaststringTWO}{minuto dopo l'}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
+\newcommand*{\DTMminutespaststringONE}{minuti dopo}
+\newcommand*{\DTMminutespaststringTWO}{minuti dopo l'}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
+\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l'}
+\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
+\newcommand*{\DTMquartertostringONE}{un quarto a}
+\newcommand*{\DTMquartertostringTWO}{un quarto all'}
+\newcommand*{\DTMquartertostringTHREE}{un quarto alle}
+\newcommand*{\DTMminutetostringONE}{minuto a}
+\newcommand*{\DTMminutetostringTWO}{minuto all'}
+\newcommand*{\DTMminutetostringTHREE}{minuto alle}
+\newcommand*{\DTMminutestostringONE}{minuti a}
+\newcommand*{\DTMminutestostringTWO}{minuti all'}
+\newcommand*{\DTMminutestostringTHREE}{minuti alle}
+\newcommand*{\DTMitmorningstring}{del mattino}
+\newcommand*{\DTMitafternoonstring}{del pomeriggio}
+%    \end{macrocode}%\iffalse
+%    \begin{macrocode}
+%</datetime2-it-fulltext-utf8.ldf>
+%    \end{macrocode}
+%\fi
+%\Finale
+\endinput

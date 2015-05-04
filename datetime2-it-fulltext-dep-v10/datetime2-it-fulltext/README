@@ -1,0 +1,79 @@
+Italian Fulltext Language Module for datetime2 Package
+
+Author: CLaudio Duchi(active)
+
+Mantainer: CLaudio Duchi
+
+Licence: LPPL
+
+Required Packages: datetime2, tracklang , itnumpar
+
+This module is maintained. I
+
+Example usage:
+\documentclass[italian]{article}
+\usepackage{ifpdf,ifxetex} 
+\ifpdf
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\else
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{italian}
+\fi 
+\usepackage[showdow,useregional]{datetime2-it-fulltext}
+
+\begin{document}
+\section{Date}
+
+\begin{description}
+\item[it-fulltext:]
+\DTMsetdatestyle{it-fulltext}
+\today.
+\end{description}
+
+\section{Time}
+\subsection{it-fulltext}
+\DTMsettimestyle{it-fulltext}
+Time: \DTMcurrenttime.
+
+0.00:  \DTMdisplaytime{0}{0}{0}.
+
+0.01:   \DTMdisplaytime{0}{1}{0}. 
+
+0.15:   \DTMdisplaytime{0}{15}{0}. 
+
+0.29:   \DTMdisplaytime{0}{29}{0}. 
+
+0.30:   \DTMdisplaytime{0}{30}{0}.
+
+0.31:   \DTMdisplaytime{0}{31}{0}.
+
+0.44:   \DTMdisplaytime{0}{44}{0}.
+
+0.45:   \DTMdisplaytime{0}{45}{0}.
+
+0.46:   \DTMdisplaytime{0}{46}{0}.
+
+\end{document}
+
+INSTALLATION
+============
+
+latex datetime2-italian.ins
+
+Move all *.ldf *.sty files to
+TEXMF/tex/latex/datetime2-contrib/datetime2-it-fulltext/
+
+Documentation:
+
+pdflatex datetime2-italian-it-fulltext.dtx
+
+Move datetime2-it-fulltext.pdf and README to
+TEXMF/doc/latex/datetime2-contrib/datetime2-italian-it-fulltext/
+
+This material is subject to the LaTeX Project Public License.
+See http://www.ctan.org/license/lppl1.3 for the details of that
+license.
+
