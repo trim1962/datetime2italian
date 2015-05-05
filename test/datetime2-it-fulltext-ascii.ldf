@@ -2,7 +2,9 @@
 
 \newcommand*{\DTMitsecondstring}{secondo}
 \newcommand*{\DTMitsecondsstring}{secondi}
+\newcommand*{\DTMitminutesstring}{minuti}
 \newcommand*{\DTMitsecondsep}{e}
+\newcommand*{\DTMitminutessep}{,\space}
 \newcommand*{\DTMitsecondsepTWO}{a}
 \newcommand*{\DTMitsep}{all'}
 \newcommand*{\DTMitsepTWO}{alle}
@@ -10,8 +12,8 @@
 \newcommand*{\DTMitpoststringONE}{dopo}
 \newcommand*{\DTMitpoststringTWO}{dopo l'}
 \newcommand*{\DTMitpoststringTHREE}{dopo le}
-
-
+\newcommand*{\DTMitoneminutestring}{un minuto}
+\newcommand*{\DTMitzerominutsestring}{zero minuti}
 
 \newcommand*{\DTMitoclockstring}{in punto}
 \newcommand*{\DTMoneminutestring}{un}
