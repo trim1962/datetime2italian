@@ -6,11 +6,11 @@
 \newcommand*{\DTMitsecondsep}{e}
 \newcommand*{\DTMitminutessep}{,\space}
 \newcommand*{\DTMitsecondsepTWO}{a}
-\newcommand*{\DTMitsep}{all\protect\‘}
+\newcommand*{\DTMitsep}{all‘}
 \newcommand*{\DTMitsepTWO}{alle}
 \newcommand*{\DTMitonesecondstring}{un}
 \newcommand*{\DTMitpoststringONE}{dopo}
-\newcommand*{\DTMitpoststringTWO}{dopo l\protect\‘}
+\newcommand*{\DTMitpoststringTWO}{dopo l‘}
 \newcommand*{\DTMitpoststringTHREE}{dopo le}
 \newcommand*{\DTMitoneminutestring}{un minuto}
 \newcommand*{\DTMitzerominutsestring}{zero minuti}
@@ -23,35 +23,35 @@
 
 \newcommand*{\DTMquarterpaststringZERO}{quindici minuti e}
 \newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
-\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect\‘}
+\newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l‘}
 \newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
 
 \newcommand*{\DTMminutepaststringONE}{minuto dopo}
-\newcommand*{\DTMminutepaststringTWO}{minuto dopo l\protect\‘}
+\newcommand*{\DTMminutepaststringTWO}{minuto dopo l‘}
 \newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
 
 \newcommand*{\DTMminutespaststringONE}{minuti dopo}
-\newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect\‘}
+\newcommand*{\DTMminutespaststringTWO}{minuti dopo l‘}
 \newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
 
 \newcommand*{\DTMhalfstringZERO}{trenta minuti e}
 \newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
-\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect\‘}
+\newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l‘}
 \newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
 
 \newcommand*{\DTMquartertostringZERO}{un quarto e}
 \newcommand*{\DTMquartertostringONE}{un quarto a}
-\newcommand*{\DTMquartertostringTWO}{un quarto all\protect\‘}
+\newcommand*{\DTMquartertostringTWO}{un quarto all‘}
 \newcommand*{\DTMquartertostringTHREE}{un quarto alle}
 
 \newcommand*{\DTMminutetostringZERO}{minuto e}
 \newcommand*{\DTMminutetostringONE}{minuto a}
-\newcommand*{\DTMminutetostringTWO}{minuto all\protect\‘}
+\newcommand*{\DTMminutetostringTWO}{minuto all‘}
 \newcommand*{\DTMminutetostringTHREE}{minuto alle}
 
 \newcommand*{\DTMminutesstringZERO}{minuti e}
 \newcommand*{\DTMminutestostringONE}{minuti a}
-\newcommand*{\DTMminutestostringTWO}{minuti all\protect\‘}
+\newcommand*{\DTMminutestostringTWO}{minuti all‘}
 \newcommand*{\DTMminutestostringTHREE}{minuti alle}
 
 

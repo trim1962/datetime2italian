@@ -2,8 +2,8 @@
 
 \newcommand*{\DTMitsecondstring}{secondo}
 \newcommand*{\DTMitsecondsstring}{secondi}
-\newcommand*{\DTMitminutesstring}{minuti}
-\newcommand*{\DTMitsecondsep}{e}
+\newcommand*{\DTMitminutesstring}{minuti\space}
+\newcommand*{\DTMitsecondsep}{e\space}
 \newcommand*{\DTMitminutessep}{,\space}
 \newcommand*{\DTMitsecondsepTWO}{a}
 \newcommand*{\DTMitsep}{all\protect‘}
@@ -11,45 +11,45 @@
 \newcommand*{\DTMitonesecondstring}{un}
 \newcommand*{\DTMitpoststringONE}{dopo}
 \newcommand*{\DTMitpoststringTWO}{dopo l\protect‘}
-\newcommand*{\DTMitpoststringTHREE}{dopo le}
-\newcommand*{\DTMitoneminutestring}{un minuto}
-\newcommand*{\DTMitzerominutsestring}{zero minuti}
+\newcommand*{\DTMitpoststringTHREE}{dopo le\space}
+\newcommand*{\DTMitoneminutestring}{un minuto\space}
+\newcommand*{\DTMitzerominutsestring}{zero minuti\space}
 
 \newcommand*{\DTMitoclockstring}{in punto}
-\newcommand*{\DTMoneminutestring}{un}
-\newcommand*{\DTMoneatnightstring}{una}
+\newcommand*{\DTMoneminutestring}{un\space}
+\newcommand*{\DTMoneatnightstring}{una\space}
 
 \newcommand*{\DTMitthefirstoneofthemonth}{primo}
 
-\newcommand*{\DTMquarterpaststringZERO}{quindici minuti e}
-\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo}
+\newcommand*{\DTMquarterpaststringZERO}{quindici minuti e\space}
+\newcommand*{\DTMquarterpaststringONE}{quindici minuti dopo\space}
 \newcommand*{\DTMquarterpaststringTWO}{quindici minuti dopo l\protect‘}
-\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le}
+\newcommand*{\DTMquarterpaststringTHREE}{quindici minuti dopo le\space}
 
-\newcommand*{\DTMminutepaststringONE}{minuto dopo}
+\newcommand*{\DTMminutepaststringONE}{minuto dopo\space}
 \newcommand*{\DTMminutepaststringTWO}{minuto dopo l\protect‘}
-\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le}
+\newcommand*{\DTMminutepaststringTHREE}{minuto dopo le\space}
 
-\newcommand*{\DTMminutespaststringONE}{minuti dopo}
+\newcommand*{\DTMminutespaststringONE}{minuti dopo\space}
 \newcommand*{\DTMminutespaststringTWO}{minuti dopo l\protect‘}
-\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le}
+\newcommand*{\DTMminutespaststringTHREE}{minuti dopo le\space}
 
-\newcommand*{\DTMhalfstringZERO}{trenta minuti e}
-\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo}
+\newcommand*{\DTMhalfstringZERO}{trenta minuti e\space}
+\newcommand*{\DTMhalfpaststringONE}{trenta minuti dopo\space}
 \newcommand*{\DTMhalfpaststringTWO}{trenta minuti dopo l\protect‘}
-\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le}
+\newcommand*{\DTMhalfpaststringTHREE}{trenta minuti dopo le\space}
 
-\newcommand*{\DTMquartertostringZERO}{un quarto e}
-\newcommand*{\DTMquartertostringONE}{un quarto a}
+\newcommand*{\DTMquartertostringZERO}{un quarto e\space}
+\newcommand*{\DTMquartertostringONE}{un quarto a\space}
 \newcommand*{\DTMquartertostringTWO}{un quarto all\protect‘}
-\newcommand*{\DTMquartertostringTHREE}{un quarto alle}
+\newcommand*{\DTMquartertostringTHREE}{un quarto alle\space}
 
-\newcommand*{\DTMminutetostringZERO}{minuto e}
+\newcommand*{\DTMminutetostringZERO}{minuto e\space}
 \newcommand*{\DTMminutetostringONE}{minuto a}
 \newcommand*{\DTMminutetostringTWO}{minuto all\protect‘}
 \newcommand*{\DTMminutetostringTHREE}{minuto alle}
 
-\newcommand*{\DTMminutesstringZERO}{minuti e}
+\newcommand*{\DTMminutesstringZERO}{minuti e\space}
 \newcommand*{\DTMminutestostringONE}{minuti a}
 \newcommand*{\DTMminutestostringTWO}{minuti all\protect‘}
 \newcommand*{\DTMminutestostringTHREE}{minuti alle}
