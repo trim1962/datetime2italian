@@ -17,7 +17,7 @@
 
 \newcommand*{\DTMitoclockstring}{in punto}
 \newcommand*{\DTMoneminutestring}{un\space}
-\newcommand*{\DTMoneatnightstring}{una\space}
+\newcommand*{\DTMoneatnightstring}{una}
 
 \newcommand*{\DTMitthefirstoneofthemonth}{primo}
 
