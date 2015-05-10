@@ -18,9 +18,100 @@
 %\RequireDateTimeModule{italian}
 %\undef\CurrentTrackedDialect
 \newcommand*\DTMitfulltextmonthyearsep{,\space}
+\newcommand*{\DTMlatinoMensis}[1]{%
+	\ifcase#1
+	\or
+	Ianuarius%
+	\or
+	Februarius%
+	\or
+	Martius%
+	\or
+	Aprilis%
+	\or
+	Maius%
+	\or
+	Iunius%
+	\or
+	Iulius%
+	\or
+	Augustus%
+	\or
+	Septemper%
+	\or
+	October%
+	\or
+	November%
+	\or
+	December%
+	\fi
+}
+\newcommand*{\DTMlatinoNonae}[1]{%
+	\ifcase#1
+	\or
+	5%
+	\or
+	5%
+	\or
+	7%
+	\or
+	5%
+	\or
+	7%
+	\or
+	5%
+	\or
+	7%
+	\or
+	5%
+	\or
+	5%
+	\or
+	7%
+	\or
+	5%
+	\or
+	5%
+	\fi
+}
+\newcommand*{\DTMlatinoIdus}[1]{%
+	\ifcase#1
+	\or
+	13%Ianuarius%
+	\or
+	13%Februarius%
+	\or
+	15%Martius%
+	\or
+	13%Aprilis%
+	\or
+	15%Maius%
+	\or
+	13%Iunius%
+	\or
+	15%Iulius%
+	\or
+	13%Augustus%
+	\or
+	13%Septemper%
+	\or
+	15%October%
+	\or
+	13%November%
+	\or
+	13%December%
+	\fi
+}
+
+
+
 
 \DTMnewdatestyle{latino-test}{%
 \renewcommand*\DTMdisplaydate[4]{%
+##1,##2,##3,##4
+\DTMlatinoMensis{##2}
+\DTMlatinoNonae{##2}
+\DTMlatinoIdus{##2}
 %\ifDTMshowdow
 %\ifnum##4>-1
 %\DTMitalianweekdayname{##4}\space%
