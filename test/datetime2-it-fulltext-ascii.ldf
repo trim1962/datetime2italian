@@ -2,7 +2,7 @@
 
 \newcommand*{\DTMitsecondstring}{secondo}
 \newcommand*{\DTMitsecondsstring}{secondi}
-\newcommand*{\DTMitminutesstring}{minuti\space}
+\newcommand*{\DTMitminutesstring}{minuti}
 \newcommand*{\DTMitsecondsep}{e\space}
 \newcommand*{\DTMitminutessep}{,\space}
 \newcommand*{\DTMitsecondsepTWO}{a}
