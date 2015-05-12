@@ -274,29 +274,29 @@ idibus decembribus%
 \newcommand*{\DTMlatinoPridieIdusNome}[1]{%
 	\ifcase#1
 \or
-pridie idus ianuarias%
+pridie Idus ianuarias%
 \or
-pridie idus februarias%
+pridie Idus februarias%
 \or
-pridie idus martias%
+pridie Idus martias%
 \or
-pridie idus apriles
+pridie Idus apriles
+\or 
+pridie Idus maias%
 \or
-pridie idus maias%
+pridie Idus iunias%
 \or
-pridie idus iunias%
+pridie Idus quintiles%
 \or
-pridie idus quintiles%
+pridie Idus sextiles%
 \or
-pridie idus sextiles%
+pridie Idus septembres%
 \or
-pridie idus septembres%
+pridie Idus octobres%
 \or
-pridie idus octobres%
+pridie Idus nouembres%
 \or
-pridie idus nouembres%
-\or
-pridie idus decembres
+pridie Idus decembres
 	\fi
 }
 \newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
@@ -401,7 +401,7 @@ ante diem undevicesimum%
 
 \DTMnewdatestyle{latino-test}{%
 \renewcommand*\DTMdisplaydate[4]{%
-\ifnum##3=1\DTMlatinoKalendis{##2}\fi
+\ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
 \ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoPridieNonaeNome{##2}\fi
 \ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi
 \ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi
@@ -416,12 +416,12 @@ ante diem undevicesimum%
 	test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}} 
 	and
 	test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}
-}{\number\numexpr(\number\DTMlatinoIdus{##2}-\number##3+1)\relax}{}
+}{\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoIdus{##2}-\number##3+1)\relax}\space Idus}{}
 \ifboolexpr{%
 	test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}} 
 	and
 	test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}
-}{\number\numexpr(\number\DTMlatinoMensisDurata{##2}-\number##3+2)\relax}{}
+}{\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoMensisDurata{##2}-\number##3+2)\relax}\space Kalendas}{}
 }%
 }%
 
