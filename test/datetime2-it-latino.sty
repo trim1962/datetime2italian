@@ -355,7 +355,48 @@ kalendis nouembribus%
 kalendis decembribus%
 	\fi
 }
-
+\newcommand*{\DTMlatinoAnteDiem}[1]{%
+	\ifcase#1
+	\or
+1%
+\or
+2%
+\or
+ante diem tertium%
+\or
+ante diem quartum%
+\or
+ante diem quintum%
+\or
+ante diem sextum%
+\or
+ante diem septimum%
+\or
+ante diem octavum%
+\or
+ante diem nonum%
+\or
+ante diem decimum%
+\or
+ante diem undecimum%
+\or
+ante diem duodecimum%
+\or
+ante diem tertium decimum%
+\or
+ante diem quartum decimum%
+\or
+ante diem quintum decimum%
+\or
+ante diem sextum decimum%
+\or
+ante diem septimum decimum%
+\or
+ante diem duodevicesimum%
+\or
+ante diem undevicesimum%
+	\fi
+}
 
 
 \DTMnewdatestyle{latino-test}{%
@@ -370,17 +411,17 @@ kalendis decembribus%
 	test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}} 
 	and
 	test{\ifnumgreater{##3}{1}}
-}{\number\numexpr(\number\DTMlatinoNonae{##2}-\number##3)\relax}{}
+}{\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoNonae{##2}-\number##3+1)\relax}\space Nonas}{}
 \ifboolexpr{%
 	test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}} 
 	and
 	test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}
-}{\number\numexpr(\number\DTMlatinoIdus{##2}-\number##3)\relax}{}
+}{\number\numexpr(\number\DTMlatinoIdus{##2}-\number##3+1)\relax}{}
 \ifboolexpr{%
 	test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}} 
 	and
 	test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}
-}{YES3}{}
+}{\number\numexpr(\number\DTMlatinoMensisDurata{##2}-\number##3+2)\relax}{}
 }%
 }%
 
