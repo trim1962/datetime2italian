@@ -416,9 +416,9 @@ ante diem undevicesimum%
 	\or
 	ante diem quartum Kalendas Martias%
 	\or
-    ante diem quintum Kalendas Martias%
-    \or
-    ante diem bis sextum Kalendas Martias%
+ ante diem quintum Kalendas Martias%
+ \or
+ ante diem bis sextum Kalendas Martias%
 	\or
 	ante diem sextum%
 	\or
@@ -451,114 +451,104 @@ ante diem undevicesimum%
 }
 \newcommand*{\DTMlatinoHora}[1]{%
 	\ifcase#1
-	tertia vigilia
+	tertia vigilia%
 	\or
-	tertia vigilia
+	tertia vigilia%
 	\or
-	tertia vigilia
+	tertia vigilia%
 	\or
-	tertia vigilia
+	tertia vigilia%
 	\or
-	quarta vigilia
+	quarta vigilia%
 	\or
-	quarta vigilia
+	quarta vigilia%
 	\or
-	quarta vigilia
+	quarta vigilia%
 	\or
-	hora prima
+	hora prima%
 	\or
-	hora secunda
+	hora secunda%
 	\or
-	hora tertia
+	hora tertia%
 	\or
-	hora quarta
+	hora quarta%
 	\or
-	hora quinta
+	hora quinta%
 	\or
-	hora sexta
+	hora sexta%
 	\or
-	hora septima
+	hora septima%
 	\or
-	hora octava
+	hora octava%
 	\or
-	hora nona
+	hora nona%
 	\or
-	hora decima
+	hora decima%
 	\or
-	hora undecima
+	hora undecima%
 	\or
-	hora duodecima
+	hora duodecima%
 	\or
-	prima vigilia
+	prima vigilia%
 	\or
-	prima vigilia
+	prima vigilia%
 	\or
-	secunda vigilia
+	secunda vigilia%
 	\or
-	secunda vigilia
+	secunda vigilia%
 	\or
-	secunda vigilia
+	secunda vigilia%
 	\or
-	secunda vigilia  
+	secunda vigilia% 
 	\fi
 }
 \newcommand{\DTMlatinoAnteDiemuno}[2]{%
-\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoNonae{#1}-\number#2+1)\relax}\space\DTMlatinoPridieNonaeNome{#1}}
+\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoNonae{#1}-\number#2+1)\relax}\space\DTMlatinoPridieNonaeNome{#1}}%
 \newcommand{\DTMlatinoAnteDiemdue}[2]{%
-\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoIdus{#1}-\number#2+1)\relax}\space\DTMlatinoPridieIdusNome{#1}}
+\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoIdus{#1}-\number#2+1)\relax}\space\DTMlatinoPridieIdusNome{#1}}%
 \newcommand{\DTMlatinoAnteDiemtre}[2]{%
-\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoMensisDurata{#1}-\number#2+2)\relax}\space\DTMlatinoPridieKalendasNome{#1}}
+\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoMensisDurata{#1}-\number#2+2)\relax}\space\DTMlatinoPridieKalendasNome{#1}}%
 \newcommand{\DTMlatinoAnteDiemquattro}[1]{%
-\DTMlatinoAnteDiemBis{\number\numexpr(29-\number#1+2)\relax}}
+\DTMlatinoAnteDiemBis{\number\numexpr(29-\number#1+2)\relax}}%
 \DTMnewdatestyle{latino-Kalendae}{%
 \renewcommand*\DTMdisplaydate[4]{%
-\testbisestile{##1}
+\testbisestile{##1}%
 \ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
-\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi
-\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi
-\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi
+\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
+\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
+\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
 \ifboolexpr{
 	test {\ifnumcomp{##2}{=}{2}}
-	and  test {\iftoggle{bisestile}}}
-{\ifnum##3=29 pridie Kalendas Martias\fi}
-{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}
-\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi
+	and test {\iftoggle{bisestile}}}
+{\ifnum##3=29 pridie Kalendas Martias\fi}%
+{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}%
+\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi%
 \ifboolexpr{%
 	test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}}%
 	and
-	test{\ifnumgreater{##3}{1}}
-}{\DTMlatinoAnteDiemuno{##2}{##3}}{}%
+	test{\ifnumgreater{##3}{1}}}%
+{\DTMlatinoAnteDiemuno{##2}{##3}}{}%
 \ifboolexpr{%
 	test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}}%
 	and
-	test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}
-}{\DTMlatinoAnteDiemdue{##2}{##3}}{}%
-%
-\ifboolexpr{
+	test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}}%
+{\DTMlatinoAnteDiemdue{##2}{##3}}{}%%
+\ifboolexpr{%
 	test {\ifnumcomp{##2}{=}{2}}
-	and  test {\iftoggle{bisestile}}}
-{\ifnum##3<29\DTMlatinoAnteDiemquattro{##3}}
+	and test {\iftoggle{bisestile}}}
+{\ifnum##3<29\DTMlatinoAnteDiemquattro{##3}}%
 {\ifboolexpr{%
 		test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}}%
 		and
-		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}
-	}{\DTMlatinoAnteDiemtre{##2}{##3}}{}
-	}
-%\ifboolexpr{%
-%	test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}}%
-%	and
-%	test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}
-%}{
-%\testbisestile{##1}
-%\ifboolexpr{
-%	test {\ifnumcomp{##2}{=}{2}}
-%	and  test {\iftoggle{bisestile}} }  {66\DTMlatinoAnteDiemquattro{##3}}{\DTMlatinoAnteDiemtre{##2}{##3}}
-%}{}%
+		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
+{\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
 }%
 }%
+
 \DTMnewtimestyle{latino-Hora}{%
+	\DTMshowzonefalse
 	\renewcommand\DTMdisplaytime[3]{%
-	\DTMlatinoHora{##1}
+	\DTMlatinoHora{##1}%
 	}%
 }%
 \newcommand*{\DTMlatinozonemaps}{%
