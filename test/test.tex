@@ -1,0 +1,39 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{etoolbox}
+\newcounter{countA}
+\newtoggle{bisestile}
+\togglefalse{bisestile}
+\newcommand{\testbisestile}[1]{
+	\setcounter{countA}{#1}
+	\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}{\toggletrue{bisestile}}{\togglefalse{bisestile}}
+	}
+\newcommand{\testbisestiledue}[1]{
+	\setcounter{countA}{#1}
+	\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}{1}{0}
+}
+
+
+\newcommand{\testdue}[2]{#2
+	\testbisestile{#1}
+	\ifboolexpr{
+		test {\ifnumcomp{#2}{=}{2}}
+		and  test {\iftoggle{bisestile}} }  {DDDbisestile}{non bisestile}
+	}
+\newcommand{\testtre}[2]{#2
+	\ifboolexpr{
+		test {\ifnumcomp{#2}{=}{2}}
+		and  test {\ifnumcomp{\value{\testbisestiledue{#1}}}{=}{2}} }  {DDDbisestile}{non bisestile}
+}
+\begin{document}
+	
+	
+	
+	\testdue{2008}{2}\testbisestiledue{2008}
+	
+	\testdue{2009}{2}\testbisestiledue{2009}
+	
+	\testtre{2008}{2}
+	
+	\testtre{2009}{2}
+\end{document}

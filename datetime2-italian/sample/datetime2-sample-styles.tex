@@ -12,13 +12,14 @@
 \begin{document}
 \DTMsavetimestamp{mydate}{2015-04-01T08:05:00+01:00}
 \DTMsavetimestamp{mydate2}{2015-04-01T08:13:45+01:00}
+\DTMsavetimestamp{mydate3}{2009-02-29T08:13:45+01:00}
 
-Default: \DTMnow. \DTMuse{mydate}.
+Default: \DTMnow. \DTMuse{mydate3}.
 \typeout{Date-Time (default): \DTMnow. \DTMuse{mydate}.}
 
 \DTMsetstyle{iso}
 
-ISO: \DTMnow. \DTMuse{mydate}.
+ISO: \DTMnow. \DTMuse{mydate3}.
 \typeout{Date-Time (iso): \DTMnow. \DTMuse{mydate}.}
 
 \DTMsetstyle{pdf}
@@ -79,7 +80,7 @@ Testing time styles.
 \DTMsettimestyle{hmmss}
 
 hmmss: \DTMcurrenttime. \DTMusetime{mydate}.
-\DTMusetime{mydate2}.
+\DTMusetime{mydate3}.
 \DTMusetime{noon}.
 \DTMusetime{midnight1}.
 \DTMusetime{midnight2}.
@@ -129,7 +130,7 @@ ampm: \DTMcurrenttime.
 }
 
 %\renewcommand*{\DTMitalianampmfmt}[1]{\protect\textsc{#1}}
-\DTMsettimestyle{italian-twenty-four}
+%\DTMsettimestyle{italian-twenty-four}
 \DTMcurrenttime. 
 \DTMusetime{mydate}.
 \DTMusetime{mydate2}.
