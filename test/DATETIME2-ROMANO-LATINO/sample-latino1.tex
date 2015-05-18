@@ -1,0 +1,32 @@
+\documentclass[italian]{article}
+\usepackage{ifpdf,ifxetex} 
+\ifpdf
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\else
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{italian}
+\fi 
+\usepackage[showdow,useregional]{datetime2-romano-latino}
+%\newbool{bisestile}
+%\boolfalse{bisestile}
+%\newcommand{\testbisestile}[1]{
+%\newcounter{countA}
+%\setcounter{countA}{#1}
+%\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}{\booltrue{bisestile}}{\boolfalse{bisestile}}}
+
+\listfiles
+\begin{document}
+	\testbisestile{2009}
+%	\ifbool{bisestile}{vero}{falso}
+	\section{Date}
+	\
+	\subsection{latino}
+	
+	\DTMsetdatestyle{latino-Kalendae}
+	\DTMsettimestyle{latino-Hora}
+	\input{BatTestDateLat}
+	
+\end{document}
