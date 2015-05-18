@@ -420,33 +420,33 @@ ante diem undevicesimum%
  \or
  ante diem bis sextum Kalendas Martias%
 	\or
-	ante diem sextum%
+	ante diem sextum  Kalendas Martias%
 	\or
-	ante diem septimum%
+	ante diem septimum  Kalendas Martias%
 	\or
-	ante diem octavum%
+	ante diem octavum  Kalendas Martias%
 	\or
-	ante diem nonum%
+	ante diem nonum  Kalendas Martias%
 	\or
-	ante diem decimum%
+	ante diem decimum  Kalendas Martias%
 	\or
-	ante diem undecimum%
+	ante diem undecimum  Kalendas Martias%
 	\or
-	ante diem duodecimum%
+	ante diem duodecimum  Kalendas Martias%
 	\or
-	ante diem tertium decimum%
+	ante diem tertium decimum  Kalendas Martias%
 	\or
-	ante diem quartum decimum%
+	ante diem quartum decimum  Kalendas Martias%
 	\or
-	ante diem quintum decimum%
+	ante diem quintum decimum  Kalendas Martias%
 	\or
-	ante diem sextum decimum%
+	ante diem sextum decimum  Kalendas Martias%
 	\or
-	ante diem septimum decimum%
+	ante diem septimum decimum  Kalendas Martias%
 	\or
-	ante diem duodevicesimum%
+	ante diem duodevicesimum  Kalendas Martias%
 	\or
-	ante diem undevicesimum%
+	ante diem undevicesimum  Kalendas Martias%
 	\fi
 }
 \newcommand*{\DTMlatinoHora}[1]{%
@@ -536,7 +536,7 @@ ante diem undevicesimum%
 \ifboolexpr{%
 	test {\ifnumcomp{##2}{=}{2}}
 	and test {\iftoggle{bisestile}}}
-{\ifnum##3<29\DTMlatinoAnteDiemquattro{##3}}%
+{\ifnum##3<29 \DTMlatinoAnteDiemquattro{##3}}%
 {\ifboolexpr{%
 		test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}}%
 		and
