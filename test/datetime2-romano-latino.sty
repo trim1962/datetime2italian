@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{datetime2-it-latino}[2015/05/10 v1.0]
+\ProvidesPackage{datetime2-romano-latino}[2015/05/10 v1.0]
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{datetime2}}
 \ProcessOptions
 \RequirePackage{datetime2}
@@ -25,7 +25,6 @@
 	\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}{\toggletrue{bisestile}}{\togglefalse{bisestile}}
 }
 \newcommand{\DTMlatinoMensisPridie}{Pridie\space}
-\newcommand*\DTMitfulltextmonthyearsep{,\space}
 \newcommand*{\DTMlatinoMensis}[1]{%
 	\ifcase#1
 	\or
