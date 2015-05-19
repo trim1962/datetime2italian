@@ -1,25 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{romano-latino}[2015/05/10 v1.0]
-%\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{datetime2}}
-\ProcessOptions
-%\RequirePackage{datetime2}
 \RequirePackage{xspace}
 \RequirePackage[latin]{babel}
 \RequirePackage{etoolbox}
-%\RequirePackage{ifxetex,ifluatex}
-%\ifxetex
-%\RequireDateTimeModule{latino-utf8}
-%\else
-%\ifluatex
-%\RequireDateTimeModule{latino-utf8}
-%\else
-%\RequireDateTimeModule{latino-ascii}
-%\fi
-%\fi
-%\def\CurrentTrackedDialect{italian}
-%\RequireDateTimeModule{italian}
-%\undef\CurrentTrackedDialect
-
 
 \newcounter{countA}
 \newtoggle{bisestile}
@@ -28,8 +11,8 @@
 	\setcounter{countA}{#1}
 	\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}{\toggletrue{bisestile}}{\togglefalse{bisestile}}
 }
-\newcommand{\DTMlatinoMensisPridie}{Pridie\space}
-\newcommand*{\DTMlatinoMensis}[1]{%
+\newcommand{\latinoMensisPridie}{Pridie\space}
+\newcommand*{\latinoMensis}[1]{%
 	\ifcase#1
 	\or
 	Ianuarius%
@@ -57,7 +40,7 @@
 	December%
 	\fi
 }
-\newcommand*{\DTMlatinoMensisDurata}[1]{%
+\newcommand*{\latinoMensisDurata}[1]{%
 	\ifcase#1
 	\or
 	31%
@@ -85,7 +68,7 @@
 	31%
 	\fi
 }
-\newcommand*{\DTMlatinoNonae}[1]{%
+\newcommand*{\latinoNonae}[1]{%
 	\ifcase#1
 	\or
 	5%
@@ -113,7 +96,7 @@
 	5%
 	\fi
 }
-\newcommand*{\DTMlatinoNonaeNome}[1]{%
+\newcommand*{\latinoNonaeNome}[1]{%
 	\ifcase#1
 	\or
 Nonis Ianuariis%
@@ -141,7 +124,7 @@ Nonis Nouembribus%
 Nonis Decembribus%
 	\fi
 }
-\newcommand*{\DTMlatinoPridieNonae}[1]{%
+\newcommand*{\latinoPridieNonae}[1]{%
 	\ifcase#1
 	\or
 	4%
@@ -169,7 +152,7 @@ Nonis Decembribus%
 	4%
 	\fi
 }
-\newcommand*{\DTMlatinoPridieNonaeNome}[1]{%
+\newcommand*{\latinoPridieNonaeNome}[1]{%
 	\ifcase#1
 	\or
 Nonas Ianuarias%
@@ -197,7 +180,7 @@ Nonas Nouembres%
 Nonas Decembres%
 	\fi
 }
-\newcommand*{\DTMlatinoIdus}[1]{%
+\newcommand*{\latinoIdus}[1]{%
 	\ifcase#1
 	\or
 	13%Ianuarius%
@@ -225,7 +208,7 @@ Nonas Decembres%
 	13%December%
 	\fi
 }
-\newcommand*{\DTMlatinoIdusNome}[1]{%
+\newcommand*{\latinoIdusNome}[1]{%
 	\ifcase#1
 	\or
 Idibus Ianuariis%
@@ -254,7 +237,7 @@ Idibus Decembribus%
 	\fi
 }
 
-\newcommand*{\DTMlatinoPridieIdus}[1]{%
+\newcommand*{\latinoPridieIdus}[1]{%
 	\ifcase#1
 	\or
 	12%Ianuarius%
@@ -282,7 +265,7 @@ Idibus Decembribus%
 	12%December%
 	\fi
 }
-\newcommand*{\DTMlatinoPridieIdusNome}[1]{%
+\newcommand*{\latinoPridieIdusNome}[1]{%
 	\ifcase#1
 \or
 Idus Ianuarias%
@@ -310,7 +293,7 @@ Idus Nouembres%
 Idus Decembres
 	\fi
 }
-\newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
+\newcommand*{\latinoPridieKalendasNome}[1]{%
 	\ifcase#1
 \or
 Kalendas Februarias%
@@ -338,7 +321,7 @@ Kalendas Secembres%
 Kalendas Ianuarias%
 	\fi
 }
-\newcommand*{\DTMlatinoKalendis}[1]{%
+\newcommand*{\latinoKalendis}[1]{%
 	\ifcase#1
 	\or
 Kalendis Ianuariis%
@@ -366,7 +349,7 @@ Kalendis Nouembribus%
 Kalendis Decembribus%
 	\fi
 }
-\newcommand*{\DTMlatinoAnteDiem}[1]{%
+\newcommand*{\latinoAnteDiem}[1]{%
 	\ifcase#1
 	\or
 1%
@@ -408,7 +391,7 @@ ante diem duodevicesimum%
 ante diem undevicesimum%
 	\fi
 }
-\newcommand*{\DTMlatinoAnteDiemBis}[1]{%
+\newcommand*{\latinoAnteDiemBis}[1]{%
 	\ifcase#1
 	\or
 	1%
@@ -452,7 +435,7 @@ ante diem undevicesimum%
 	ante diem undevicesimum Kalendas Martias%
 	\fi
 }
-\newcommand*{\DTMlatinoHora}[1]{%
+\newcommand*{\latinoHora}[1]{%
 	\ifcase#1
 	tertia vigilia%
 	\or
@@ -505,68 +488,54 @@ ante diem undevicesimum%
 	secunda vigilia% 
 	\fi
 }
-%\newcommand{\DTMlatinoAnteDiemuno}[2]{%
-%\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoNonae{#1}-\number#2+1)\relax}\space\DTMlatinoPridieNonaeNome{#1}}%
-%\newcommand{\DTMlatinoAnteDiemdue}[2]{%
-%\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoIdus{#1}-\number#2+1)\relax}\space\DTMlatinoPridieIdusNome{#1}}%
-%\newcommand{\DTMlatinoAnteDiemtre}[2]{%
-%\DTMlatinoAnteDiem{\number\numexpr(\number\DTMlatinoMensisDurata{#1}-\number#2+2)\relax}\space\DTMlatinoPridieKalendasNome{#1}}%
-%\newcommand{\DTMlatinoAnteDiemquattro}[1]{%
-%\DTMlatinoAnteDiemBis{\number\numexpr(29-\number#1+2)\relax}}%
-%\DTMnewdatestyle{latino-Kalendae}{%
-%\renewcommand*\DTMdisplaydate[4]{%
-%\testbisestile{##1}%
-%\ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
-%\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
-%\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
-%\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
-%\ifboolexpr{
-%	test {\ifnumcomp{##2}{=}{2}}
-%	and test {\iftoggle{bisestile}}}
-%{\ifnum##3=29 pridie Kalendas Martias\fi}%
-%{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}%
-%\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi%
-%\ifboolexpr{%
-%	test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}}%
-%	and
-%	test{\ifnumgreater{##3}{1}}}%
-%{\DTMlatinoAnteDiemuno{##2}{##3}}{}%
-%\ifboolexpr{%
-%	test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}}%
-%	and
-%	test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}}%
-%{\DTMlatinoAnteDiemdue{##2}{##3}}{}%%
-%\ifboolexpr{%
-%	test {\ifnumcomp{##2}{=}{2}}
-%	and test {\iftoggle{bisestile}}}
-%{\ifboolexpr{%
-%		test {\ifnumless{##3}{29}}%
-%		and
-%		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
-%	{\DTMlatinoAnteDiemquattro{##3}}{}}%
-%{\ifboolexpr{%
-%		test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}}%
-%		and
-%		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
-%{\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
-%}%
-%}%
-%
-%\DTMnewtimestyle{latino-Hora}{%
-%	\DTMshowzonefalse
-%	\renewcommand\DTMdisplaytime[3]{%
-%	\DTMlatinoHora{##1}%
-%	}%
-%}%
-%\newcommand*{\DTMlatinozonemaps}{%
-%	\DTMdefzonemap{01}{00}{}%
-%	\DTMdefzonemap{02}{00}{}%
-%}
-\renewcommand\datelatin{\def\today{\number\day~%
-		\ifnum\number\day=1\DTMlatinoKalendis{\number\month}\fi%kalenda
-		\ifcase \month \or January\or February\or March\or April\or May\or June\or
-		July\or August\or September\or October\or November\or December\fi\space
-		\number\year}}
+
+\newcommand{\latinoAnteDiemuno}[2]{%
+\latinoAnteDiem{\number\numexpr(\number\latinoNonae{#1}-\number#2+1)\relax}\space\latinoPridieNonaeNome{#1}}%
+\newcommand{\latinoAnteDiemdue}[2]{%
+\latinoAnteDiem{\number\numexpr(\number\latinoIdus{#1}-\number#2+1)\relax}\space\latinoPridieIdusNome{#1}}%
+\newcommand{\latinoAnteDiemtre}[2]{%
+\latinoAnteDiem{\number\numexpr(\number\latinoMensisDurata{#1}-\number#2+2)\relax}\space\latinoPridieKalendasNome{#1}}%
+\newcommand{\latinoAnteDiemquattro}[1]{%
+\latinoAnteDiemBis{\number\numexpr(29-\number#1+2)\relax}}%
+
+\renewcommand\datelatin{\def\today{\number\day\space\testbisestile{\number\year}
+		\ifnum\number\day=1\latinoKalendis{\number\month}\fi%kalenda
+		\ifnum\number\day=\latinoPridieNonae{\number\month}\latinoMensisPridie\latinoPridieNonaeNome{\number\month}\fi%
+		\ifnum\number\day=\latinoNonae{\number\month}\latinoNonaeNome{\number\month}\fi%
+		\ifnum\number\day=\latinoIdus{\number\month}\latinoIdusNome{\number\month}\fi%
+\ifboolexpr{
+	test {\ifnumcomp{\number\month}{=}{2}}
+	and test {\iftoggle{bisestile}}}
+{\ifnum\number\day=29 pridie Kalendas Martias\fi}%
+{\ifnum\number\day=\latinoMensisDurata{\number\month}\latinoMensisPridie\latinoPridieKalendasNome{\number\month}\fi}%
+\ifnum\number\day=\latinoPridieIdus{\number\month}\latinoMensisPridie\latinoPridieIdusNome{\number\month}\fi%
+\ifboolexpr{%
+	test {\ifnumless{\number\day}{\latinoPridieNonae{\number\month}}}%
+	and
+	test{\ifnumgreater{\number\day}{1}}}%
+{\latinoAnteDiemuno{\number\month}{\number\day}}{}%
+\ifboolexpr{%
+	test {\ifnumless{\number\day}{\latinoPridieIdus{\number\month}}}%
+	and
+	test{\ifnumgreater{\number\day}{\latinoNonae{\number\month}}}}%
+{\latinoAnteDiemdue{\number\month}{\number\day}}{}%%
+\ifboolexpr{%
+	test {\ifnumcomp{\number\month}{=}{2}}
+	and test {\iftoggle{bisestile}}}
+{\ifboolexpr{%
+		test {\ifnumless{\number\day}{29}}%
+		and
+		test{\ifnumgreater{\number\day}{\latinoIdus{\number\month}}}}%
+	{\latinoAnteDiemquattro{\number\day}}{}}%
+{\ifboolexpr{%
+		test {\ifnumless{\number\day}{\latinoMensisDurata{\number\month}}}%
+		and
+		test{\ifnumgreater{\number\day}{\latinoIdus{\number\month}}}}%
+{\latinoAnteDiemtre{\number\month}{\number\day}}{}}%
+
+		}}
+
+
 	
 \def\data#1/#2/#3 {% Lo spazio prima della graffa è significativo
 	\day=#3\relax
