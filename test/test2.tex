@@ -1,0 +1,38 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{etoolbox}
+\usepackage{calc}
+\newcounter{countA}
+\newcounter{countM}
+
+\newcommand{\dagregorianoAgiuliano}[3]{
+	\ifnum#2>2\setcounter{countA}{#1}\setcounter{countM}{#2}\fi
+	\ifnum#2=1 \setcounter{countA}{#1-1}\setcounter{countM}{#2+12}\fi
+\ifnum#2=2 \setcounter{countA}{#1-1}\setcounter{countM}{#2+12}\fi
+
+	
+\thecountA
+
+\thecountM
+	}
+\newcommand{\confrontodate}[3]{	
+\ifboolexpr{
+(test{ \ifnumcomp{#3}{=}{15}}
+and
+test{ \ifnumcomp{#2}{=}{10}}
+and
+(test{ \ifnumcomp{#1}{=}{1582}}}	
+{date uguali}{\ifboolexpr{
+{test{ \ifnumcomp{#3}{<}{1582}}	
+and
+(test{ \ifnumcomp{#3}{=}{1582}} and test{ \ifnumcomp{#2}{<}{10}})
+or (test{ \ifnumcomp{#3}{=}{1582}} and (test{ \ifnumcomp{#2}{=}{10}}) and test{ \ifnumcomp{#3}{<}{15}}) 
+
+}{precede}{segue}
+}
+
+\begin{document}
+
+	\dagregorianoAgiuliano{2015}{2}{20}
+\confrontodate{2015}{2}{20}
+\end{document}
