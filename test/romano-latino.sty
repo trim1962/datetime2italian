@@ -498,7 +498,8 @@ ante diem undevicesimum%
 \newcommand{\latinoAnteDiemquattro}[1]{%
 \latinoAnteDiemBis{\number\numexpr(29-\number#1+2)\relax}}%
 
-\renewcommand\datelatin{\def\today{\number\day\space\testbisestile{\number\year}
+\renewcommand\datelatin{\def\today{\number\day%da togliere solo per test
+		\space\testbisestile{\number\year}
 		\ifnum\number\day=1\latinoKalendis{\number\month}\fi%kalenda
 		\ifnum\number\day=\latinoPridieNonae{\number\month}\latinoMensisPridie\latinoPridieNonaeNome{\number\month}\fi%
 		\ifnum\number\day=\latinoNonae{\number\month}\latinoNonaeNome{\number\month}\fi%
