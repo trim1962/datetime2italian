@@ -17,6 +17,9 @@
 %\def\CurrentTrackedDialect{italian}
 %\RequireDateTimeModule{italian}
 %\undef\CurrentTrackedDialect
+\newbool{compatta}
+\setbool{compatta}{false}
+\DeclareOption{compatta}{\setbool{compatta}{true}}
 \newcounter{countA}
 \newtoggle{bisestile}
 \newcommand{\testbisestile}[1]{
@@ -316,33 +319,60 @@ Idus Decembres
 	\fi
 }
 \newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
-	\ifcase#1
-\or
-Kalendas Februarias%
-\or
-Kalendas Martias%
-\or
-Kalendas Apriles%
-\or
-Kalendas Maias%
-\or
-Kalendas Iunias%
-\or
-Kalendas Quintiles%
-\or
-Kalendas Sextiles%
-\or
-Kalendas Septembres%
-\or
-Kalendas Octobres
-\or
-Kalendas Nouembres%
-\or
-Kalendas Secembres%
-\or
-Kalendas Ianuarias%
-	\fi
-}
+	\ifbool{compatta}{
+		\ifcase#1
+		\or
+		Kal. Feb.%
+		\or
+		Kal. Mar.%
+		\or
+		Kal. Apr.%
+		\or
+		Kal. Mai.%
+		\or
+		Kal. Iun.%
+		\or
+		Kal. Qui.%
+		\or
+		Kal. Sex.%
+		\or
+		Kal. Sep.%
+		\or
+		Kal. Oct.%
+		\or
+		Kal. Nou.%
+		\or
+		Kal. Sec.%
+		\or
+		Kal. Ian.%
+		\fi
+	}{\ifcase#1%
+	\or
+	Kalendas Februarias%
+	\or
+	Kalendas Martias%
+	\or
+	Kalendas Apriles%
+	\or
+	Kalendas Maias%
+	\or
+	Kalendas Iunias%
+	\or
+	Kalendas Quintiles%
+	\or
+	Kalendas Sextiles%
+	\or
+	Kalendas Septembres%
+	\or
+	Kalendas Octobres
+	\or
+	Kalendas Nouembres%
+	\or
+	Kalendas Decembres%
+	\or
+	Kalendas Ianuarias%
+	\fi}}
+
 \newcommand*{\DTMlatinoKalendis}[1]{%
 	\ifcase#1
 	\or
