@@ -19,7 +19,7 @@
 %\undef\CurrentTrackedDialect
 \newbool{compatta}
 \setbool{compatta}{false}
-\DeclareOption{compatta}{\setbool{compatta}{true}}
+\input{temp}
 \newcounter{countA}
 \newtoggle{bisestile}
 \newcommand{\testbisestile}[1]{
@@ -121,34 +121,7 @@
 	5%
 	\fi
 }
-\newcommand*{\DTMlatinoNonaeNome}[1]{%
-	\ifcase#1
-	\or
-Nonis Ianuariis%
-\or
-Nonis Februariis%
-\or
-Nonis Martiis%
-\or
-Nonis Aprilibus%
-\or
-Nonis Maiis%
-\or
-Nonis Iuniis%
-\or
-Nonis Quintilibus%
-\or
-Nonis Sextilibus%
-\or
-Nonis Septembribus%
-\or
-Nonis Octobribus%
-\or
-Nonis Nouembribus%
-\or
-Nonis Decembribus%
-	\fi
-}
+
 \newcommand*{\DTMlatinoPridieNonae}[1]{%
 	\ifcase#1
 	\or
@@ -233,34 +206,7 @@ Nonas Decembres%
 	13%December%
 	\fi
 }
-\newcommand*{\DTMlatinoIdusNome}[1]{%
-	\ifcase#1
-	\or
-Idibus Ianuariis%
-\or
-Idibus Februariis%
-\or
-Idibus Martiis%
-\or
-Idibus Aprilibus%
-\or
-Idibus Maiis%
-\or
-Idibus Iuniis%
-\or
-Idibus Quintilibus%
-\or
-Idibus Sextilibus%
-\or
-Idibus Septembribus%
-\or
-Idibus Octobribus%
-\or
-Idibus Nouembribus%
-\or
-Idibus Decembribus%
-	\fi
-}
+
 
 \newcommand*{\DTMlatinoPridieIdus}[1]{%
 	\ifcase#1
@@ -318,60 +264,6 @@ Idus Nouembres%
 Idus Decembres
 	\fi
 }
-\newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
-	\ifbool{compatta}{
-		\ifcase#1
-		\or
-		Kal. Feb.%
-		\or
-		Kal. Mar.%
-		\or
-		Kal. Apr.%
-		\or
-		Kal. Mai.%
-		\or
-		Kal. Iun.%
-		\or
-		Kal. Qui.%
-		\or
-		Kal. Sex.%
-		\or
-		Kal. Sep.%
-		\or
-		Kal. Oct.%
-		\or
-		Kal. Nou.%
-		\or
-		Kal. Sec.%
-		\or
-		Kal. Ian.%
-		\fi
-	}{\ifcase#1%
-	\or
-	Kalendas Februarias%
-	\or
-	Kalendas Martias%
-	\or
-	Kalendas Apriles%
-	\or
-	Kalendas Maias%
-	\or
-	Kalendas Iunias%
-	\or
-	Kalendas Quintiles%
-	\or
-	Kalendas Sextiles%
-	\or
-	Kalendas Septembres%
-	\or
-	Kalendas Octobres
-	\or
-	Kalendas Nouembres%
-	\or
-	Kalendas Decembres%
-	\or
-	Kalendas Ianuarias%
-	\fi}}
 
 \newcommand*{\DTMlatinoKalendis}[1]{%
 	\ifcase#1
@@ -586,6 +478,49 @@ ante diem undevicesimum%
 {\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
 }%
 }%
+
+\DTMnewdatestyle{latino-Kalendae-abb}{%
+\setbool{compatta}{true}	
+	\renewcommand*\DTMdisplaydate[4]{%
+		\testbisestile{##1}%
+		\ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
+		\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
+		\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
+		\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
+		\ifboolexpr{
+			test {\ifnumcomp{##2}{=}{2}}
+			and test {\iftoggle{bisestile}}}
+		{\ifnum##3=29 pridie Kalendas Martias\fi}%
+		{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}%
+		\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi%
+		\ifboolexpr{%
+			test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}}%
+			and
+			test{\ifnumgreater{##3}{1}}}%
+		{\DTMlatinoAnteDiemuno{##2}{##3}}{}%
+		\ifboolexpr{%
+			test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}}%
+			and
+			test{\ifnumgreater{##3}{\DTMlatinoNonae{##2}}}}%
+		{\DTMlatinoAnteDiemdue{##2}{##3}}{}%%
+		\ifboolexpr{%
+			test {\ifnumcomp{##2}{=}{2}}
+			and test {\iftoggle{bisestile}}}
+		{\ifboolexpr{%
+				test {\ifnumless{##3}{29}}%
+				and
+				test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
+			{\DTMlatinoAnteDiemquattro{##3}}{}}%
+		{\ifboolexpr{%
+				test {\ifnumless{##3}{\DTMlatinoMensisDurata{##2}}}%
+				and
+				test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
+			{\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
+	}%
+}%
+
+
+
 
 \DTMnewtimestyle{latino-Hora}{%
 	\DTMshowzonefalse

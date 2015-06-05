@@ -1,0 +1,141 @@
+\newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
+	\ifbool{compatta}{
+		\ifcase#1
+		\or
+		Kal. Feb.%
+		\or
+		Kal. Mart.%
+		\or
+		Kal. Apr.%
+		\or
+		Kal. Mai.%
+		\or
+		Kal. Iun.%
+		\or
+		Kal. Quint.%
+		\or
+		Kal. Sext.%
+		\or
+		Kal. Sept.%
+		\or
+		Kal. Oct.%
+		\or
+		Kal. Nou.%
+		\or
+		Kal. Sec.%
+		\or
+		Kal. Ian.%
+		\fi
+	}{\ifcase#1%
+	\or
+	Kalendas Februarias%
+	\or
+	Kalendas Martias%
+	\or
+	Kalendas Apriles%
+	\or
+	Kalendas Maias%
+	\or
+	Kalendas Iunias%
+	\or
+	Kalendas Quintiles%
+	\or
+	Kalendas Sextiles%
+	\or
+	Kalendas Septembres%
+	\or
+	Kalendas Octobres
+	\or
+	Kalendas Nouembres%
+	\or
+	Kalendas Decembres%
+	\or
+	Kalendas Ianuarias%
+	\fi}}
+
+
+\newcommand*{\DTMlatinoNonaeNome}[1]{%
+	\ifbool{compatta}{	\ifcase#1
+		\or
+		Non. Ian.%
+		\or
+		Non. Feb.%
+		\or
+		Non. Mart.%
+		\or
+		Non. Apr.%
+		\or
+		Non. Mai.%
+		\or
+		Non. Iun.%
+		\or
+		Non. Quint.%
+		\or
+		Non. Sext.%
+		\or
+		Non. Sept.%
+		\or
+		Non. Oct.%
+		\or
+		Non. Nou.%
+		\or
+		Non. Dec.%
+		\fi}{
+	\ifcase#1
+	\or
+	Nonis Ianuariis%
+	\or
+	Nonis Februariis%
+	\or
+	Nonis Martiis%
+	\or
+	Nonis Aprilibus%
+	\or
+	Nonis Maiis%
+	\or
+	Nonis Iuniis%
+	\or
+	Nonis Quintilibus%
+	\or
+	Nonis Sextilibus%
+	\or
+	Nonis Septembribus%
+	\or
+	Nonis Octobribus%
+	\or
+	Nonis Nouembribus%
+	\or
+	Nonis Decembribus%
+	\fi
+}
+}
+
+\newcommand*{\DTMlatinoIdusNome}[1]{%
+	\ifcase#1
+	\or
+	Idibus Ianuariis%
+	\or
+	Idibus Februariis%
+	\or
+	Idibus Martiis%
+	\or
+	Idibus Aprilibus%
+	\or
+	Idibus Maiis%
+	\or
+	Idibus Iuniis%
+	\or
+	Idibus Quintilibus%
+	\or
+	Idibus Sextilibus%
+	\or
+	Idibus Septembribus%
+	\or
+	Idibus Octobribus%
+	\or
+	Idibus Nouembribus%
+	\or
+	Idibus Decembribus%
+	\fi
+}
+
