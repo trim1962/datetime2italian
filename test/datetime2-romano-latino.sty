@@ -36,7 +36,6 @@
 	}
 }
 
-\newcommand{\DTMlatinoMensisPridie}{Pridie\space}
 \newcommand*{\DTMlatinoMensis}[1]{%
 	\ifcase#1
 	\or
@@ -150,34 +149,7 @@
 	4%
 	\fi
 }
-\newcommand*{\DTMlatinoPridieNonaeNome}[1]{%
-	\ifcase#1
-	\or
-Nonas Ianuarias%
-\or
-Nonas Februarias%
-\or
-Nonas Martias%
-\or
-Nonas Apriles%
-\or
-Nonas Maias%
-\or
-Nonas Iunias%
-\or
-Nonas Quintiles%
-\or
-Nonas Sextiles%
-\or
-Nonas Septembres%
-\or
-Nonas Octobres%
-\or
-Nonas Nouembres%
-\or
-Nonas Decembres%
-	\fi
-}
+
 \newcommand*{\DTMlatinoIdus}[1]{%
 	\ifcase#1
 	\or
@@ -236,149 +208,10 @@ Nonas Decembres%
 	12%December%
 	\fi
 }
-\newcommand*{\DTMlatinoPridieIdusNome}[1]{%
-	\ifcase#1
-\or
-Idus Ianuarias%
-\or
-Idus Februarias%
-\or
-Idus Martias%
-\or
-Idus Apriles
-\or 
-Idus Maias%
-\or
-Idus Iunias%
-\or
-Idus Quintiles%
-\or
-Idus Sextiles%
-\or
-Idus Septembres%
-\or
-Idus Octobres%
-\or
-Idus Nouembres%
-\or
-Idus Decembres
-	\fi
-}
 
-\newcommand*{\DTMlatinoKalendis}[1]{%
-	\ifcase#1
-	\or
-Kalendis Ianuariis%
-\or
-Kalendis Februariis
-\or
-Kalendis Martiis%
-\or
-Kalendis Aprilibus%
-\or
-Kalendis Maiis%
-\or
-Kalendis Iuniis%
-\or
-Kalendis Quintilibus%
-\or
-Kalendis Sextilibus%
-\or
-Kalendis Septembribus%
-\or
-Kalendis Octobribus%
-\or
-Kalendis Nouembribus%
-\or
-Kalendis Decembribus%
-	\fi
-}
-\newcommand*{\DTMlatinoAnteDiem}[1]{%
-	\ifcase#1
-	\or
-1%
-\or
-2%
-\or
-ante diem tertium%
-\or
-ante diem quartum%
-\or
-ante diem quintum%
-\or
-ante diem sextum%
-\or
-ante diem septimum%
-\or
-ante diem octavum%
-\or
-ante diem nonum%
-\or
-ante diem decimum%
-\or
-ante diem undecimum%
-\or
-ante diem duodecimum%
-\or
-ante diem tertium decimum%
-\or
-ante diem quartum decimum%
-\or
-ante diem quintum decimum%
-\or
-ante diem sextum decimum%
-\or
-ante diem septimum decimum%
-\or
-ante diem duodevicesimum%
-\or
-ante diem undevicesimum%
-	\fi
-}
-\newcommand*{\DTMlatinoAnteDiemBis}[1]{%
-	\ifcase#1
-	\or
-	1%
-	\or
-	2%
-	\or
-	ante diem tertium Kalendas Martias%
-	\or
-	ante diem quartum Kalendas Martias%
-	\or
- ante diem quintum Kalendas Martias%
- \or
- ante diem bis sextum Kalendas Martias%
-	\or
-	ante diem sextum Kalendas Martias%
-	\or
-	ante diem septimum Kalendas Martias%
-	\or
-	ante diem octavum Kalendas Martias%
-	\or
-	ante diem nonum Kalendas Martias%
-	\or
-	ante diem decimum Kalendas Martias%
-	\or
-	ante diem undecimum Kalendas Martias%
-	\or
-	ante diem duodecimum Kalendas Martias%
-	\or
-	ante diem tertium decimum Kalendas Martias%
-	\or
-	ante diem quartum decimum Kalendas Martias%
-	\or
-	ante diem quintum decimum Kalendas Martias%
-	\or
-	ante diem sextum decimum Kalendas Martias%
-	\or
-	ante diem septimum decimum Kalendas Martias%
-	\or
-	ante diem duodevicesimum Kalendas Martias%
-	\or
-	ante diem undevicesimum Kalendas Martias%
-	\fi
-}
+
+
+
 \newcommand*{\DTMlatinoHora}[1]{%
 	\ifcase#1
 	tertia vigilia%
@@ -487,7 +320,7 @@ ante diem undevicesimum%
 		\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
 		\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
 		\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
-		\ifboolexpr{
+		\ifboolexpr{%
 			test {\ifnumcomp{##2}{=}{2}}
 			and test {\iftoggle{bisestile}}}
 		{\ifnum##3=29 pridie Kalendas Martias\fi}%

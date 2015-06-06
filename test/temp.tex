@@ -1,32 +1,34 @@
+\newcommand{\DTMlatinoMensisPridie}{\ifbool{compatta}{Pr.\space}{Pridie\space}}
+
 \newcommand*{\DTMlatinoPridieKalendasNome}[1]{%
-	\ifbool{compatta}{
-		\ifcase#1
+	\ifbool{compatta}{%%
+		\ifcase#1%
 		\or
-		Kal. Feb.%
+		Kal.~Feb.%
 		\or
-		Kal. Mart.%
+		Kal.~Mart.%
 		\or
-		Kal. Apr.%
+		Kal.~Apr.%
 		\or
-		Kal. Mai.%
+		Kal.~Mai.%
 		\or
-		Kal. Iun.%
+		Kal.~Iun.%
 		\or
-		Kal. Quint.%
+		Kal.~Quint.%
 		\or
-		Kal. Sext.%
+		Kal.~Sext.%
 		\or
-		Kal. Sept.%
+		Kal.~Sept.%
 		\or
-		Kal. Oct.%
+		Kal.~Oct.%
 		\or
-		Kal. Nou.%
+		Kal.~Nou.%
 		\or
-		Kal. Sec.%
+		Kal.~Sec.%
 		\or
-		Kal. Ian.%
-		\fi
-	}{\ifcase#1%
+		Kal.~Ian.%
+		\fi}{%
+	\ifcase#1%%
 	\or
 	Kalendas Februarias%
 	\or
@@ -52,10 +54,63 @@
 	\or
 	Kalendas Ianuarias%
 	\fi}}
-
-
+\newcommand*{\DTMlatinoKalendis}[1]{%
+		\ifbool{compatta}{%
+					\ifcase#1%
+					\or
+					Kal.~Feb.%
+					\or
+					Kal.~Mart.%
+					\or
+					Kal.~Apr.%
+					\or
+					Kal.~Mai.%
+					\or
+					Kal.~Iun.%
+					\or
+					Kal.~Quint.%
+					\or
+					Kal.~Sext.%
+					\or
+					Kal.~Sept.%
+					\or
+					Kal.~Oct.%
+					\or
+					Kal.~Nou.%
+					\or
+					Kal. Sec.%
+					\or
+					Kal. Ian.%
+					\fi}{%
+	\ifcase#1%
+	\or
+	Kalendis Ianuariis%
+	\or
+	Kalendis Februariis%
+	\or
+	Kalendis Martiis%
+	\or
+	Kalendis Aprilibus%
+	\or
+	Kalendis Maiis%
+	\or
+	Kalendis Iuniis%
+	\or
+	Kalendis Quintilibus%
+	\or
+	Kalendis Sextilibus%
+	\or
+	Kalendis Septembribus%
+	\or
+	Kalendis Octobribus%
+	\or
+	Kalendis Nouembribus%
+	\or
+	Kalendis Decembribus%
+	\fi}}
 \newcommand*{\DTMlatinoNonaeNome}[1]{%
-	\ifbool{compatta}{	\ifcase#1
+	\ifbool{compatta}{%
+		\ifcase#1%
 		\or
 		Non. Ian.%
 		\or
@@ -80,8 +135,8 @@
 		Non. Nou.%
 		\or
 		Non. Dec.%
-		\fi}{
-	\ifcase#1
+		\fi}{%
+	\ifcase#1%
 	\or
 	Nonis Ianuariis%
 	\or
@@ -106,12 +161,94 @@
 	Nonis Nouembribus%
 	\or
 	Nonis Decembribus%
-	\fi
-}
+	\fi}}
+\newcommand*{\DTMlatinoPridieNonaeNome}[1]{%
+	\ifbool{compatta}{%	
+		\ifcase#1%
+		\or
+		Non. Ian.%
+		\or
+		Non. Feb.%
+		\or
+		Non. Mart.%
+		\or
+		Non. Apr.%
+		\or
+		Non. Mai.%
+		\or
+		Non. Iun.%
+		\or
+		Non. Quint.%
+		\or
+		Non. Sext.%
+		\or
+		Non. Sept.%
+		\or
+		Non. Oct.%
+		\or
+		Non. Nou.%
+		\or
+		Non. Dec.%
+		\fi}{%
+		\ifcase#1%
+		\or
+		Nonas Ianuarias%
+		\or
+		Nonas Februarias%
+		\or
+		Nonas Martias%
+		\or
+		Nonas Apriles%
+		\or
+		Nonas Maias%
+		\or
+		Nonas Iunias%
+		\or
+		Nonas Quintiles%
+		\or
+		Nonas Sextiles%
+		\or
+		Nonas Septembres%
+		\or
+		Nonas Octobres%
+		\or
+		Nonas Nouembres%
+		\or
+		Nonas Decembres%
+		\fi
+	}
 }
 
 \newcommand*{\DTMlatinoIdusNome}[1]{%
-	\ifcase#1
+\ifbool{compatta}{%
+	\ifcase#1%
+	\or
+	Id. Ian.%
+	\or
+	Id. Feb.%
+	\or
+	Id. Mart.%
+	\or
+	Id. Apr.%
+	\or
+	Id. Mai.%
+	\or
+	Id. Iun.%
+	\or
+	Id. Quint.%
+	\or
+	Id. Sext.%
+	\or
+	Id. Sept%
+	\or
+	Id. Oct.%
+	\or
+	Id. Nou.%
+	\or
+	Id. Dec.%
+	\fi
+	}{
+	\ifcase#1%
 	\or
 	Idibus Ianuariis%
 	\or
@@ -138,4 +275,234 @@
 	Idibus Decembribus%
 	\fi
 }
+}
+\newcommand*{\DTMlatinoPridieIdusNome}[1]{%
+\ifbool{compatta}{%
+		\ifcase#1%
+		\or
+		Id. Ian.%
+		\or
+		Id. Feb.%
+		\or
+		Id. Mart.%
+		\or
+		Id. Apr.%
+		\or
+		Id. Mai.%
+		\or
+		Id. Iun.%
+		\or
+		Id. Quint.%
+		\or
+		Id. Sext.%
+		\or
+		Id. Sept%
+		\or
+		Id. Oct.%
+		\or
+		Id. Nou.%
+		\or
+		Id. Dec.%
+		\fi}{%
+	\ifcase#1%
+	\or
+	Idus Ianuarias%
+	\or
+	Idus Februarias%
+	\or
+	Idus Martias%
+	\or
+	Idus Apriles
+	\or 
+	Idus Maias%
+	\or
+	Idus Iunias%
+	\or
+	Idus Quintiles%
+	\or
+	Idus Sextiles%
+	\or
+	Idus Septembres%
+	\or
+	Idus Octobres%
+	\or
+	Idus Nouembres%
+	\or
+	Idus Decembres
+	\fi
+}
+}
+\newcommand*{\DTMlatinoAnteDiem}[1]{%
+	\ifbool{compatta}{%
+			\ifcase#1%
+			\or
+			1%
+			\or
+			2%
+			\or
+			A.~d.~III%
+			\or
+			A.~d.~IV%
+			\or
+			A.~d.~V%
+			\or
+			A.~d.~VI%
+			\or
+			A.~d.~VII%
+			\or
+			A.~d.~VIII%
+			\or
+			A.~d.~IX%
+			\or
+			A.~d.~X%
+			\or
+			A.~d.~XI%
+			\or
+			A.~d.~XII%
+			\or
+			A.~d.~XIII%
+			\or
+			A.~d.~XIV%
+			\or
+			A.~d.~XV%
+			\or
+			A.~d.~XVI%
+			\or
+			A.~d.~XVII%
+			\or
+			A.~d.~XVIII%
+			\or
+			A.~d.~XIX%
+			\fi}{%
+	\ifcase#1%
+	\or
+	1%
+	\or
+	2%
+	\or
+	Ante diem tertium%
+	\or
+	Ante diem quartum%
+	\or
+	Ante diem quintum%
+	\or
+	Ante diem sextum%
+	\or
+	Ante diem septimum%
+	\or
+	Ante diem octavum%
+	\or
+	Ante diem nonum%
+	\or
+	Ante diem decimum%
+	\or
+	Ante diem undecimum%
+	\or
+	Ante diem duodecimum%
+	\or
+	Ante diem tertium decimum%
+	\or
+	Ante diem quartum decimum%
+	\or
+	Ante diem quintum decimum%
+	\or
+	Ante diem sextum decimum%
+	\or
+	Ante diem septimum decimum%
+	\or
+	Ante diem duodevicesimum%
+	\or
+	Ante diem undevicesimum%
+	\fi
+}
+}
 
+\newcommand*{\DTMlatinoAnteDiemBis}[1]{%
+	\ifbool{compatta}{%
+			\ifcase#1%
+			\or
+			1%
+			\or
+			2%
+			\or
+			A.~d.~III Kal.~Mart.%
+			\or
+			A.~d.~IV Kal.~Mart.%
+			\or
+			A.~d.~V Kal.~Mart.%
+			\or
+			A.~d.~bis~VI Kal.~Mart.%
+			\or
+			A.~d.~VI Kal.~Mart.%
+			\or
+			A.~d.~VII Kal.~Mart.%
+			\or
+			A.~d.~VIII Kal.~Mart.%
+			\or
+			A.~d.~IX Kal.~Mart.%
+			\or
+			A.~d.~X Kal.~Mart.%
+			\or
+			A.~d.~XI Kal.~Mart.%
+			\or
+			A.~d.~XII Kal.~Mart.%
+			\or
+			A.~d.~XIII Kal.~Mart.%
+			\or
+			A.~d.~XIV Kal.~Mart.%
+			\or
+			A.~d.~XV decimum Kal.~Mart.%
+			\or
+			A.~d.~XVI Kal.~Mart.%
+			\or
+			A.~d.~XVII Kal.~Mart.%
+			\or
+			A.~d.~XVIII Kal.~Mart.%
+			\or
+			A.~d.~XIX Kal.~Mart.%
+			\fi
+		}{
+	\ifcase#1%
+	\or
+	1%
+	\or
+	2%
+	\or
+	Ante diem tertium Kalendas Martias%
+	\or
+	Ante diem quartum Kalendas Martias%
+	\or
+	Ante diem quintum Kalendas Martias%
+	\or
+	Ante diem bis sextum Kalendas Martias%
+	\or
+	Ante diem sextum Kalendas Martias%
+	\or
+	Ante diem septimum Kalendas Martias%
+	\or
+	Ante diem octavum Kalendas Martias%
+	\or
+	Ante diem nonum Kalendas Martias%
+	\or
+	Ante diem decimum Kalendas Martias%
+	\or
+	Ante diem undecimum Kalendas Martias%
+	\or
+	Ante diem duodecimum Kalendas Martias%
+	\or
+	Ante diem tertium decimum Kalendas Martias%
+	\or
+	Ante diem quartum decimum Kalendas Martias%
+	\or
+	Ante diem quintum decimum Kalendas Martias%
+	\or
+	Ante diem sextum decimum Kalendas Martias%
+	\or
+	Ante diem septimum decimum Kalendas Martias%
+	\or
+	Ante diem duodevicesimum Kalendas Martias%
+	\or
+	Ante diem undevicesimum Kalendas Martias%
+	\fi
+}
+}
