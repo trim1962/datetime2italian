@@ -17,6 +17,12 @@
 %\def\CurrentTrackedDialect{italian}
 %\RequireDateTimeModule{italian}
 %\undef\CurrentTrackedDialect
+\newcounter{countS}
+\newcommand{\stamparoman}[1]{\space{\uppercase\expandafter{\romannumeral#1}}}
+\newcommand{\stampaAnno}[1]{
+	\setcounter{countS}{#1}
+	\addtocounter{countS}{753}
+	ANNO $-$\stamparoman{#1} $-$ POST · CHR · N  · VEL $-$\stamparoman{\thecountS}$-$  AB · VRBE  CONDITA}
 \newbool{compatta}
 \setbool{compatta}{false}
 \input{temp}
@@ -32,9 +38,7 @@
 		}{\toggletrue{bisestile}}{\togglefalse{bisestile}}
 	}
 	{\ifnumcomp{(\value{countA}/4)*4-\value{countA}}{=}{0}
-		{\toggletrue{bisestile}}{\togglefalse{bisestile}}
-	}
-}
+		{\toggletrue{bisestile}}{\togglefalse{bisestile}}}}
 
 \newcommand*{\DTMlatinoMensis}[1]{%
 	\ifcase#1
@@ -176,9 +180,7 @@
 	13%November%
 	\or
 	13%December%
-	\fi
-}
-
+	\fi}
 
 \newcommand*{\DTMlatinoPridieIdus}[1]{%
 	\ifcase#1
@@ -206,14 +208,10 @@
 	12%November%
 	\or
 	12%December%
-	\fi
-}
-
-
-
+	\fi}
 
 \newcommand*{\DTMlatinoHora}[1]{%
-	\ifcase#1
+	\ifcase#1%
 	tertia vigilia%
 	\or
 	tertia vigilia%
@@ -309,6 +307,7 @@
 		and
 		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
 {\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
+\stampaAnno{##1}
 }%
 }%
 
@@ -316,20 +315,18 @@
 \setbool{compatta}{true}	
 	\renewcommand*\DTMdisplaydate[4]{%
 		\testbisestile{##1}%
-		\ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
-		\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
-		\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
-		\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
-		\ifboolexpr{%
-			test {\ifnumcomp{##2}{=}{2}}
-			and test {\iftoggle{bisestile}}}
-		{\ifnum##3=29 pridie Kalendas Martias\fi}%
-		{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}%
-		\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi%
-		\ifboolexpr{%
-			test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}}%
-			and
-			test{\ifnumgreater{##3}{1}}}%
+	\ifnum##3=1\DTMlatinoKalendis{##2}\fi%kalenda
+	\ifnum##3=\DTMlatinoPridieNonae{##2}\DTMlatinoMensisPridie\DTMlatinoPridieNonaeNome{##2}\fi%
+	\ifnum##3=\DTMlatinoNonae{##2}\DTMlatinoNonaeNome{##2}\fi%
+	\ifnum##3=\DTMlatinoIdus{##2}\DTMlatinoIdusNome{##2}\fi%
+	\ifboolexpr{%
+		test {\ifnumcomp{##2}{=}{2}}
+		and test {\iftoggle{bisestile}}}
+	{\ifnum##3=29 pridie Kalendas Martias\fi}%
+{\ifnum##3=\DTMlatinoMensisDurata{##2}\DTMlatinoMensisPridie\DTMlatinoPridieKalendasNome{##2}\fi}%
+	\ifnum##3=\DTMlatinoPridieIdus{##2}\DTMlatinoMensisPridie\DTMlatinoPridieIdusNome{##2}\fi%
+	\ifboolexpr{test {\ifnumless{##3}{\DTMlatinoPridieNonae{##2}}}%
+		and	test{\ifnumgreater{##3}{1}}}%
 		{\DTMlatinoAnteDiemuno{##2}{##3}}{}%
 		\ifboolexpr{%
 			test {\ifnumless{##3}{\DTMlatinoPridieIdus{##2}}}%
@@ -338,7 +335,7 @@
 		{\DTMlatinoAnteDiemdue{##2}{##3}}{}%%
 		\ifboolexpr{%
 			test {\ifnumcomp{##2}{=}{2}}
-			and test {\iftoggle{bisestile}}}
+			and test {\iftoggle{bisestile}}}%
 		{\ifboolexpr{%
 				test {\ifnumless{##3}{29}}%
 				and
@@ -349,6 +346,7 @@
 				and
 				test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
 			{\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
+		\stampaAnno{##1}
 	}%
 }%
 

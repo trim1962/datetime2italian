@@ -1,0 +1,22 @@
+\documentclass[italian]{article}
+\usepackage{ifpdf,ifxetex} 
+\ifpdf
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\else
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{italian}
+\fi 
+\newcounter{countS}
+\newcommand{\stamparoman}[1]{\space{\uppercase\expandafter{\romannumeral#1}}}
+\newcommand{\stampadate}[1]{
+		\setcounter{countS}{#1}
+		\addtocounter{countS}{753}
+		ANNO $-$\stamparoman{#1} $-$ POST · CHR · N  · VEL $-$\stamparoman{\thecountS}$-$  AB · VRBE  CONDITA}
+
+\listfiles
+\begin{document}
+\stampadate{2015}	
+\end{document}

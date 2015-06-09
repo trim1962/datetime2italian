@@ -246,8 +246,7 @@
 	Id. Nou.%
 	\or
 	Id. Dec.%
-	\fi
-	}{
+	\fi}{%
 	\ifcase#1%
 	\or
 	Idibus Ianuariis%
@@ -273,8 +272,7 @@
 	Idibus Nouembribus%
 	\or
 	Idibus Decembribus%
-	\fi
-}
+	\fi}
 }
 \newcommand*{\DTMlatinoPridieIdusNome}[1]{%
 \ifbool{compatta}{%
@@ -329,9 +327,7 @@
 	Idus Nouembres%
 	\or
 	Idus Decembres
-	\fi
-}
-}
+	\fi}}%
 \newcommand*{\DTMlatinoAnteDiem}[1]{%
 	\ifbool{compatta}{%
 			\ifcase#1%
@@ -413,10 +409,7 @@
 	Ante diem duodevicesimum%
 	\or
 	Ante diem undevicesimum%
-	\fi
-}
-}
-
+	\fi}}%
 \newcommand*{\DTMlatinoAnteDiemBis}[1]{%
 	\ifbool{compatta}{%
 			\ifcase#1%
@@ -460,8 +453,7 @@
 			A.~d.~XVIII Kal.~Mart.%
 			\or
 			A.~d.~XIX Kal.~Mart.%
-			\fi
-		}{
+			\fi}{%
 	\ifcase#1%
 	\or
 	1%
@@ -503,6 +495,4 @@
 	Ante diem duodevicesimum Kalendas Martias%
 	\or
 	Ante diem undevicesimum Kalendas Martias%
-	\fi
-}
-}
+	\fi}}%
