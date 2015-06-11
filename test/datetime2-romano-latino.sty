@@ -18,11 +18,17 @@
 %\RequireDateTimeModule{italian}
 %\undef\CurrentTrackedDialect
 \newcounter{countS}
+\newcounter{countT}
+\newcounter{countM}
 \newcommand{\stamparoman}[1]{\space{\uppercase\expandafter{\romannumeral#1}}}
-\newcommand{\stampaAnno}[1]{
+\newcommand{\stampaanno}[1]{%
 	\setcounter{countS}{#1}
-	\addtocounter{countS}{753}
-	ANNO $-$\stamparoman{#1} $-$ POST · CHR · N  · VEL $-$\stamparoman{\thecountS}$-$  AB · VRBE  CONDITA}
+	\setcounter{countM}{-1}
+	\ifnumcomp{#1}{>}{0}{%
+		\addtocounter{countS}{753}ANNO--\stamparoman{#1}--PCN--VEL--\stamparoman{\thecountS}--AUC}{\setcounter{countS}{\numexpr\thecountM*\thecountS}
+		\setcounter{countT}{\thecountS}%
+		\setcounter{countS}{\numexpr 754-\thecountS}%
+		ANNO--\stamparoman{\thecountT}--ACN--VEL--\stamparoman{\thecountS}--AUC}}
 \newbool{compatta}
 \setbool{compatta}{false}
 \input{temp}
@@ -307,7 +313,7 @@
 		and
 		test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
 {\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
-\stampaAnno{##1}
+\stampaanno{##1}
 }%
 }%
 
@@ -346,7 +352,7 @@
 				and
 				test{\ifnumgreater{##3}{\DTMlatinoIdus{##2}}}}%
 			{\DTMlatinoAnteDiemtre{##2}{##3}}{}}%
-		\stampaAnno{##1}
+	\stampaanno{##1}
 	}%
 }%
 
